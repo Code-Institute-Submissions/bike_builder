@@ -1,0 +1,50 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Bike Builder</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/sandstone/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div id="main-container">
+        <nav class="navbar navbar-inverse navbar-fixed-top container">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapseElement">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">Bike Builder</a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="collapseElement">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#">Forum</a></li>
+                        <li><a href="#">Technical</a></li>
+                        <li><a href="#">Gallery</a></li>
+                        <li><a href="#">Merchandise</a></li>
+                        <li><a href="#">Project Bike Selector</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container" id="body-template">
+            {% block content %}
+            {% endblock %}
+        </div>
+
+        <footer>
+            <p>Copyright (c) 2017</p>
+        </footer>
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+/*to enable sticky footer*/
+html,
+body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+
+#main-container {
+	min-height: 100%;
+	position: relative;
+	margin-top: 80px;  /* To drop contents below navbar */
+}
+
+#body-template {
+	padding-bottom: 80px;   /* Height of the footer */
+}
+
+footer {
+	background-color: black;
+	color: #ffffff;
+	position: absolute;
+	bottom: 0;
+	height: 80px;
+	width: 100%;
+}
