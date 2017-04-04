@@ -30,9 +30,15 @@
                         <li><a href="#">Gallery</a></li>
                         <li><a href="#">Merchandise</a></li>
                         <li><a href="#">Project Bike Selector</a></li>
-                        <li><a href="{% url 'register' %}">Register</a></li>
-                        <li><a href="{% url 'login' %}">Log In</a></li>
-                        <li><a href="{% url 'logout' %}">Log Out</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        {% if user.is_authenticated %}
+                            <li><a href="{% url 'profile' %}"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+                            <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
+                        {% else %}
+                            <li><a href="{% url 'register' %}"><span class="glyphicon glyphicon-user"></span> Register</a></li>
+                            <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Log In</a></li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>
