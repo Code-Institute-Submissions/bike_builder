@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'django_forms_bootstrap',
     'debug_toolbar',
     'tinymce',
-    'emoticons'
+    'emoticons',
+    'threads'
 ]
 
 INTERNAL_IPS = ('127.0.0.1',)
