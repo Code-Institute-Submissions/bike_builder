@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'emoticons',
     'threads',
     'polls',
+    'merchandise',
+    'payments',
 ]
 
 INTERNAL_IPS = ('127.0.0.1',)
@@ -145,3 +147,10 @@ AUTHENTICATION_BACKENDS = (
 )
 
 TINYMCE_JS_ROOT = os.path.join(BASE_DIR, "static", 'js', 'tinymce', 'tinymce.min.js')
+
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+STRIPE_PUBLISHABLE = os.getenv('STRIPE_PUBLISHABLE', 'pk_test_kLdDMq39gQJuwVRHNbtROldY')
+STRIPE_SECRET = os.getenv('STRIPE_SECRET', 'sk_test_sNgcHOXBxiaZuVTDDAnX2AIQ')

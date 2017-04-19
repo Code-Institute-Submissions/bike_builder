@@ -19,6 +19,11 @@ from django.contrib import admin
 from home import views as home_views
 from accounts import views as accounts_views
 from threads import views as forum_views
+from merchandise import views as merchandise_views
+from payments import views as payments_views
+from django.views.static import serve
+from .settings import MEDIA_ROOT
+
 
 
 urlpatterns = [
@@ -32,7 +37,7 @@ urlpatterns = [
     url(r'^logout/$', accounts_views.logout, name='logout'),
 
     # Forum URLs
-    url(r'^forum/$', forum_views.forum),
+    url(r'^forum/$', forum_views.forum, name='forum'),
     url(r'^threads/(?P<subject_id>\d+)/$', forum_views.threads, name='threads'),
     url(r'^new_thread/(?P<subject_id>\d+)/$', forum_views.new_thread, name='new_thread'),
     url(r'^thread/(?P<thread_id>\d+)/$', forum_views.thread, name='thread'),
@@ -46,6 +51,13 @@ urlpatterns = [
     # Poll URLs
     url(r'^thread/vote/(?P<thread_id>\d+)/(?P<subject_id>\d+)/$', forum_views.thread_vote, name='cast_vote'),
 
+    # Merchandise URLs
+    url(r'^merchandise/$', merchandise_views.all_products, name='merchandise'),
+    url(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT}),
+
+    # Payments URLs
+    url(r'^create_order/(?P<product_id>\d+)/$', payments_views.create_order, name='create_order'),
+    url(r'^place_order/(?P<product_id>\d+)/$', payments_views.place_order, name='place_order'),
 ]
 
 if settings.DEBUG:
