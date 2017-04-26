@@ -22,11 +22,10 @@ def place_order(request, product_id):
         form = PaymentForm(request.POST)
         if form.is_valid():
             try:
-                customer = stripe.Customer.create(
-                    amount=product.price,
+                customer = stripe.Charge.create(
+                    amount=product.price * 100,
                     currency="GBP",
-                    item=product.name,
-                    email=form.cleaned_data['email'],
+                    description=form.cleaned_data['email_address'],
                     card=form.cleaned_data['stripe_id'],
                 )
 
@@ -48,7 +47,7 @@ def place_order(request, product_id):
     else:
         form = PaymentForm()
 
-    args = {'form': form, 'publishable': settings.STRIPE_PUBLISHABLE}
+    args = {'form': form, 'publishable': settings.STRIPE_PUBLISHABLE, 'product': product}
     args.update(csrf(request))
 
     return render(request, 'payments\make_payment.html', args)

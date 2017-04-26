@@ -16,7 +16,7 @@
                     <td>{{ product.name }}</td>
                     <td>{{ product.description }}</td>
                     <td>{{ product.price }}</td>
-                    <td><a href="{% url 'create_order' product.id %}" class="btn btn-default">Buy</a></td>
+                    <td><a href="{% url 'place_order' product.id %}" class="btn btn-default">Buy</a></td>
                 </tr>
             {% endfor %}
         </tbody>
