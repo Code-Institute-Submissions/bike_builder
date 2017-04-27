@@ -60,6 +60,9 @@ urlpatterns = [
     url(r'^create_order/(?P<product_id>\d+)/$', payments_views.create_order, name='create_order'),
     url(r'^place_order/(?P<product_id>\d+)/$', payments_views.place_order, name='place_order'),
 
+    #  Bike Selector URLs
+    url(r'^bike_selector/$', bike_selector_views.bike_selector, name='bike_selector'),
+
 ]
 
 if settings.DEBUG:
