@@ -1,5 +1,35 @@
 {% extends "base.html" %}
+{% load bootstrap_tags %}
+
 
 {% block content %}
-    <h6>Project Bike Selector</h6>
+	<form role="form" method="get" id="bike-search-form" action="{% url 'bike_search' %}">
+		<h2>Project bike selector</h2>
+		{{ form|as_bootstrap }}
+		<div class="form-group">
+		<button class="btn btn-primary" id="bike_search_btn" type="submit"><span class="glyphicon glyphicon-search"></span> Search</button>
+		</div>
+	</form>
+
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>Manufacturer</th>
+				<th>Model</th>
+				<th>Number of cylinders</th>
+				<th>Engine layout</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for bike in bike_list %}
+				<tr>
+					<td>{{ bike.manufacturer }}</td>
+					<td>{{ bike.model }}</td>
+					<td>{{ bike.cylinders }}</td>
+					<td>{{ bike.layout }}</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
 {% endblock %}

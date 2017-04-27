@@ -61,7 +61,7 @@ urlpatterns = [
     url(r'^place_order/(?P<product_id>\d+)/$', payments_views.place_order, name='place_order'),
 
     #  Bike Selector URLs
-    url(r'^bike_selector/$', bike_selector_views.bike_selector, name='bike_selector'),
+    url(r'^bike_selector/$', bike_selector_views.bike_search, name='bike_search'),
 
 ]
 
