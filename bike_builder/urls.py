@@ -21,6 +21,7 @@ from accounts import views as accounts_views
 from threads import views as forum_views
 from merchandise import views as merchandise_views
 from payments import views as payments_views
+from bike_selector import views as bike_selector_views
 from django.views.static import serve
 from .settings import MEDIA_ROOT
 
@@ -58,6 +59,7 @@ urlpatterns = [
     # Payments URLs
     url(r'^create_order/(?P<product_id>\d+)/$', payments_views.create_order, name='create_order'),
     url(r'^place_order/(?P<product_id>\d+)/$', payments_views.place_order, name='place_order'),
+
 ]
 
 if settings.DEBUG:
