@@ -56,7 +56,6 @@ urlpatterns = [
     url(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT}),
 
     # Payments URLs
-    url(r'^create_order/(?P<product_id>\d+)/$', payments_views.create_order, name='create_order'),
     url(r'^place_order/(?P<product_id>\d+)/$', payments_views.place_order, name='place_order'),
 
     #  Bike Selector URLs

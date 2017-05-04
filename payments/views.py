@@ -11,11 +11,6 @@ from .models import Merchandise
 stripe.api_key = settings.STRIPE_SECRET
 
 
-def create_order(request, product_id):
-    product = get_object_or_404(Merchandise, pk=product_id)
-    return render(request, 'payments\make_payment.html', {"product": product})
-
-
 def place_order(request, product_id):
     product = get_object_or_404(Merchandise, pk=product_id)
     if request.method == 'POST':
