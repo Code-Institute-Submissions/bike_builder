@@ -45,7 +45,7 @@ def login(request):
 
             if user is not None:
                 auth.login(request, user)
-                messages.error(request, "You have successfully logged in")
+                messages.success(request, "You have successfully logged in")
                 return redirect(reverse('profile'))
             else:
                 form.add_error(None, "Your email or password was not recognised")
