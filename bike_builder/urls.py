@@ -29,6 +29,8 @@ from .settings import MEDIA_ROOT
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+
+    # home URL
     url(r'^$', home_views.home_page, name='home'),
 
     # Accounts URLs
@@ -43,9 +45,6 @@ urlpatterns = [
     url(r'^new_thread/(?P<subject_id>\d+)/$', forum_views.new_thread, name='new_thread'),
     url(r'^thread/(?P<thread_id>\d+)/$', forum_views.thread, name='thread'),
     url(r'^post/new/(?P<thread_id>\d+)/$', forum_views.new_post, name='new_post'),
-    # next line taken from lms but leads to issue in comment_details.html
-    # url(r'^post/edit/(?P<thread_id>\d+)/$', forum_views.edit_post, name='edit_post'),
-    # next line replaces line above using delete post code and seems to work
     url(r'^post/edit/(?P<thread_id>\d+)/(?P<post_id>\d+)/$', forum_views.edit_post, name='edit_post'),
     url(r'^post/delete/(?P<thread_id>\d+)/(?P<post_id>\d+)/$', forum_views.delete_post, name='delete_post'),
 
