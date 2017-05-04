@@ -8,6 +8,7 @@
 		{{ form|as_bootstrap }}
 		<div class="form-group">
 		<button class="btn btn-primary" id="bike_search_btn" type="submit"><span class="glyphicon glyphicon-search"></span> Search</button>
+        <input type="hidden" name="action" value="process_form" />
 		</div>
 	</form>
 
@@ -21,7 +22,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			{% for bike in bike_list %}
+			{% for bike in bikes %}
 				<tr>
 					<td>{{ bike.manufacturer }}</td>
 					<td>{{ bike.model }}</td>
