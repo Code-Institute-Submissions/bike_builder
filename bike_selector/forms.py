@@ -36,12 +36,12 @@ def layout_list():
     return c
 
 
-class BikeSearchForm(forms.ModelForm):
+class BikeSearchForm(forms.Form):
 
     manufacturer = forms.ChoiceField(choices=manufacturer_list, initial='All')
     cylinders = forms.ChoiceField(choices=cylinders_list, initial='All')
     layout = forms.ChoiceField(choices=layout_list, initial='All')
 
     class Meta:
-        model = Bikes
+        # model = Bikes
         fields = ('manufacturer', 'cylinders', 'layout')
