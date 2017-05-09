@@ -8,10 +8,17 @@
     </div>
     <div class="col-md-9">
         <div class="comment-content">
+
+            {% if post.image %}
+                <img src="/media/{{ post.image }}">
+            {% endif %}
+
             {% autoescape off %}
                 {{ post.comment|emoticons }}
             {% endautoescape %}
+
         </div>
         {% include "forum/comment_details.html" %}
     </div>
 </section>
+

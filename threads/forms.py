@@ -15,4 +15,4 @@ class ThreadForm(forms.ModelForm):
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ['comment']
+        fields = ['comment', 'image']
