@@ -6,4 +6,4 @@ from .models import Merchandise
 
 def all_products(request):
     products = Merchandise.objects.all()
-    return render(request, 'merchandise\merchandise.html', {"products": products})
+    return render(request, 'merchandise/merchandise.html', {"products": products})
