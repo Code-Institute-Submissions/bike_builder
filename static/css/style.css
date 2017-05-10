@@ -30,3 +30,7 @@ footer {
 .avatar {
 	max-height: 50px;
 }
+
+.merch_image {
+	max-height: 100px;
+  }

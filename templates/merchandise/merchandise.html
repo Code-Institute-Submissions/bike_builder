@@ -12,7 +12,7 @@
         <tbody>
             {% for product in products %}
                 <tr>
-{#                    <td><img src="/media/{{ product.image }}" alt="NO IMAGE AVAILABLE"></td>#}
+                    <td><img class="merch_image" src="/media/{{ product.image }}"></td>
                     <td>{{ product.name }}</td>
                     <td>{{ product.description }}</td>
                     <td>{{ product.price }}</td>
