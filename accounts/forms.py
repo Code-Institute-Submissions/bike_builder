@@ -46,3 +46,12 @@ class UserRegistrationForm(UserCreationForm):
 class UserLoginForm(forms.Form):
     email = forms.EmailField()
     password = forms.CharField(widget=forms.PasswordInput)
+
+
+class UserProfileForm(forms.ModelForm):
+
+    image = forms.ImageField(label="New Profile Picture")
+
+    class Meta:
+        model = User
+        fields = ['image']

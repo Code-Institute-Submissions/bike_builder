@@ -10,6 +10,7 @@ body {
 	min-height: 100%;
 	position: relative;
 	margin-top: 80px;  /* To drop contents below navbar */
+
 }
 
 #body-template {
@@ -23,4 +24,9 @@ footer {
 	bottom: 0;
 	height: 80px;
 	width: 100%;
+}
+/*end sticky footer*/
+
+.avatar {
+	max-height: 50px;
 }

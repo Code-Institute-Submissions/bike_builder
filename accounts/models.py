@@ -34,3 +34,5 @@ class User(AbstractUser):
     such as adding things like payment details
     """
     objects = AccountUserManager()
+
+    image = models.ImageField(upload_to='avatars', blank=True, null=True)
