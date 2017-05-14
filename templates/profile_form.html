@@ -1,21 +1,14 @@
 {% extends "base.html" %}
 {% load bootstrap_tags %}
 {% block content %}
-    <form role="form" method="post" action="{% url 'edit_profile' %}" enctype="multipart/form-data">
-        <legend>Edit Profile</legend>
+    <form role="form" method="post" action="{% url 'upload_image' %}" enctype="multipart/form-data">
+        <legend>Upload Image</legend>
         {% csrf_token %}
-
-        <p><strong>Old Profile Picture</strong></p>
-        {% if user.image %}
-            <img class="avatar" src="/media/avatars/{{ user.image }}/>
-        {% endif %}
-
-        <br><br>
 
         {{ form | as_bootstrap }}
 
         <div class="form-group">
-            <button type="submit" class="btn btn-primary">Update Profile</button>
+            <button type="submit" class="btn btn-primary">Upload</button>
         </div>
     </form>
 {% endblock %}
