@@ -25,7 +25,9 @@ def place_order(request, product_id):
                 )
 
                 if customer.paid:
-                    form.save()
+                    purchase = form.save(commit=False)
+                    purchase.item = product
+                    purchase.save()
                     messages.success(request, "Your purchase has been successful")
                     return redirect(reverse('merchandise'))
 
