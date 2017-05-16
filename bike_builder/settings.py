@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'merchandise',
     'payments',
     'bike_selector',
+    'gallery',
 ]
 
 INTERNAL_IPS = ('127.0.0.1',)

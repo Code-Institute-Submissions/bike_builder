@@ -19,6 +19,7 @@ from django.contrib import admin
 from home import views as home_views
 from accounts import views as accounts_views
 from threads import views as forum_views
+from gallery import views as gallery_views
 from merchandise import views as merchandise_views
 from payments import views as payments_views
 from bike_selector import views as bike_selector_views
@@ -33,11 +34,15 @@ urlpatterns = [
     # home URL
     url(r'^$', home_views.home_page, name='home'),
 
+    # Media URL for images
+    url(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT}),
+
     # Accounts URLs
     url(r'^register/$', accounts_views.register, name='register'),
     url(r'^profile/$', accounts_views.profile, name='profile'),
     url(r'^login/$', accounts_views.login, name='login'),
     url(r'^logout/$', accounts_views.logout, name='logout'),
+    url(r'^profile/edit_profile/$', accounts_views.edit_profile, name='edit_profile'),
 
     # Forum URLs
     url(r'^forum/$', forum_views.forum, name='forum'),
@@ -50,6 +55,10 @@ urlpatterns = [
 
     # Poll URLs
     url(r'^thread/vote/(?P<thread_id>\d+)/(?P<subject_id>\d+)/$', forum_views.thread_vote, name='cast_vote'),
+
+    # Gallery URLs
+    url(r'^gallery/$', gallery_views.gallery, name='gallery'),
+    url(r'^gallery/upload_image/$', gallery_views.upload_image, name='upload_image'),
 
     # Merchandise URLs
     url(r'^merchandise/$', merchandise_views.all_products, name='merchandise'),
