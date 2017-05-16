@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+	{% if user.is_authenticated %}
+		<p>
+			<a href="{% url 'upload_image' %}" class="btn btn-default">Upload Image</a>
+		</p>
+	{% endif %}
+	
+	{% for image in images %}
+		<img src="/media/{{ image.image }}" class="gallery_thumbnail" onclick="open_modal()"/>
+	{% endfor %}
+
+{% endblock %}
