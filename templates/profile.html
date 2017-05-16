@@ -1,8 +1,9 @@
 {% extends "base.html" %}
+
 {% block content %}
     <h2>Success!</h2>
     <p>You are logged in as {{ user.email }}</p>
-    <p>You have been a member since {{ user.date_joined }}</p>
+    <p>You have been a member since {{ user.date_joined }} and created {{ user.posts.count }} posts</p>
     <p>Profile Image:</p>
     <img src="/media/{{ user.image }}" class="avatar"/>
     <a href="{% url 'edit_profile' %}" class="btn btn-default">Change Profile Image</a>
