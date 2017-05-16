@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load bootstrap_tags %}
 {% block content %}
-    <form role="form" method="post" action="{% url 'upload_image' %}" enctype="multipart/form-data">
+    <form role="form" method="post" action="{% url 'edit_profile' %}" enctype="multipart/form-data">
         <legend>Upload Image</legend>
         {% csrf_token %}
 
