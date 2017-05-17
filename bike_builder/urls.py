@@ -20,6 +20,7 @@ from home import views as home_views
 from accounts import views as accounts_views
 from threads import views as forum_views
 from gallery import views as gallery_views
+from how_to_guides import views as how_to_guides_views
 from merchandise import views as merchandise_views
 from payments import views as payments_views
 from bike_selector import views as bike_selector_views
@@ -59,6 +60,10 @@ urlpatterns = [
     # Gallery URLs
     url(r'^gallery/$', gallery_views.gallery, name='gallery'),
     url(r'^gallery/upload_image/$', gallery_views.upload_image, name='upload_image'),
+
+    # How to guides URLs
+    url(r'^how_to_guides/$', how_to_guides_views.how_to_guides, name='how_to_guides'),
+    url(r'^how_to_guides/upload_guide/$', how_to_guides_views.upload_guide, name='upload_guide'),
 
     # Merchandise URLs
     url(r'^merchandise/$', merchandise_views.all_products, name='merchandise'),
