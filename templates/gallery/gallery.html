@@ -1,15 +1,55 @@
 {% extends "base.html" %}
 
 {% block content %}
+<!---->
 
+    <!--Button for uploading images (if logged in)-->
 	{% if user.is_authenticated %}
 		<p>
 			<a href="{% url 'upload_image' %}" class="btn btn-default">Upload Image</a>
 		</p>
 	{% endif %}
-	
-	{% for image in images %}
-		<img src="/media/{{ image.image }}" class="gallery_thumbnail" onclick="open_modal()"/>
-	{% endfor %}
+
+    <!--Display gallery images-->
+    <ul class="list-inline">
+        <li data-toggle="modal" data-target="#myModal"><a href="#myGallery" data-slide-to="0"><img class="gallery-thumbnail" src="/media/gallery/first_image/motorcycle-1777645_1280.jpg"></a></li>
+        {% for image in images %}
+            <li data-toggle="modal" data-target="#myModal"><a href="#myGallery" data-slide-to="{{ forloop.counter }}"><img class="gallery-thumbnail" src="/media/{{ image.image }}"></a></li>
+        {% endfor %}
+    </ul>
+
+    <!--Modal (which contains carousel in its body)-->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="pull-left">Bike Builder Gallery</div>
+                    <button type="button" class="close" data-dismiss="modal" title="Close"><span class="glyphicon glyphicon-remove"></span></button>
+                </div>
+                <div class="modal-body">
+
+                    <!--Carousel-->
+                    <div id="myGallery" class="carousel slide" data-interval="false">
+                        <div class="carousel-inner">
+                            <div class="item active"><img src="/media/gallery/first_image/motorcycle-1777645_1280.jpg" alt="Oops! A picture should be here :("></div>
+                            {% for image in images %}
+                                <div class="item"><img src="/media/{{ image.image }}" alt="Oops! A picture should be here :("></div>
+                            {% endfor %}
+                        </div><!--end carousel-inner-->
+
+                        <!--Begin Previous and Next buttons-->
+                        <a class="left carousel-control" href="#myGallery" role="button" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+                        <a class="right carousel-control" href="#myGallery" role="button" data-slide="next"> <span class="glyphicon glyphicon-chevron-right"></span></a>
+                    </div><!--end carousel-->
+
+                </div><!--end modal-body-->
+
+                <div class="modal-footer">
+                    <button type="button" class="btn-sm close" data-dismiss="modal">Close</button>
+                </div><!--end modal-footer-->
+
+            </div><!--End modal-content-->
+        </div><!--End modal-dialog-->
+    </div><!--End Modal-->
 
 {% endblock %}
