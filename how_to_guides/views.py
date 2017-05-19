@@ -1,5 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .models import HowTo
 from .forms import HowToForm
 from django.shortcuts import render, redirect
@@ -7,8 +8,23 @@ from django.shortcuts import render, redirect
 
 # Create your views here.
 def how_to_guides(request):
-    guides = HowTo.objects.all().order_by('uploaded_at')
-    return render(request, 'how_to_guides/how_to_guides.html', {'guides': guides})
+    guide_list = HowTo.objects.all().order_by('uploaded_at')
+    paginator = Paginator(guide_list, 10)  # 10 in each page
+    page = request.GET.get('page')
+    try:
+        guides = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page
+        guides = paginator.page(1)
+    except EmptyPage:
+        #  If page is out of range (e.g. 9999), deliver last page of results
+        guides = paginator.page(paginator.num_pages)
+    return render(request, 'how_to_guides/how_to_guides.html', {'page': page, 'guides': guides})
+
+
+# def how_to_guides(request):
+#     guides = HowTo.objects.all().order_by('uploaded_at')
+#     return render(request, 'how_to_guides/how_to_guides.html', {'guides': guides})
 
 
 @login_required(login_url='/login/')
