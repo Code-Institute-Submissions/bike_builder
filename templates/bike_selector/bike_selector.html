@@ -22,14 +22,20 @@
 			</tr>
 		</thead>
 		<tbody>
-			{% for bike in bikes %}
-				<tr>
-					<td>{{ bike.manufacturer }}</td>
-					<td>{{ bike.model }}</td>
-					<td>{{ bike.cylinders }}</td>
-					<td>{{ bike.layout }}</td>
-				</tr>
-			{% endfor %}
+            {% if bikes %}
+                {% for bike in bikes %}
+                    <tr>
+                        <td>{{ bike.manufacturer }}</td>
+                        <td>{{ bike.model }}</td>
+                        <td>{{ bike.cylinders }}</td>
+                        <td>{{ bike.layout }}</td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="12"><strong>No data</strong></td>
+                </tr>
+            {% endif %}
 		</tbody>
 	</table>
 
