@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 
 {% block content %}
-<!---->
 
     <!--Button for uploading images (if logged in)-->
 	{% if user.is_authenticated %}
@@ -51,5 +50,7 @@
             </div><!--End modal-content-->
         </div><!--End modal-dialog-->
     </div><!--End Modal-->
+
+    {% include "pagination.html" with page=images %}
 
 {% endblock %}

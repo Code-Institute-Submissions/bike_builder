@@ -1,14 +1,29 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .models import Gallery
 from .forms import GalleryForm
-from django.shortcuts import render, redirect
 
 
 # Create your views here.
 def gallery(request):
-    images = Gallery.objects.all().order_by('-uploaded_at')
-    return render(request, 'gallery/gallery.html', {'images': images})
+    image_list = Gallery.objects.all().order_by('-uploaded_at')
+    paginator = Paginator(image_list, 3)  # 3 in each page
+    page = request.GET.get('page')
+    try:
+        images = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page
+        images = paginator.page(1)
+    except EmptyPage:
+        #  If page is out of range (e.g. 9999), deliver last page of results
+        images = paginator.page(paginator.num_pages)
+    return render(request, 'gallery/gallery.html', {'page': page, 'images': images})
+
+# def gallery(request):
+#     images = Gallery.objects.all().order_by('-uploaded_at')
+#     return render(request, 'gallery/gallery.html', {'images': images})
 
 
 @login_required(login_url='/login/')
