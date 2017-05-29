@@ -47,7 +47,7 @@
             </div>
         </nav>
 
-        {#if there are any error messages, display at the top of the screen#}
+        <!--if there are any error messages, display at the top of the screen-->
         {% if messages %}
             <div class="messages">
                 {% for message in messages %}
@@ -56,17 +56,20 @@
             </div>
         {% endif %}
 
-        {#display child template#}
-        <div class="container" id="body-template">
+        <!--display child template-->
+{#        <div class="container" id="body-template">#}
+        <div id="body-template" class="row">  <!--row class makes the content line up with other div content-->
             {% block content %}
             {% endblock %}
         </div>
 
-        <footer>
+        <footer class="row">  <!--row class makes the content line up with other div content-->
             <p>Copyright (c) 2017</p>
         </footer>
 
     </div>
+<!--Link to script highlighting current navbar link-->
+<script type="text/javascript" src="{% static "js/nav_active.js" %}"></script>
 </body>
 
 </html>
