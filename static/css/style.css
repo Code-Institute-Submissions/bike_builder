@@ -9,7 +9,7 @@ body {
 #main-container {
 	min-height: 100%;
 	position: relative;
-	margin-top: 80px;  /* To drop contents below navbar */
+	margin-top: 62px;  /* To drop contents below navbar */
 
 }
 
@@ -37,7 +37,7 @@ footer {
 	max-width: 100px;
   }
 
-.gallery_thumbnail {
+.gallery-thumbnail {
 	max-height: 200px;
 	max-width: 200px;
 }
