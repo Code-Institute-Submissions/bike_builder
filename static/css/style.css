@@ -10,7 +10,6 @@ body {
 	min-height: 100%;
 	position: relative;
 	margin-top: 62px;  /* To drop contents below navbar */
-
 }
 
 #body-template {
@@ -42,14 +41,17 @@ footer {
 	max-width: 200px;
 }
 
+/*text color in home carousel*/
+.carousel-caption {
+	color: white;
+}
 
-
-
-
-
-
-
-
+/*images in carousel*/
+.carousel-inner > .item {
+	/*background: no-repeat center center;*/
+	/*background-size: cover;*/
+	height: 680px;
+}
 
 
 
