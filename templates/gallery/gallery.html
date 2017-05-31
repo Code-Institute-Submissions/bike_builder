@@ -2,11 +2,13 @@
 
 {% block content %}
 
-    <!--Button for uploading images (if logged in)-->
+    <!--Image upload button if user is logged in. If not logged in, display message-->
 	{% if user.is_authenticated %}
 		<p>
-			<a href="{% url 'upload_image' %}" class="btn btn-default">Upload Image</a>
+			<a href="{% url 'upload_image' %}" class="btn btn-default"><i class="fa fa-camera"></i> Upload Image</a>
 		</p>
+    {% else %}
+            <p>You can view all images as a guest, but to upload images you need to login.</p>
 	{% endif %}
 
     <!--Display gallery images-->
