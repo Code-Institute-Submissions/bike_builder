@@ -8,14 +8,18 @@
 			<a href="{% url 'upload_image' %}" class="btn btn-default"><i class="fa fa-camera"></i> Upload Image</a>
 		</p>
     {% else %}
-            <p>You can view all images as a guest, but to upload images you need to login.</p>
+            <p>You can view all images as a guest, but to upload images you need to login/register.</p>
 	{% endif %}
+
+    <p>Click or tap thumbnails below. Use Prev & Next arrows to cycle through the images.</p>
+
+    {% include "pagination.html" with page=images %}
 
     <!--Display gallery images-->
     <ul class="list-inline">
-        <li data-toggle="modal" data-target="#myModal"><a href="#myGallery" data-slide-to="0"><img class="gallery-thumbnail" src="/media/gallery/first_image/motorcycle-1777645_1280.jpg"></a></li>
+        <li data-toggle="modal" data-target="#myModal"><a href="#myGallery" data-slide-to="0"><img class="gallery-thumbnail" src="/media/gallery/first_image/motorcycle-1777645_1280.jpg"></a><p>My bike!</p></li>
         {% for image in images %}
-            <li data-toggle="modal" data-target="#myModal"><a href="#myGallery" data-slide-to="{{ forloop.counter }}"><img class="gallery-thumbnail" src="/media/{{ image.image }}"></a></li>
+            <li data-toggle="modal" data-target="#myModal"><a href="#myGallery" data-slide-to="{{ forloop.counter }}"><img class="gallery-thumbnail" src="/media/{{ image.image }}"></a><p>{{ image.description }}</p></li>
         {% endfor %}
     </ul>
 
@@ -34,7 +38,7 @@
                         <div class="carousel-inner">
                             <div class="item active"><img src="/media/gallery/first_image/motorcycle-1777645_1280.jpg" alt="Oops! A picture should be here :("></div>
                             {% for image in images %}
-                                <div class="item"><img src="/media/{{ image.image }}" alt="Oops! A picture should be here :("></div>
+                                    <div class="item"><img src="/media/{{ image.image }}" alt="Oops! A picture should be here :("></div>
                             {% endfor %}
                         </div><!--end carousel-inner-->
 
