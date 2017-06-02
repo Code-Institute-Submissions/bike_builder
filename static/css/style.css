@@ -46,12 +46,8 @@ footer {
 	color: white;
 }
 
-/*images in carousel*/
-.carousel-inner > .item {
-	/*background: no-repeat center center;*/
-	/*background-size: cover;*/
+/*home carousel set height of images*/
+.home-img {
 	height: 680px;
 }
-
-
 
