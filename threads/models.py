@@ -22,6 +22,7 @@ class Thread(models.Model):
                              related_name='threads')
     subject = models.ForeignKey(Subject, related_name='threads')
     created_at = models.DateTimeField(default=timezone.now)
+    views = models.IntegerField(default=0)  # record how often a thread is viewed
 
     def __unicode__(self):
         return self.name
