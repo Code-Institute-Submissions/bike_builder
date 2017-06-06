@@ -1,23 +1,49 @@
 {% load staticfiles %}
 {% load emoticons_tags %}
-<section class="row comment col-md-9">
-    <div class="col-md-3 comment-profile">
+<section class="row col-md-12" style="padding: 10px 0 0 0; border: 1px solid black; border-radius: 5px; margin: 0 10px 20px 0; box-shadow: 5px 5px 5px #888888;">
+    <div class="col-md-2">  <!--Poster details-->
         <p><img src="/media/{{ post.user.image }}" class="avatar"/></p>
         <p>{{ post.user.username }}</p>
-        <p>{{ post.user.posts.count }} POSTS</p>
+        <p>Posts <strong>{{ post.user.posts.count }}</strong></p>
     </div>
-    <div class="col-md-9">
-        <div class="comment-content">
-
-            {% if post.image %}
-                <img src="/media/{{ post.image }}">
-            {% endif %}
+    <div class="col-md-10">
+        <div>  <!--Post-->
 
             {% autoescape off %}
                 {{ post.comment|emoticons }}
             {% endautoescape %}
 
+            {% if post.image %}
+                <img src="/media/{{ post.image }}">
+            {% endif %}
+
         </div>
-        {% include "forum/comment_details.html" %}
+    <hr>
+        {% include "forum/comment_details.html" %}  <!--When posted, edit and delete icons-->
     </div>
 </section>
+
+
+{#{% load staticfiles %}#}
+{#{% load emoticons_tags %}#}
+{#<section class="row comment col-md-9">#}
+{#    <div class="col-md-3 comment-profile">#}
+{#        <p><img src="/media/{{ post.user.image }}" class="avatar"/></p>#}
+{#        <p>{{ post.user.username }}</p>#}
+{#        <p>{{ post.user.posts.count }} POSTS</p>#}
+{#    </div>#}
+{#    <div class="col-md-9">#}
+{#        <div class="comment-content">#}
+{##}
+{#            {% if post.image %}#}
+{#                <img src="/media/{{ post.image }}">#}
+{#            {% endif %}#}
+{##}
+{#            {% autoescape off %}#}
+{#                {{ post.comment|emoticons }}#}
+{#            {% endautoescape %}#}
+{##}
+{#        </div>#}
+{#        {% include "forum/comment_details.html" %}#}
+{#    </div>#}
+{#</section>#}

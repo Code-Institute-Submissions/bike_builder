@@ -1,19 +1,57 @@
 {% extends "base.html" %}
 {% load thread_extras %}
+
 {% block content %}
-    <div class="row header">
-        <div class="jumbotron">
-            <h1>{{ subject.name }}</h1>
-        </div>
-        <div class="col-md-12">
-            {% if user.is_authenticated %}
-                <p>
-                    <a href="{% url 'new_thread' subject.id %}" class="btn btn-primary">New Thread</a>
-                </p>
-            {% endif %}
-            {% for thread in subject.threads.all %}
-                {% include "forum/thread_item.html" %}
-            {% endfor %}
-        </div>
+
+    <div class="container">
+        <h1>{{ subject.name }}</h1>
+        {% if user.is_authenticated %}
+            <p>
+                <a href="{% url 'new_thread' subject.id %}" class="btn btn-primary">New Thread</a>
+            </p>
+        {% endif %}
+
+        {% for thread in subject.threads.all %}
+            <div class="row" style="border: 1px solid black; border-radius: 5px; margin: 0 10px 20px 0; box-shadow: 5px 5px 5px #888888;">
+                <div class="col-md-2">
+                    <p><img src="/media/{{ thread.user.image }}" class="avatar"/> {{ thread.user.username }}</p>
+                </div>
+                <div class="col-md-8">
+                    {% include "forum/thread_item.html" %}
+                    <div style="border-bottom: 1px solid lightgray;"></div>
+                    <p>Last post by {% last_posted_user_name thread %} {% last_posted_timing thread %}</p>
+                </div>
+                <div class="col-md-2">
+                    <p style="float: right;">Posts {{ thread.posts.count }} | Views {{ thread.views }}</p>
+                </div>
+            </div>
+{#                    <div class="col-xs-12"  style="border: 1px solid black; border-radius: 5px; margin: 0 10px 20px 0; box-shadow: 5px 5px 5px #888888;">#}
+{#                        <div class="row">#}
+{#                            {% include "forum/thread_item.html" %}#}
+{#                            <p><img src="/media/{{ thread.user.image }}" class="avatar"/> {{ thread.user.username }}</p>#}
+{#                            <div class="col-xs-2">Posts {{ thread.posts.count }} | Views {{ thread.views }}</div>#}
+{#                        </div>#}
+{#                    </div>#}
+        {% endfor %}
     </div>
 {% endblock %}
+
+
+{#{% block content %}#}
+{##}
+{#        <h1>{{ subject.name }}</h1>#}
+{#        <div class="col-md-12">#}
+{#            {% if user.is_authenticated %}#}
+{#                <p>#}
+{#                    <a href="{% url 'new_thread' subject.id %}" class="btn btn-primary">New Thread</a>#}
+{#                </p>#}
+{#            {% endif %}#}
+{#            {% for thread in subject.threads.all %}#}
+{#                {% include "forum/thread_item.html" %}#}
+{#                <span>Posts:</span>#}
+{#                <span>Views:</span>#}
+{#                <hr>#}
+{#            {% endfor %}#}
+{#        </div>#}
+{##}
+{#{% endblock %}#}

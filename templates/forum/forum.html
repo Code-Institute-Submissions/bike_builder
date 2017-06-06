@@ -1,28 +1,129 @@
 {% extends "base.html" %}
 {% load thread_extras %}
-{% block content %}
-    {% load bootstrap_tags %}
+{% load bootstrap_tags %}
 
-    {% for subject in subjects %}
-        <section class="subject">
-            <h2><a href="{% url 'threads' subject.id %}">{{ subject.name }}</a></h2>
-            <p>
-                <a href="{% url 'threads' subject.id %}">
-                    {% autoescape off %}
-                        {{ subject.description }}
-                    {% endautoescape %}
-                </a>
-            </p>
-            <table>
-                <tr>
-                    <th>THREADS</th>
-                    <th>POSTS</th>
-                </tr>
-                <tr>
-                    <td>{{ subject.threads.count }}</td>
-                    <td>{{ subject|get_total_subject_posts }}</td>
-                </tr>
-            </table>
-        </section>
-    {% endfor %}
+{% block content %}
+
+        {% for subject in subjects %}
+            <div class="subject col-md-4" style="padding: 5px; height: 450px">  <!--invisible div allows gap between sections without margins which make them wrap below-->
+                <section style="border: 1px solid black; border-radius: 5px; padding: 0;">
+                    <div style="background: rgba(255, 165, 0, 1); border-radius: 5px 5px 0 0; padding: 5px; text-align: center;">
+                        <a href="{% url 'threads' subject.id %}" style="text-decoration: none; color: white; display: block;"> <!--display:block so div acts as a link-->
+                                <i class="{{ subject.icon }} fa-4x"></i>
+                            <h2>{{ subject.name }}</h2>
+                            <p>
+                                    {% autoescape off %}
+                                        {{ subject.description }}
+                                    {% endautoescape %}
+                            </p>
+                        </a>
+                    </div>
+                    <div style="padding: 15px;">
+                        <p>Threads: {{ subject.threads.count }}; Posts: {{ subject|get_total_subject_posts }}</p>
+                        <p>Title of thread with most recent post</p>
+                        <hr>
+                        <p>Most recent post truncatechar: 100</p>
+                        <br>
+                        <p class="float-left">date/time of post</p>
+                        <p class="float-right">Read more - link to thread above</p>
+    {#                    <p>{{ subject|last_subject_post }}</p>#}
+                    </div>
+                </section>
+            </div>
+        {% endfor %}
+
 {% endblock %}
+
+
+{#        {% for subject in subjects %}#}
+{#            <div class="subject col-md-4" style="padding: 5px; height: 450px">  <!--invisible div allows gap between sections without margins which make them wrap below-->#}
+{#                <section style="border: 1px solid black; border-radius: 5px; padding: 0;">#}
+{#                    <div style="background-color: #2d8ac7; border-radius: 5px 5px 0 0; padding: 5px; text-align: center;">#}
+{#                        <a href="{% url 'threads' subject.id %}" style="text-decoration: none; color: white;">#}
+{#                                <i class="{{ subject.icon }} fa-4x"></i>#}
+{#                            <h2>{{ subject.name }}</h2>#}
+{#                            <p>#}
+{#                                    {% autoescape off %}#}
+{#                                        {{ subject.description }}#}
+{#                                    {% endautoescape %}#}
+{#                            </p>#}
+{#                            <span style="position:absolute; width:100%; height:100%; top:0; left: 0; z-index:1;"></span>#}
+{#                        </a>#}
+{#                    </div>#}
+{#                    <div style="padding: 15px;">#}
+{#                        <p>Threads: {{ subject.threads.count }}; Posts: {{ subject|get_total_subject_posts }}</p>#}
+{#                        <p>Title of thread with most recent post</p>#}
+{#                        <hr>#}
+{#                        <p>Most recent post truncatechar: 100</p>#}
+{#                        <br>#}
+{#                        <p class="float-left">date/time of post</p>#}
+{#                        <p class="float-right">Read more - link to thread above</p>#}
+    {#                    <p>{{ subject|last_subject_post }}</p>#}
+{#                    </div>#}
+{#                </section>#}
+{#            </div>#}
+{#        {% endfor %}#}
+{##}
+{#{% endblock %}#}
+
+
+{#        {% for subject in subjects %}#}
+{#            <div class="subject col-md-4" style="padding: 5px; height: 450px">  <!--invisible div allows gap between sections without margins which make them wrap below-->#}
+{#                <section style="border: 1px solid black; border-radius: 5px; padding: 0;">#}
+{#                    <div style="background-color: #2d8ac7; border-radius: 5px 5px 0 0; padding: 5px; text-align: center;">#}
+{#                        <a href="{% url 'threads' subject.id %}" style="text-decoration: none; color: white;">#}
+{#                                <i class="{{ subject.icon }} fa-4x"></i>#}
+{#                            <h2>{{ subject.name }}</h2>#}
+{#                            <p>#}
+{#                                    {% autoescape off %}#}
+{#                                        {{ subject.description }}#}
+{#                                    {% endautoescape %}#}
+{#                            </p>#}
+{#                        </a>#}
+{#                    </div>#}
+{#                    <div style="padding: 15px;">#}
+{#                        <p>Threads: {{ subject.threads.count }}; Posts: {{ subject|get_total_subject_posts }}</p>#}
+{#                        <p>Title of thread with most recent post</p>#}
+{#                        <hr>#}
+{#                        <p>Most recent post truncatechar: 100</p>#}
+{#                        <br>#}
+{#                        <p class="float-left">date/time of post</p>#}
+{#                        <p class="float-right">Read more - link to thread above</p>#}
+    {#                    <p>{{ subject|last_subject_post }}</p>#}
+{#                    </div>#}
+{#                </section>#}
+{#            </div>#}
+{#        {% endfor %}#}
+{##}
+{#{% endblock %}#}
+{##}
+
+
+{#{% extends "base.html" %}#}
+{#{% load thread_extras %}#}
+{#{% block content %}#}
+{#    {% load bootstrap_tags %}#}
+{##}
+{#    {% for subject in subjects %}#}
+{#        <section class="subject">#}
+{#            <h2><a href="{% url 'threads' subject.id %}">{{ subject.name }}</a></h2>#}
+{#            <p>#}
+{#                <a href="{% url 'threads' subject.id %}">#}
+{#                    {% autoescape off %}#}
+{#                        {{ subject.description }}#}
+{#                    {% endautoescape %}#}
+{#                </a>#}
+{#            </p>#}
+{#            <table>#}
+{#                <tr>#}
+{#                    <th>THREADS</th>#}
+{#                    <th>POSTS</th>#}
+{#                </tr>#}
+{#                <tr>#}
+{#                    <td>{{ subject.threads.count }}</td>#}
+{#                    <td>{{ subject|get_total_subject_posts }}</td>#}
+{#                </tr>#}
+{#            </table>#}
+{#        </section>#}
+{#    {% endfor %}#}
+{#{% endblock %}#}
