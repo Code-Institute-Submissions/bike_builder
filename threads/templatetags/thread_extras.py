@@ -21,13 +21,13 @@ def started_time(created_at):
 
 @register.simple_tag
 def last_posted_user_name(thread):
-    posts = thread.posts.all().order_by('-created_at')
+    posts = thread.posts.all().order_by('created_at')
     return posts[posts.count()-1].user.username
 
 
 @register.simple_tag
 def last_posted_timing(thread):
-    posts = thread.posts.all().order_by('-created_at')
+    posts = thread.posts.all().order_by('created_at')
     _posts = posts[posts.count()-1].created_at
     return arrow.get(_posts).humanize()
 
@@ -39,7 +39,7 @@ def last_posted_timing(thread):
 
 # @register.simple_tag
 # def last_subject_post(subject):
-#     posts = subject.threads.posts.all().order_by('-created_at')
+#     posts = subject.threads.posts.all().order_by('created_at')
 #     return posts[posts.count()-1].comment
 
 
