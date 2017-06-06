@@ -26,6 +26,24 @@ def last_posted_user_name(thread):
 
 
 @register.simple_tag
+def last_posted_timing(thread):
+    posts = thread.posts.all().order_by('-created_at')
+    _posts = posts[posts.count()-1].created_at
+    return arrow.get(_posts).humanize()
+
+
+# @register.simple_tag
+# def forum_display_name(username):
+#     return username.split("@")[0]
+
+
+# @register.simple_tag
+# def last_subject_post(subject):
+#     posts = subject.threads.posts.all().order_by('-created_at')
+#     return posts[posts.count()-1].comment
+
+
+@register.simple_tag
 def user_vote_button(thread, subject, user):
     vote = thread.poll.votes.filter(user_id=user.id).first()
 
