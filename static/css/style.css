@@ -46,8 +46,35 @@ footer {
 	color: white;
 }
 
+.carousel-caption h1 {
+	font-size: 44px;
+}
+
+.carousel-caption p {
+	font-size: 32px;
+}
+
 /*home carousel set height of images*/
 .home-img {
 	height: 680px;
 }
 
+/* alert messages*/
+.alert {
+	border-radius: 0;
+}
+
+.messages {
+    position: absolute;
+	z-index: 10;
+	margin-top: 20px;
+	width: 80%;
+	margin-left: 10%;
+}
+
+#closeButton {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+/*end alert messages*/

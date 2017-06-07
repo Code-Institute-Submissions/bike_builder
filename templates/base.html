@@ -50,7 +50,8 @@
 
         <!--if there are any error messages, display at the top of the screen-->
         {% if messages %}
-            <div class="messages">
+            <div class="messages row">
+                <button id="closeButton">X</button>
                 {% for message in messages %}
                     <div{% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>{{ message }}</div>
                 {% endfor %}
@@ -59,18 +60,19 @@
 
         <!--display child template-->
 {#        <div class="container" id="body-template">#}
-        <div id="body-template" class="row">  <!--row class makes the content line up with other div content-->
+        <div id="body-template" class="row">  <!--row class makes the content line up with the navbar-->
             {% block content %}
             {% endblock %}
         </div>
 
-        <footer class="row">  <!--row class makes the content line up with other div content-->
+        <footer class="row">  <!--row class makes the content line up with navbar and child template-->
             <p>Copyright (c) 2017</p>
         </footer>
 
     </div>
 <!--Link to script highlighting current navbar link-->
 <script type="text/javascript" src="{% static "js/nav_active.js" %}"></script>
+<script type="text/javascript" src="{% static "js/jquery_file.js" %}"></script>
 </body>
 
 </html>
