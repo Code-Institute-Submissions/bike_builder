@@ -1,6 +1,6 @@
 {% load staticfiles %}
 {% load emoticons_tags %}
-<section class="row col-md-12" style="padding: 10px 0 0 0; border: 1px solid black; border-radius: 5px; margin: 0 10px 20px 0; box-shadow: 5px 5px 5px #888888;">
+<section class="row col-md-12" style="padding: 10px 0 0 0; border: 1px solid black; border-radius: 5px; margin: 0 10px 20px 0; box-shadow: 5px 5px 5px #888888; background-color: white;">
     <div class="col-md-2">  <!--Poster details-->
         <p><img src="/media/{{ post.user.image }}" class="avatar"/></p>
         <p>{{ post.user.username }}</p>
@@ -18,7 +18,7 @@
             {% endif %}
 
         </div>
-    <hr>
+        <div class="fake-hr"></div>
         {% include "forum/comment_details.html" %}  <!--When posted, edit and delete icons-->
     </div>
 </section>

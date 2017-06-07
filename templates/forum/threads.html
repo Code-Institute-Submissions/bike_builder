@@ -4,7 +4,7 @@
 {% block content %}
 
     <div class="container">
-        <h1>{{ subject.name }}</h1>
+        <h4><a href="/forum/">Forum</a> / {{ subject.name }}</h4>
         {% if user.is_authenticated %}
             <p>
                 <a href="{% url 'new_thread' subject.id %}" class="btn btn-primary">New Thread</a>
@@ -12,26 +12,21 @@
         {% endif %}
 
         {% for thread in subject.threads.all %}
-            <div class="row" style="border: 1px solid black; border-radius: 5px; margin: 0 10px 20px 0; box-shadow: 5px 5px 5px #888888;">
+{#        {% for thread in threads_ordered_by_latest_post %}#}
+            <div class="row" style="border: 1px solid black; border-radius: 5px; margin: 0 10px 20px 0; background-color: white; box-shadow: 5px 5px 5px #888888;">
                 <div class="col-md-2">
-                    <p><img src="/media/{{ thread.user.image }}" class="avatar"/> {{ thread.user.username }}</p>
+                    <p style="margin-top: 5px;"><img src="/media/{{ thread.user.image }}" class="avatar"/> {{ thread.user.username }}</p>
+                    <p>Posts <strong>{{ thread.user.posts.count }}</strong></p>
                 </div>
                 <div class="col-md-8">
                     {% include "forum/thread_item.html" %}
-                    <div style="border-bottom: 1px solid lightgray;"></div>
+                    <div class="fake-hr"></div>
                     <p>Last post by {% last_posted_user_name thread %} {% last_posted_timing thread %}</p>
                 </div>
                 <div class="col-md-2">
                     <p style="float: right;">Posts {{ thread.posts.count }} | Views {{ thread.views }}</p>
                 </div>
             </div>
-{#                    <div class="col-xs-12"  style="border: 1px solid black; border-radius: 5px; margin: 0 10px 20px 0; box-shadow: 5px 5px 5px #888888;">#}
-{#                        <div class="row">#}
-{#                            {% include "forum/thread_item.html" %}#}
-{#                            <p><img src="/media/{{ thread.user.image }}" class="avatar"/> {{ thread.user.username }}</p>#}
-{#                            <div class="col-xs-2">Posts {{ thread.posts.count }} | Views {{ thread.views }}</div>#}
-{#                        </div>#}
-{#                    </div>#}
         {% endfor %}
     </div>
 {% endblock %}
