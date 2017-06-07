@@ -31,6 +31,12 @@ footer {
 	max-width: 50px;
 }
 
+#register-avatar {
+	max-height: 200px;
+	max-width: 200px;
+
+}
+
 .merch_image {
 	max-height: 100px;
 	max-width: 100px;
