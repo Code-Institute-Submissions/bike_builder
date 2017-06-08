@@ -1,14 +1,15 @@
 {% load thread_extras %}
+
 <div class="details">
-    <div class="col-md-6">
-        <div class="pull-left">
-            <time datetime="{{ post.created_at }}">
+    <div class="col-xs-6">
+        <div class="float-left">
+            <time datetime="{{ post.created_at }}" class="avatar-text;">
                 Posted {{ post.created_at|started_time }}
             </time>
         </div>
     </div>
-    <div class="col-md-6">
-        <div class="pull-right">
+    <div class="col-xs-6">
+        <div class="float-right">
             {% if post.user == user or user.is_staff %}
                 <a href="{% url 'edit_post' thread.id post.id %}">
                     <i class="fa fa-pencil-square-o"></i>

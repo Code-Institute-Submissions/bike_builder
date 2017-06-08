@@ -4,8 +4,8 @@
 
 {% block content %}
 
-    <div class="container">
-        <h4><a href="/forum/">Forum</a> / <a href="{% url 'threads' thread.subject.id %}">{{ thread.subject.name }}</a> / {{ thread.name }}</h4>
+    <div class="form-container">
+        <h4 style="margin-bottom: 20px;"><a href="/forum/">Forum</a> / <a href="{% url 'threads' thread.subject.id %}">{{ thread.subject.name }}</a> / {{ thread.name }}</h4>
         {% if thread.poll %}
             <div class="container">
                 <div class="col-md-6">
@@ -37,13 +37,16 @@
         {% endif %}
         {% if user.is_authenticated %}
             <p>
-                <a href="{% url 'new_post' thread.id %}" class="btn btn-primary">New post</a>
+                <a href="{% url 'new_post' thread.id %}" class="btn btn-primary" style="margin: 0 0 20px 20px;">New post</a>
             </p>
         {% endif %}
         {% for post in thread.posts.all %}
             {% include "forum/post.html" %}
         {% endfor %}
     </div>
+
+{% endblock %}
+
 {#    <div class="container">#}
 {#        {% for post in thread.posts.all %}#}
 {#            {% include "forum/post.html" %}#}
@@ -115,4 +118,3 @@
 {#        {% endfor %}#}
 {#    </div>#}
 
-{% endblock %}

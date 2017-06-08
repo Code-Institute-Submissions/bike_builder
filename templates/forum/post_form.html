@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load bootstrap_tags %}
 {% load staticfiles %}
+
 {% block head_js %}
     <script src="{% static 'js/tinymce/tinymce.min.js' %}"></script>
     <script>
@@ -11,9 +12,10 @@
     });
     </script>
 {% endblock %}
+
 {% block content %}
-    <section>
-        <div class="col-md-9">
+    <section class="form-container">
+        <div class="col-xs-12">
             <form method="post" enctype="multipart/form-data" action="{{ form_action }}">
                 {% csrf_token %}
                 {{ form|as_bootstrap }}

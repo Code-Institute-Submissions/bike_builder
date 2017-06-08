@@ -1,10 +1,11 @@
 {% load staticfiles %}
 {% load emoticons_tags %}
+
 <section class="row col-md-12" style="padding: 10px 0 0 0; border: 1px solid black; border-radius: 5px; margin: 0 10px 20px 0; box-shadow: 5px 5px 5px #888888; background-color: white;">
     <div class="col-md-2">  <!--Poster details-->
         <p><img src="/media/{{ post.user.image }}" class="avatar"/></p>
-        <p>{{ post.user.username }}</p>
-        <p>Posts <strong>{{ post.user.posts.count }}</strong></p>
+        <p class="avatar-text;">{{ post.user.username }}</p>
+        <p class="avatar-text;">Posts: {{ post.user.posts.count }}</p>
     </div>
     <div class="col-md-10">
         <div>  <!--Post-->
