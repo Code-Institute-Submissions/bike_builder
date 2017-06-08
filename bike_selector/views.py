@@ -27,7 +27,6 @@ def bike_search(request):
 
         bikes = list(cursor.order_by('manufacturer'))
 
-
     # form display:
     else:
         form = BikeSearchForm()

@@ -15,15 +15,6 @@
             </form>
         </div>
 
-{#        <form role="form" method="get" id="bike-search-form" action="{% url 'bike_search' %}">#}
-{#            <p>Use the project bike selector to help you pick your next project bike. If you want to see all the bikes in the database, just click Search. Or, for example, if you want to build a café racer and its simply got have a v-twin engine, select ‘2’ from the Cylinders menu and ‘V’ from the Layout menu, before clicking Search.</p>#}
-{#            {{ form|as_bootstrap }}#}
-{#            <div class="form-group">#}
-{#                <button class="btn btn-primary" id="bike_search_btn" type="submit"><span class="glyphicon glyphicon-search"></span> Search</button>#}
-{#                <input type="hidden" name="action" value="process_form" />#}
-{#            </div>#}
-{#        </form>#}
-{##}
         <table class="table table-bordered table-condensed" style="background-color: white;">
             <thead>
                 <tr>
@@ -51,6 +42,5 @@
             </tbody>
         </table>
 
-        {% include "pagination.html" with page=bikes %}
     </div>
 {% endblock %}
