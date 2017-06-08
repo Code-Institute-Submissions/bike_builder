@@ -1,12 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div id="register-div" style="margin-top: 100px;">
+    <div class="form-container">
+        <p class="copy-form-legend">Profile</p>
         <p>You are logged in as <strong>{{ user.email }}</strong></p>
         <p>You have been a member since <strong>{{ user.date_joined }}</strong> and created <strong>{{ user.posts.count }}</strong> posts</p>
         <br>
         <p>Profile Image:</p>
         <img src="/media/{{ user.image }}" id="register-avatar" style="display: block; margin-bottom: 20px;"/>
-        <a href="{% url 'edit_profile' %}" class="btn btn-default">Change Profile Image</a>
+        <a href="{% url 'edit_profile' %}" class="btn btn-primary">Change Profile Image</a>
     </div>
 {% endblock %}

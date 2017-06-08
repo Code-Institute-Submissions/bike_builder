@@ -2,18 +2,24 @@
 
 {% block content %}
 
-	{% if user.is_authenticated %}
-		<p>
-			<a href="{% url 'upload_guide' %}" class="btn btn-default">Post How-To Guide</a>
-		</p>
-	{% endif %}
-	
-	{% for guide in guides %}
-        <p>{{ guide.description }}</p>
-        <a href="{{ guide.url }}" target="_blank">{{ guide.url }}</a>
-        <p>Posted by {{ guide.uploader }} on {{ guide.uploaded_at }}</p>
-	{% endfor %}
+    <div class="form-container">
+        {% if user.is_authenticated %}
+            <p>
+                <a href="{% url 'upload_guide' %}" class="btn btn-primary">Post How-To Guide</a>
+            </p>
+        {% else %}
+            <p>You can view all links as a guest, but to post a link you need to login/register.</p>
+        {% endif %}
 
-    {% include "pagination.html" with page=guides %}
+        {% include "pagination.html" with page=guides %}
+
+        {% for guide in guides %}
+            <p>{{ guide.description }}</p>
+            <a href="{{ guide.url }}" target="_blank">{{ guide.url }}</a>
+            <p>Posted by {{ guide.uploader }} on {{ guide.uploaded_at }}</p>
+        {% endfor %}
+
+        {% include "pagination.html" with page=guides %}
+    </div>
 
 {% endblock %}

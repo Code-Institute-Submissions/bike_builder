@@ -13,16 +13,18 @@
 {% endblock %}
 
 {% block content %}
-  <form role="form" method="post" id="payment-form" action="{% url 'place_order' product.id %}">
-    <div id="credit-card-errors" style="display:none">
-      <div class="alert-message block-message error" id="stripe-error-message"></div>
-    </div>
+    <div class="form-container">
+        <form role="form" method="post" id="payment-form" action="{% url 'place_order' product.id %}">
+            <div id="credit-card-errors" style="display:none">
+                <div class="alert-message block-message error" id="stripe-error-message"></div>
+            </div>
 
-    <legend>Payment details</legend>
-    {% csrf_token %}
-    {{ form|as_bootstrap }}
-    <div class="form-group">
-      <input class="btn btn-primary" id="validate_card_btn" name="commit" type="submit" value="Place Order">
+            <legend>Payment details</legend>
+            {% csrf_token %}
+            {{ form|as_bootstrap }}
+            <div class="form-group">
+                <input class="btn btn-primary" id="validate_card_btn" name="commit" type="submit" value="Place Order">
+            </div>
+        </form>
     </div>
-  </form>
 {% endblock %}
