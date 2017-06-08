@@ -17,7 +17,7 @@
                         <td><img class="merch_image" src="/media/{{ product.image }}"></td>
                         <td>{{ product.name }}</td>
                         <td>{{ product.description }}</td>
-                        <td><span>£ </span>{{ product.price }}</td>
+                        <td>£ {{ product.price }}</td>
                         <td><a href="{% url 'place_order' product.id %}" class="btn btn-primary">Buy</a></td>
                     </tr>
                 {% endfor %}

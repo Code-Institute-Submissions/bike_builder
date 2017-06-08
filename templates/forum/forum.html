@@ -3,10 +3,10 @@
 {% load bootstrap_tags %}
 
 {% block content %}
-    <div style="padding: 25px;">
+    <div class="form-container">
         {% for subject in subjects %}
-            <div class="subject col-md-4" style="padding: 5px; height: 450px;">  <!--invisible div allows gap between sections without margins which make them wrap below-->
-                <section style="margin: 10px; border: 1px solid black; border-radius: 5px; padding: 0; box-shadow: 5px 5px 5px #888888;">
+            <div class="col-md-4">  <!--invisible div allows gap between sections without using margins which make the sections wrap below-->
+                <section style="margin: 5px 5px 20px 5px; border: 1px solid black; border-radius: 5px; padding: 0; box-shadow: 5px 5px 5px #888888;">
                     <div style="background: rgba(255, 165, 0, 1); border-radius: 5px 5px 0 0; padding: 5px; text-align: center;">
                         <a href="{% url 'threads' subject.id %}" style="text-decoration: none; color: white; display: block;"> <!--display:block so div acts as a link-->
                                 <i class="{{ subject.icon }} fa-4x"></i>
@@ -24,8 +24,8 @@
                         <hr>
                         <p>Most recent post truncatechar: 100</p>
                         <br>
-                        <p class="float-left">date/time of post</p>
-                        <p class="float-right">Read more - link to thread above</p>
+                        <p>date/time of post</p>
+                        <p>Read more - link to thread above</p>
 {#                        <p>{{ subject|last_subject_post }}</p>#}
                     </div>
                 </section>

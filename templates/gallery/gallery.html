@@ -3,6 +3,7 @@
 {% block content %}
 
     <div class="form-container">
+
         <!--Image upload button if user is logged in. If not logged in, display message-->
         {% if user.is_authenticated %}
             <p>
@@ -20,7 +21,7 @@
         <ul class="list-inline">
             <li data-toggle="modal" data-target="#myModal"><a href="#myGallery" data-slide-to="0"><img class="gallery-thumbnail" src="/media/gallery/first_image/motorcycle-1777645_1280.jpg"></a><p>My bike!</p></li>
             {% for image in images %}
-                <li data-toggle="modal" data-target="#myModal"><a href="#myGallery" data-slide-to="{{ forloop.counter }}"><img class="gallery-thumbnail" src="/media/{{ image.image }}"></a><p>{{ image.description }}</p></li>
+                <li data-toggle="modal" data-target="#myModal"><a href="#myGallery" data-slide-to="{{ forloop.counter }}"><img class="gallery-thumbnail" src="/media/{{ image.image }}"></a><p style="margin-bottom: 30px;">{{ image.description }}</p></li>
             {% endfor %}
         </ul>
     </div>
