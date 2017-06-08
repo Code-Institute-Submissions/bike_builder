@@ -14,12 +14,40 @@
         {% include "pagination.html" with page=guides %}
 
         {% for guide in guides %}
-            <p>{{ guide.description }}</p>
-            <a href="{{ guide.url }}" target="_blank">{{ guide.url }}</a>
-            <p>Posted by {{ guide.uploader }} on {{ guide.uploaded_at }}</p>
+            <div class="row" style="padding: 10px 10px 0 10px; border: 1px solid black; border-radius: 5px; margin: 0 10px 20px 0; background-color: white; box-shadow: 5px 5px 5px #888888;">
+                <div class="col-xs-12">
+                    <p><a href="{{ guide.url }}" target="_blank">{{ guide.description }}</a></p>
+                    <div class="fake-hr"></div>
+                    <p class="avatar-text">Posted by {{ guide.uploader }} on {{ guide.uploaded_at }}</p>
+                </div>
+            </div>
         {% endfor %}
 
         {% include "pagination.html" with page=guides %}
     </div>
 
 {% endblock %}
+
+{#{% block content %}#}
+{##}
+{#    <div class="form-container">#}
+{#        {% if user.is_authenticated %}#}
+{#            <p>#}
+{#                <a href="{% url 'upload_guide' %}" class="btn btn-primary">Post How-To Guide</a>#}
+{#            </p>#}
+{#        {% else %}#}
+{#            <p>You can view all links as a guest, but to post a link you need to login/register.</p>#}
+{#        {% endif %}#}
+{##}
+{#        {% include "pagination.html" with page=guides %}#}
+{##}
+{#        {% for guide in guides %}#}
+{#            <p>{{ guide.description }}</p>#}
+{#            <a href="{{ guide.url }}" target="_blank">{{ guide.url }}</a>#}
+{#            <p>Posted by {{ guide.uploader }} on {{ guide.uploaded_at }}</p>#}
+{#        {% endfor %}#}
+{##}
+{#        {% include "pagination.html" with page=guides %}#}
+{#    </div>#}
+{##}
+{#{% endblock %}#}
