@@ -111,31 +111,36 @@ def thread(request, thread_id):
 def new_post(request, thread_id):
     thread = get_object_or_404(Thread, pk=thread_id)
 
-    if request.method == "POST":
-        form = PostForm(request.POST, request.FILES)
-        if form.is_valid():
-            post = form.save(False)
-            post.thread = thread
-            post.user = request.user
-            post.save()
+    if "cancel" in request.POST:  # if 'cancel' button is pressed
 
-            messages.success(request,
-                             "Your post has been added to the thread!")
-
-            return redirect(reverse('thread', args={thread.pk}))
+        return redirect(reverse('thread', args={thread.pk}))
 
     else:
-        form = PostForm()
+        if request.method == "POST":
+            form = PostForm(request.POST, request.FILES)
+            if form.is_valid():
+                post = form.save(False)
+                post.thread = thread
+                post.user = request.user
+                post.save()
 
-    args = {
-        'form': form,
-        'form_action': reverse('new_post', args={thread.id}),
-        'button_text': 'Save Post'
-    }
+                messages.success(request,
+                                 "Your post has been added to the thread!")
 
-    args.update(csrf(request))
+                return redirect(reverse('thread', args={thread.pk}))
 
-    return render(request, 'forum/post_form.html', args)
+        else:
+            form = PostForm()
+
+        args = {
+            'form': form,
+            'form_action': reverse('new_post', args={thread.id}),
+            'button_text': 'Save Post'
+        }
+
+        args.update(csrf(request))
+
+        return render(request, 'forum/post_form.html', args)
 
 
 @login_required
@@ -143,25 +148,30 @@ def edit_post(request, thread_id, post_id):
     thread = get_object_or_404(Thread, pk=thread_id)
     post = get_object_or_404(Post, pk=post_id)
 
-    if request.method == "POST":
-        form = PostForm(request.POST, instance=post)
-        if form.is_valid():
-            form.save()
-            messages.success(request, "You have updated your thread!")
+    if "cancel" in request.POST:  # if 'cancel' button is pressed
 
-            return redirect(reverse('thread', args={thread.id}))
+        return redirect(reverse('thread', args={thread.id}))
+
     else:
-        form = PostForm(instance=post)
+        if request.method == "POST":
+            form = PostForm(request.POST, instance=post)
+            if form.is_valid():
+                form.save()
+                messages.success(request, "You have updated your post!")
 
-    args = {
-        'form': form,
-        'form_action': reverse('edit_post', kwargs={"thread_id": thread.id, "post_id": post.id}),
-        'button_text': 'Update Post'
-    }
+                return redirect(reverse('thread', args={thread.id}))
+        else:
+            form = PostForm(instance=post)
 
-    args.update(csrf(request))
+        args = {
+            'form': form,
+            'form_action': reverse('edit_post', kwargs={"thread_id": thread.id, "post_id": post.id}),
+            'button_text': 'Update Post'
+        }
 
-    return render(request, 'forum/post_form.html', args)
+        args.update(csrf(request))
+
+        return render(request, 'forum/post_form.html', args)
 
 
 @login_required
