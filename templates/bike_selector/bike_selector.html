@@ -3,8 +3,8 @@
 
 
 {% block content %}
-    <div class="form-container">
-        <p>Use the project bike selector to help you pick your next project bike. If you want to see all the bikes in the database, just click Search. Or, for example, if you want to build a café racer and its simply got have a v-twin engine, select ‘2’ from the Cylinders menu and ‘V’ from the Layout menu, before clicking Search.</p>
+    <div class="form-container table-responsive">
+        <p>Use the project bike selector to help you pick your next project bike. If you want to see all the bikes in the database, just click Search. Or, say, if you want to build a café racer and its simply got have a v-twin engine, select ‘2’ from the Cylinders menu and ‘V’ from the Layout menu, before clicking Search.</p>
         <div class="col-sm-6">
             <form role="form" method="get" id="bike-search-form" action="{% url 'bike_search' %}">
                 {{ form|as_bootstrap }}
@@ -15,7 +15,7 @@
             </form>
         </div>
 
-        <table class="table table-bordered table-condensed" style="background-color: white;">
+        <table class="table table-bordered table-condensed pbs-table">
             <thead>
                 <tr>
                     <th>Manufacturer</th>
