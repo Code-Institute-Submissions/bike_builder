@@ -1,7 +1,7 @@
 {% load staticfiles %}
 {% load emoticons_tags %}
 
-<section class="row col-md-12" style="padding: 10px 0 0 0; border: 1px solid black; border-radius: 5px; margin: 0 10px 20px 0; box-shadow: 5px 5px 5px #888888; background-color: white;">
+<section class="row col-md-12 default-shadow-div">
     <div class="col-md-2">  <!--Poster details-->
         <p><img src="/media/{{ post.user.image }}" class="avatar"/></p>
         <p class="avatar-text;">{{ post.user.username }}</p>
@@ -15,7 +15,7 @@
             {% endautoescape %}
 
             {% if post.image %}
-                <img src="/media/{{ post.image }}">
+                <img src="/media/{{ post.image }}" class="forum-image">
             {% endif %}
 
         </div>

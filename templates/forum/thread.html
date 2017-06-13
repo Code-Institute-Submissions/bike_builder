@@ -5,17 +5,22 @@
 {% block content %}
 
     <div class="form-container">
-        <h4 style="margin-bottom: 20px;"><a href="/forum/">Forum</a> / <a href="{% url 'threads' thread.subject.id %}">{{ thread.subject.name }}</a> / {{ thread.name }}</h4>
-        {% if thread.poll %}
-            <div class="container">
-                <div class="col-md-6">
-                    <h2>Poll</h2>
-                    <strong>{{ thread.poll.question }}</strong>
+        <h4 class="forum-nav"><a href="/forum/">Forum</a> / <a href="{% url 'threads' thread.subject.id %}">{{ thread.subject.name }}</a> / {{ thread.name }}</h4>
 
-                    <p>Here's how the votes are so far</p>
+        {% if user.is_authenticated %}
+            <p>
+                <a href="{% url 'new_post' thread.id %}" class="btn btn-primary my-button">New post</a>
+            </p>
+        {% endif %}
+
+        {% if thread.poll %}
+                <div class="col-md-12 default-shadow-div">
+                    <h2>Poll</h2>
+                    <p>{{ thread.poll.question }}</p>
+                    <p>Here's how the votes are so far:</p>
 
                     {% for subject in thread.poll.subjects.all %}
-                        <div class="col-md-10">
+                        <div class="col-md-7">
                             <strong>{{ subject.name }}</strong>
                             <span class="pull-right">{{ subject|vote_percentage }}%</span>
                         </div>
@@ -24,7 +29,7 @@
                         {% user_vote_button thread subject user %}
                         {% endautoescape %}
 
-                        <div class="col-md-10">
+                        <div class="col-md-7">
                             <div class="progress">
                                 <div class="progress-bar progress-bar-info" role="progressbar" aria-value="{{ subject|vote_percentage }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ subject|vote_percentage }}%;">
 
@@ -33,12 +38,6 @@
                         </div>
                     {% endfor %}
                 </div>
-            </div>
-        {% endif %}
-        {% if user.is_authenticated %}
-            <p>
-                <a href="{% url 'new_post' thread.id %}" class="btn btn-primary" style="margin: 0 0 20px 20px;">New post</a>
-            </p>
         {% endif %}
         {% for post in thread.posts.all %}
             {% include "forum/post.html" %}
@@ -46,6 +45,53 @@
     </div>
 
 {% endblock %}
+
+{#{% block content %}#}
+{##}
+{#    <div class="form-container">#}
+{#        <h4 style="margin-bottom: 20px;"><a href="/forum/">Forum</a> / <a href="{% url 'threads' thread.subject.id %}">{{ thread.subject.name }}</a> / {{ thread.name }}</h4>#}
+{#        {% if thread.poll %}#}
+{#            <div class="container">#}
+{#                <div class="col-md-6">#}
+{#                    <h2>Poll</h2>#}
+{#                    <strong>{{ thread.poll.question }}</strong>#}
+{##}
+{#                    <p>Here's how the votes are so far</p>#}
+{##}
+{#                    {% for subject in thread.poll.subjects.all %}#}
+{#                        <div class="col-md-10">#}
+{#                            <strong>{{ subject.name }}</strong>#}
+{#                            <span class="pull-right">{{ subject|vote_percentage }}%</span>#}
+{#                        </div>#}
+{##}
+{#                        {% autoescape off %}#}
+{#                        {% user_vote_button thread subject user %}#}
+{#                        {% endautoescape %}#}
+{##}
+{#                        <div class="col-md-10">#}
+{#                            <div class="progress">#}
+{#                                <div class="progress-bar progress-bar-info" role="progressbar" aria-value="{{ subject|vote_percentage }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ subject|vote_percentage }}%;">#}
+{##}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    {% endfor %}#}
+{#                </div>#}
+{#            </div>#}
+{#        {% endif %}#}
+{#        {% if user.is_authenticated %}#}
+{#            <p>#}
+{#                <a href="{% url 'new_post' thread.id %}" class="btn btn-primary" style="margin: 0 0 20px 20px;">New post</a>#}
+{#            </p>#}
+{#        {% endif %}#}
+{#        {% for post in thread.posts.all %}#}
+{#            {% include "forum/post.html" %}#}
+{#        {% endfor %}#}
+{#    </div>#}
+{##}
+{#{% endblock %}#}
+
+
 
 {#    <div class="container">#}
 {#        {% for post in thread.posts.all %}#}

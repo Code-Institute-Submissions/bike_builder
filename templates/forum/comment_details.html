@@ -12,10 +12,10 @@
         <div class="float-right">
             {% if post.user == user or user.is_staff %}
                 <a href="{% url 'edit_post' thread.id post.id %}">
-                    <i class="fa fa-pencil-square-o"></i>
+                    <i class="fa fa-pencil-square-o" title="Edit"></i>
                 </a>
                 <a href="{% url 'delete_post' thread.id post.id %}">
-                    <i class="fa fa-trash-o"></i>
+                    <i class="fa fa-trash-o" title="Delete"></i>
                 </a>
             {% endif %}
         </div>

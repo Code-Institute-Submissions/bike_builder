@@ -21,7 +21,7 @@
         <ul class="list-inline">
             <li data-toggle="modal" data-target="#myModal"><a href="#myGallery" data-slide-to="0"><div class="default-shadow-div"><img class="gallery-thumbnail" src="/media/gallery/first_image/motorcycle-1777645_1280.jpg"><p>My bike!</p></div></a></li>
             {% for image in images %}
-                <li data-toggle="modal" data-target="#myModal"><a href="#myGallery" data-slide-to="{{ forloop.counter }}"><div class="default-shadow-div"><img class="gallery-thumbnail" src="/media/{{ image.image }}"><p class="car_img_desc">{{ image.description }}</p></div></a></li>
+                <li data-toggle="modal" data-target="#myModal"><a href="#myGallery" data-slide-to="{{ forloop.counter }}"><div class="default-shadow-div"><img class="gallery-thumbnail" src="/media/{{ image.image }}"><p>{{ image.description }}</p></div></a></li>
             {% endfor %}
         </ul>
     </div>

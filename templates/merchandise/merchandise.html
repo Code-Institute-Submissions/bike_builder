@@ -1,27 +1,42 @@
 {% extends 'base.html' %}
+
 {% block content %}
     <div class="form-container">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th></th>
-                    <th>Item</th>
-                    <th>Description</th>
-                    <th>Price</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for product in products %}
-                    <tr>
-                        <td><img class="merch_image" src="/media/{{ product.image }}"></td>
-                        <td>{{ product.name }}</td>
-                        <td>{{ product.description }}</td>
-                        <td>£ {{ product.price }}</td>
-                        <td><a href="{% url 'place_order' product.id %}" class="btn btn-primary">Buy</a></td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+        {% for product in products %}
+            <section class="row default-shadow-div">
+                <div class="col-sm-2"><img class="merch_image" src="/media/{{ product.image }}"></div>
+                <div class="col-sm-2"><strong>{{ product.name }}</strong></div>
+                <div class="col-sm-5">{{ product.description }}</div>
+                <div class="col-sm-1">£ {{ product.price }}</div>
+                <div class="col-sm-2"><a href="{% url 'place_order' product.id %}" class="btn btn-primary"><i class="fa fa-credit-card"></i> Buy</a></div>
+            </section>
+        {% endfor %}
     </div>
 {% endblock %}
+
+{#{% block content %}#}
+{#    <div class="form-container table-responsive">#}
+{#        <table class="table">#}
+{#            <thead>#}
+{#                <tr>#}
+{#                    <th></th>#}
+{#                    <th>Item</th>#}
+{#                    <th>Description</th>#}
+{#                    <th>Price</th>#}
+{#                    <th></th>#}
+{#                </tr>#}
+{#            </thead>#}
+{#            <tbody>#}
+{#                {% for product in products %}#}
+{#                    <tr>#}
+{#                        <td><img class="merch_image" src="/media/{{ product.image }}"></td>#}
+{#                        <td>{{ product.name }}</td>#}
+{#                        <td class="merch-desc">{{ product.description }}</td>#}
+{#                        <td>£ {{ product.price }}</td>#}
+{#                        <td><a href="{% url 'place_order' product.id %}" class="btn btn-primary"><i class="fa fa-credit-card"></i> Buy</a></td>#}
+{#                    </tr>#}
+{#                {% endfor %}#}
+{#            </tbody>#}
+{#        </table>#}
+{#    </div>#}
+{#{% endblock %}#}

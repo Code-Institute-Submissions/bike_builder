@@ -5,7 +5,7 @@
     <div class="form-container">
         {% if user.is_authenticated %}
             <p>
-                <a href="{% url 'upload_guide' %}" class="btn btn-primary">Post How-To Guide</a>
+                <a href="{% url 'upload_guide' %}" class="btn btn-primary"><i class="fa fa-upload"></i> Post How-To Guide</a>
             </p>
         {% else %}
             <p>You can view all links as a guest, but to post a link you need to login/register.</p>
@@ -14,7 +14,7 @@
         {% include "pagination.html" with page=guides %}
 
         {% for guide in guides %}
-            <div class="row" style="padding: 10px 10px 0 10px; border: 1px solid black; border-radius: 5px; margin: 0 10px 20px 0; background-color: white; box-shadow: 5px 5px 5px #888888;">
+            <div class="row default-shadow-div">
                 <div class="col-xs-12">
                     <p><a href="{{ guide.url }}" target="_blank">{{ guide.description }}</a></p>
                     <div class="fake-hr"></div>

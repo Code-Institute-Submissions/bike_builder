@@ -5,11 +5,11 @@
 {% block content %}
     <div class="form-container">
         {% for subject in subjects %}
-            <div class="col-md-4">  <!--invisible div allows gap between sections without using margins which make the sections wrap below-->
-                <section style="margin: 5px 5px 20px 5px; border: 1px solid black; border-radius: 5px; padding: 0; box-shadow: 5px 5px 5px #888888;">
-                    <div style="background: rgba(255, 165, 0, 1); border-radius: 5px 5px 0 0; padding: 5px; text-align: center;">
-                        <a href="{% url 'threads' subject.id %}" style="text-decoration: none; color: white; display: block;"> <!--display:block so div acts as a link-->
-                                <i class="{{ subject.icon }} fa-4x"></i>
+            <div class="col-xs-12 col-sm-6 col-md-4">  <!--invisible div allows gap between sections without using margins which make the sections wrap below-->
+                <section class="forum-subject">
+                    <div class="forum-subject-top">
+                        <a href="{% url 'threads' subject.id %}">
+                                <i class="{{ subject.icon }} fa-4x hidden-element"></i>
                             <h2>{{ subject.name }}</h2>
                             <p>
                                     {% autoescape off %}
@@ -18,15 +18,17 @@
                             </p>
                         </a>
                     </div>
-                    <div style="padding: 15px; background-color: white;">
+                    <div class="forum-subject-bottom">
                         <p>Threads {{ subject.threads.count }} | Posts {{ subject|get_total_subject_posts }}</p>
-                        <p>Title of thread with most recent post</p>
-                        <hr>
-                        <p>Most recent post truncatechar: 100</p>
-                        <br>
-                        <p>date/time of post</p>
-                        <p>Read more - link to thread above</p>
-{#                        <p>{{ subject|last_subject_post }}</p>#}
+                        <div class="hidden-element">
+                            <p>Title of thread with most recent post</p>
+                            <hr>
+                            <p>Most recent post truncatechar: 100</p>
+                            <br>
+                            <p>date/time of post</p>
+                            <p>Read more - link to thread above</p>
+{#                            <p>{{ subject|last_subject_post }}</p>#}
+                        </div>
                     </div>
                 </section>
             </div>

@@ -9,11 +9,12 @@ body {
 #main-container {
 	min-height: 100%;
 	position: relative;
-	margin-top: 62px;  /* To drop contents below navbar */
+	margin-top: 60px;  /* To drop contents below navbar */
+	background-color: #EEDC82;  /*light brown*/
 }
 
 #body-template {
-	padding-bottom: 80px;   /* Height of the footer */
+	padding-bottom: 40px;   /* Height of the footer */
 }
 
 footer {
@@ -21,14 +22,19 @@ footer {
 	color: #ffffff;
 	position: absolute;
 	bottom: 0;
-	height: 80px;
+	height: 40px;
 	width: 100%;
 }
 /*end sticky footer*/
 
+.navbar-right {
+	margin-right: 10px !important;
+}
+
 .avatar {
 	max-height: 50px;
 	max-width: 50px;
+    margin-top: 10px;
 }
 
 #register-avatar {
@@ -50,19 +56,21 @@ footer {
 /*text color in home carousel*/
 .carousel-caption {
 	color: white;
+    top: 0;
 }
 
 .carousel-caption h1 {
-	font-size: 44px;
+	font-size: 22px;
 }
 
 .carousel-caption p {
-	font-size: 32px;
+	font-size: 16px;
 }
 
 /*home carousel set height of images*/
 .home-img {
-	height: 680px;
+	min-height: 720px;
+    background-size: cover;  /*doesn't work here so added to inline styling*/
 }
 
 /* alert messages*/
@@ -84,3 +92,196 @@ footer {
     right: 0;
 }
 /*end alert messages*/
+
+.fake-hr {
+	border-bottom: 1px solid lightgray;
+	margin-top: 5px;
+}
+
+.form-container {
+	padding: 5px;
+}
+
+/*Copies styling of bootstrap form legend*/
+.copy-form-legend {
+	display: block;
+    width: 100%;
+    padding: 0;
+    margin-bottom: 20px;
+    font-size: 21px;
+    line-height: 30px;
+    color: inherit;
+    border: 0;
+    border-bottom: 1px solid transparent;
+}
+
+.avatar-text {
+    margin: 0;
+    font-size: 12px;
+}
+
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
+
+.pbs-table {
+    background-color: white;
+}
+
+.default-shadow-div {
+    padding: 10px 10px 0 10px;
+    border: 1px solid black;
+    border-radius: 3px;
+    margin: 0 10px 20px 0;
+    background-color: white;
+    box-shadow: 5px 5px 5px #87421F;
+}
+
+.forum-subject {
+    margin: 5px 5px 20px 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 0;
+    box-shadow: 5px 5px 5px #87421F;
+}
+
+.forum-subject-top {
+    background: #811B33;
+    border-radius: 5px 5px 0 0;
+    padding: 5px;
+    text-align: center;
+}
+
+.forum-subject-top > a {
+    text-decoration: none;
+    color: white;
+    display: block; /*so whole div acts as a link*/
+}
+
+.forum-subject-bottom {
+    padding: 15px;
+    background-color: white;
+    border-radius: 0 0 5px 5px;
+}
+
+.forum-image {
+    max-width: 100%;
+}
+
+/*line up the default first image with the others*/
+#gallery-default-pic {
+    padding-bottom: 20px;
+}
+
+/*to hide elements on smaller screen sizes*/
+.hidden-element {
+    display: none;
+}
+
+.merch-desc {
+    /*word-wrap: break-word;*/
+    /*min-width: 160px;*/
+    /*max-width: 160px;*/
+    /*white-space: normal;*/
+}
+
+/*increase the break point of the navbar to stop it displaying on 2 lines*/
+/*code taken from https://stackoverflow.com/questions/19827605/change-bootstrap-navbar-collapse-breakpoint-without-using-less*/
+@media (max-width: 992px) {
+  .navbar-header {
+      float: none;
+  }
+  .navbar-left,.navbar-right {
+      float: none !important;
+  }
+  .navbar-toggle {
+      display: block;
+  }
+  .navbar-collapse {
+      border-top: 1px solid transparent;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+  }
+  .navbar-fixed-top {
+      top: 0;
+      border-width: 0 0 1px;
+  }
+  .navbar-collapse.collapse {
+      display: none!important;
+  }
+  .navbar-nav {
+      float: none!important;
+      margin-top: 7.5px;
+  }
+  .navbar-nav>li {
+      float: none;
+  }
+  .navbar-nav>li>a {
+      padding-top: 10px;
+      padding-bottom: 10px;
+  }
+  .collapse.in{
+      display:block !important;
+  }
+}
+/*end navbar break point code*/
+
+
+
+@media screen and (min-width:450px){
+
+.carousel-caption h1 {
+	font-size: 33px;
+}
+
+.carousel-caption p {
+	font-size: 24px;
+}
+
+}
+
+
+/*default bootstrap media query for sm cols*/
+@media screen and (min-width:768px){
+
+.carousel-caption {
+    top: auto;
+}
+
+.carousel-caption h1 {
+	font-size: 44px;
+}
+
+.carousel-caption p {
+	font-size: 32px;
+}
+
+.form-container {
+	padding: 30px;
+}
+
+/*to hide elements on smaller screen sizes*/
+.hidden-element {
+    display: block;
+}
+
+.form-container > .forum-nav {
+/*.form-container > .forum-nav {*/
+    margin-bottom: 20px;
+}
+
+/*new thread button*/
+.my-button {
+    margin: 0 0 20px 20px;
+}
+
+}
+
+/*default bootstrap media query for md cols*/
+@media screen and (min-width:992px){}
+
+/*default bootstrap media query for lg cols*/
+@media screen and (min-width:1200px){}

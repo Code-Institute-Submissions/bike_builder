@@ -4,20 +4,18 @@
 {% block content %}
 
     <div class="form-container">
-        <h4 style="margin-bottom: 20px;"><a href="/forum/">Forum</a> / {{ subject.name }}</h4>
+        <h4 class="forum-nav"><a href="/forum/">Forum</a> / {{ subject.name }}</h4>
         {% if user.is_authenticated %}
             <p>
-                <a href="{% url 'new_thread' subject.id %}" class="btn btn-primary" style="margin: 0 0 20px 20px;">New Thread</a>
+                <a href="{% url 'new_thread' subject.id %}" class="btn btn-primary my-button">New Thread</a>
             </p>
-{#        {% else %}#}
-{#            <p style="margin: 20px;">To create a thread or a post you must be logged in.</p>#}
         {% endif %}
 
         {% for thread in subject.threads.all %}
 {#        {% for thread in threads_ordered_by_latest_post %}#}
-            <div class="row" style="border: 1px solid black; border-radius: 5px; margin: 0 10px 20px 0; background-color: white; box-shadow: 5px 5px 5px #888888;">
+            <div class="row default-shadow-div">
                 <div class="col-md-2">
-                    <img src="/media/{{ thread.user.image }}" class="avatar" style="margin-top: 10px;"/>
+                    <img src="/media/{{ thread.user.image }}" class="avatar"/>
                     <p class="avatar-text">{{ thread.user.username }}</p>
                     <p class="avatar-text">Posts: {{ thread.user.posts.count }}</p>
                 </div>
