@@ -4,24 +4,24 @@
 
     <div class="form-container">
 
-        <!--Image upload button if user is logged in. If not logged in, display message-->
+        <!--Display image upload button if user is logged in. If not logged in, display message-->
         {% if user.is_authenticated %}
             <p>
                 <a href="{% url 'upload_image' %}" class="btn btn-primary"><i class="fa fa-camera"></i> Upload Image</a>
             </p>
         {% else %}
-            <p>You can view all images as a guest, but to upload images you need to login/register.</p>
+            <p class="medium-text">You can view all images as a guest, but to upload images you need to login/register.</p>
         {% endif %}
 
-        <p>Click or tap thumbnails below. Use Prev & Next arrows to cycle through the images.</p>
+        <p class="medium-text">Click or tap thumbnails below. Use Prev & Next arrows to cycle through the images.</p>
 
         {% include "pagination.html" with page=images %}
 
         <!--Display gallery images-->
         <ul class="list-inline">
-            <li data-toggle="modal" data-target="#myModal"><a href="#myGallery" data-slide-to="0"><div class="default-shadow-div"><img class="gallery-thumbnail" src="/media/gallery/first_image/motorcycle-1777645_1280.jpg"><p>My bike!</p></div></a></li>
+            <li data-toggle="modal" data-target="#myModal"><div class="default-shadow-div gallery-image-surround"><a href="#myGallery" data-slide-to="0"><img class="gallery-thumbnail" src="/media/gallery/first_image/motorcycle-1777645_1280.jpg"></a><p class="gallery-image-desc">My bike!</p></div></li>
             {% for image in images %}
-                <li data-toggle="modal" data-target="#myModal"><a href="#myGallery" data-slide-to="{{ forloop.counter }}"><div class="default-shadow-div"><img class="gallery-thumbnail" src="/media/{{ image.image }}"><p>{{ image.description }}</p></div></a></li>
+                <li data-toggle="modal" data-target="#myModal"><div class="default-shadow-div gallery-image-surround"><a href="#myGallery" data-slide-to="{{ forloop.counter }}"><img class="gallery-thumbnail" src="/media/{{ image.image }}"></a><p class="gallery-image-desc">{{ image.description }}</p></div></li>
             {% endfor %}
         </ul>
     </div>

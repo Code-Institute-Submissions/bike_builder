@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block content %}
-    <section class="form-container">
+    <section class="form-container medium-text">
         <div class="col-xs-12">
             <form method="post" action="{% url 'new_thread' subject.id %}">
                 {% csrf_token %}
@@ -25,7 +25,7 @@
                 </div>
 
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Post New Thread</button>
+                    <button type="submit" class="btn btn-primary action-button">Post New Thread</button>
                     <button class="btn btn-danger" onclick="history.back()">Cancel</button>
                 </div>
             </form>

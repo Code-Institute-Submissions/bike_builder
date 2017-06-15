@@ -2,14 +2,15 @@
 {% load bootstrap_tags %}
 
 {% block content %}
-    <div class="form-container">
+    <div class="form-container medium-text">
         <div class="col-md-6">
             <form role="form" method="post" action="{% url 'upload_image' %}" enctype="multipart/form-data">
                 <legend>Upload Image</legend>
                 {% csrf_token %}
                 {{ form | as_bootstrap }}
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Upload</button>
+                    <button type="submit" class="btn btn-primary action-button">Upload</button>
+                    <button class="btn btn-danger" onclick="history.back()">Cancel</button>
                 </div>
             </form>
         </div>

@@ -10,8 +10,8 @@
                     <div class="forum-subject-top">
                         <a href="{% url 'threads' subject.id %}">
                                 <i class="{{ subject.icon }} fa-4x hidden-element"></i>
-                            <h2>{{ subject.name }}</h2>
-                            <p>
+                            <p class="large-text">{{ subject.name }}</p>
+                            <p class="medium-text">
                                     {% autoescape off %}
                                         {{ subject.description }}
                                     {% endautoescape %}
@@ -19,14 +19,14 @@
                         </a>
                     </div>
                     <div class="forum-subject-bottom">
-                        <p>Threads {{ subject.threads.count }} | Posts {{ subject|get_total_subject_posts }}</p>
+                        <p class="medium-text">Threads {{ subject.threads.count }} | Posts {{ subject|get_total_subject_posts }}</p>
                         <div class="hidden-element">
-                            <p>Title of thread with most recent post</p>
-                            <hr>
-                            <p>Most recent post truncatechar: 100</p>
+                            <div class="fake-hr"></div>
+                            <p class="medium-text">Title of thread with most recent post</p>
+                            <p class="small-text">Most recent post truncatechar: 100</p>
                             <br>
-                            <p>date/time of post</p>
-                            <p>Read more - link to thread above</p>
+                            <p class="small-text">date/time of post</p>
+                            <p class="small-text">Read more - link to thread above</p>
 {#                            <p>{{ subject|last_subject_post }}</p>#}
                         </div>
                     </div>

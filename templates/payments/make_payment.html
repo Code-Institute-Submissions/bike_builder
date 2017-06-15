@@ -13,7 +13,7 @@
 {% endblock %}
 
 {% block content %}
-    <div class="form-container">
+    <div class="form-container medium-text">
         <div class="col-md-6">
             <form role="form" method="post" id="payment-form" action="{% url 'place_order' product.id %}">
                 <div id="credit-card-errors" style="display:none">
@@ -24,7 +24,8 @@
                 {% csrf_token %}
                 {{ form|as_bootstrap }}
                 <div class="form-group">
-                    <input class="btn btn-primary" id="validate_card_btn" name="commit" type="submit" value="Place Order">
+                    <input class="btn btn-primary action-button" id="validate_card_btn" name="commit" type="submit" value="Place Order">
+                    <button class="btn btn-danger" onclick="history.back()">Cancel</button>
                 </div>
             </form>
         </div>

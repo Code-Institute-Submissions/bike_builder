@@ -1,18 +1,18 @@
 {% load thread_extras %}
 
 <div class="details">
-    <div class="col-xs-6">
+    <div class="col-xs-8">
         <div class="float-left">
-            <time datetime="{{ post.created_at }}" class="avatar-text;">
+            <time datetime="{{ post.created_at }}" class="avatar-text">
                 Posted {{ post.created_at|started_time }}
             </time>
         </div>
     </div>
-    <div class="col-xs-6">
+    <div class="col-xs-4 post-icons">
         <div class="float-right">
             {% if post.user == user or user.is_staff %}
                 <a href="{% url 'edit_post' thread.id post.id %}">
-                    <i class="fa fa-pencil-square-o" title="Edit"></i>
+                    <i class="fa fa-pencil-square-o post-edit-icon" title="Edit"></i>
                 </a>
                 <a href="{% url 'delete_post' thread.id post.id %}">
                     <i class="fa fa-trash-o" title="Delete"></i>

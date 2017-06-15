@@ -14,13 +14,13 @@
 {% endblock %}
 
 {% block content %}
-    <section class="form-container">
+    <section class="form-container medium-text">
         <div class="col-xs-12">
             <form method="post" enctype="multipart/form-data" action="{{ form_action }}">
                 {% csrf_token %}
                 {{ form|as_bootstrap }}
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary">{{ button_text }}</button>
+                    <button type="submit" class="btn btn-primary action-button">{{ button_text }}</button>
                     <button class="btn btn-danger" onclick="history.back()">Cancel</button>
                 </div>
             </form>

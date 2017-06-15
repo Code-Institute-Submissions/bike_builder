@@ -8,17 +8,17 @@
                 <a href="{% url 'upload_guide' %}" class="btn btn-primary"><i class="fa fa-upload"></i> Post How-To Guide</a>
             </p>
         {% else %}
-            <p>You can view all links as a guest, but to post a link you need to login/register.</p>
+            <p class="medium-text">You can view all links as a guest, but to post a link you need to login/register.</p>
         {% endif %}
 
         {% include "pagination.html" with page=guides %}
 
         {% for guide in guides %}
-            <div class="row default-shadow-div">
+            <div class="row guide-div default-shadow-div">
                 <div class="col-xs-12">
-                    <p><a href="{{ guide.url }}" target="_blank">{{ guide.description }}</a></p>
+                    <p class="medium-text"><a href="{{ guide.url }}" target="_blank">{{ guide.description }}</a></p>
                     <div class="fake-hr"></div>
-                    <p class="avatar-text">Posted by {{ guide.uploader }} on {{ guide.uploaded_at }}</p>
+                    <p class="small-text">Posted by {{ guide.uploader }} on {{ guide.uploaded_at }}</p>
                 </div>
             </div>
         {% endfor %}
