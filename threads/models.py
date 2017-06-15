@@ -35,3 +35,6 @@ class Post(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='posts')
     created_at = models.DateTimeField(default=timezone.now)
     image = models.ImageField(upload_to='forum_images', blank=True, null=True)
+
+    def __unicode__(self):
+        return self.comment[:100]
