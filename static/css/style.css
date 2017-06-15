@@ -1,3 +1,5 @@
+/* ----------------------------------------General----------------------------------*/
+
 /*to enable sticky footer*/
 html,
 body {
@@ -9,12 +11,14 @@ body {
 #main-container {
 	min-height: 100%;
 	position: relative;
-	margin-top: 60px;  /* To drop contents below navbar */
 	background-color: #EEDC82;  /*light brown*/
 }
 
 #body-template {
 	padding-bottom: 40px;   /* Height of the footer */
+    padding-top: 60px;  /*Height of navbar. Added to orig code*/
+    /*height : 100%;  !*added to try to get home carousel to cover whole screen*!*/
+    /*min-width: 100%;  !*added to try to get home carousel to cover whole screen*!*/
 }
 
 footer {
@@ -31,47 +35,15 @@ footer {
 	margin-right: 10px !important;
 }
 
-.avatar {
-	max-height: 50px;
-	max-width: 50px;
-    margin-top: 10px;
+footer > div {
+    display: flex;
+    justify-content: center;
 }
 
-#register-avatar {
-	max-height: 200px;
-	max-width: 200px;
-
+footer > div > a {
+    margin: 5px 10px;
 }
 
-.merch_image {
-	max-height: 100px;
-	max-width: 100px;
-  }
-
-.gallery-thumbnail {
-	max-height: 200px;
-	max-width: 200px;
-}
-
-/*text color in home carousel*/
-.carousel-caption {
-	color: white;
-    top: 0;
-}
-
-.carousel-caption h1 {
-	font-size: 22px;
-}
-
-.carousel-caption p {
-	font-size: 16px;
-}
-
-/*home carousel set height of images*/
-.home-img {
-	min-height: 720px;
-    background-size: cover;  /*doesn't work here so added to inline styling*/
-}
 
 /* alert messages*/
 .alert {
@@ -81,7 +53,7 @@ footer {
 .messages {
     position: absolute;
 	z-index: 10;
-	margin-top: 20px;
+	margin-top: 80px;
 	width: 80%;
 	margin-left: 10%;
 }
@@ -99,7 +71,7 @@ footer {
 }
 
 .form-container {
-	padding: 5px;
+	padding: 10px;
 }
 
 /*Copies styling of bootstrap form legend*/
@@ -115,11 +87,6 @@ footer {
     border-bottom: 1px solid transparent;
 }
 
-.avatar-text {
-    margin: 0;
-    font-size: 12px;
-}
-
 .float-left {
     float: left;
 }
@@ -128,17 +95,132 @@ footer {
     float: right;
 }
 
+.default-shadow-div {
+    /*padding: 10px 10px 0 10px;*/
+    border: 1px solid black;
+    border-radius: 3px;
+    /*margin: 0 10px 20px 0;*/
+    background-color: white;
+    box-shadow: 5px 5px 5px #87421F;
+}
+
+/*to hide elements on smaller screen sizes*/
+.hidden-element {
+    display: none;
+}
+
+.small-text {
+    font-size: 10px
+}
+
+.medium-text {
+    font-size: 12px;
+}
+
+.large-text {
+    font-size: 20px;
+}
+
+.centre-items {
+    text-align: center;
+}
+
+.action-button {
+    margin-right: 10px;
+}
+
+/*------------------------------------App specific---------------------------------------*/
+
+
+/*-----------------------------------------Home---------------------------------------------*/
+
+/*text color in home carousel*/
+.carousel-caption {
+	color: white;
+    top: 0;
+}
+
+.carousel-caption h1 {
+	font-size: 22px;
+}
+
+.carousel-caption p {
+	font-size: 16px;
+}
+
+/*home carousel set height of images*/
+.home-img {
+	/*min-height: 100%;*/
+	min-height: 1080px;
+    background-size: cover;  /*doesn't work here so added to inline styling*/
+}
+
+/*added to try to make carousel full size on all screen sizes but has no effect*/
+.carousel,
+.item,
+.active {
+    height:100%;
+}
+
+/*added to try to make carousel full size on all screen sizes but has no effect*/
+.carousel-inner {
+    height:100%;
+}
+
+
+/*--------------------------------------Gallery-------------------------------------------*/
+
+.gallery-thumbnail {
+	max-height: 120px;
+	max-width: 120px;
+}
+
+.gallery-image-desc {
+    margin: 0px;
+    font-size: 10px;
+}
+
+.gallery-image-surround {
+    padding: 5px;
+    margin: 5px 5px 10px 5px;
+    max-width: 130px;
+}
+
+/*line up the default first image with the others*/
+#gallery-default-pic {
+    padding-bottom: 20px;
+}
+
+
+/*--------------------------------Project Bike Selector------------------------------------*/
+
 .pbs-table {
     background-color: white;
 }
 
-.default-shadow-div {
-    padding: 10px 10px 0 10px;
-    border: 1px solid black;
-    border-radius: 3px;
-    margin: 0 10px 20px 0;
-    background-color: white;
-    box-shadow: 5px 5px 5px #87421F;
+
+
+/*-----------------------------------How-To Guides------------------------------------------*/
+
+.guide-div {
+    padding-top: 5px;
+    margin: 10px;
+}
+
+
+
+/*---------------------------------------Forum-----------------------------------------------*/
+
+.avatar {
+	max-height: 50px;
+	max-width: 50px;
+    margin-top: 10px;
+}
+
+.avatar-text {
+    margin: 0;
+    font-size: 10px;
+    word-wrap: break-word;
 }
 
 .forum-subject {
@@ -163,7 +245,7 @@ footer {
 }
 
 .forum-subject-bottom {
-    padding: 15px;
+    padding: 5px;
     background-color: white;
     border-radius: 0 0 5px 5px;
 }
@@ -172,22 +254,163 @@ footer {
     max-width: 100%;
 }
 
-/*line up the default first image with the others*/
-#gallery-default-pic {
-    padding-bottom: 20px;
+.thread-div {
+    /*padding-top: 5px;*/
+    margin: 10px;
+}
+
+.post-body {
+    margin-top: 5px;
+}
+
+.post-icons {
+    padding-left: 5px;
+    padding-right: 5px;
+
+}
+
+.post-edit-icon {
+    margin-right: 10px;
+}
+
+/*------------------------------------Merchandise---------------------------------------------*/
+
+.merch-div {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin: 10px;
+}
+
+
+.merch_image {
+    max-height: 100px;
+    max-width: 100px;
+}
+
+
+/*---------------------------------------Payments----------------------------------------------*/
+
+
+
+
+/*---------------------------------------Accounts (Register)------------------------------------*/
+
+#register-avatar {
+	max-height: 200px;
+	max-width: 200px;
+    display: block;
+    margin-bottom: 20px;
+}
+
+
+
+
+
+
+
+
+
+@media screen and (min-width:450px){
+
+
+.carousel-caption h1 {
+	font-size: 33px;
+}
+
+.carousel-caption p {
+	font-size: 24px;
+}
+
+}
+
+
+@media screen and (min-width:550px) {
+
+.small-text {
+    font-size: 12px
+}
+
+.medium-text {
+    font-size: 14px;
+}
+
+.large-text {
+    font-size: 30px;
+}
+
+
+
+}
+
+/*default bootstrap media query for sm cols*/
+@media screen and (min-width:768px){
+
+.carousel-caption {
+    top: auto;
+}
+
+.carousel-caption h1 {
+	font-size: 44px;
+}
+
+.carousel-caption p {
+	font-size: 32px;
+}
+
+.form-container {
+	padding: 30px;
 }
 
 /*to hide elements on smaller screen sizes*/
 .hidden-element {
-    display: none;
+    display: block;
 }
 
-.merch-desc {
-    /*word-wrap: break-word;*/
-    /*min-width: 160px;*/
-    /*max-width: 160px;*/
-    /*white-space: normal;*/
+.form-container > .forum-nav {
+/*.form-container > .forum-nav {*/
+    margin-bottom: 20px;
 }
+
+/*new thread button*/
+.my-button {
+    margin: 0 0 20px 20px;
+}
+
+.gallery-thumbnail {
+	max-height: 150px;
+	max-width: 150px;
+}
+
+.gallery-image-surround {
+    padding: 10px;
+    max-width: 170px;
+}
+
+.avatar-text {
+    margin: 0;
+    font-size: 12px;
+}
+
+.forum-subject-bottom {
+    padding: 15px;
+}
+
+}
+
+/*default bootstrap media query for md cols*/
+@media screen and (min-width:992px){
+
+
+}
+
+
+
+/*default bootstrap media query for lg cols*/
+@media screen and (min-width:1200px){}
+
+
+
+
 
 /*increase the break point of the navbar to stop it displaying on 2 lines*/
 /*code taken from https://stackoverflow.com/questions/19827605/change-bootstrap-navbar-collapse-breakpoint-without-using-less*/
@@ -229,59 +452,3 @@ footer {
 }
 /*end navbar break point code*/
 
-
-
-@media screen and (min-width:450px){
-
-.carousel-caption h1 {
-	font-size: 33px;
-}
-
-.carousel-caption p {
-	font-size: 24px;
-}
-
-}
-
-
-/*default bootstrap media query for sm cols*/
-@media screen and (min-width:768px){
-
-.carousel-caption {
-    top: auto;
-}
-
-.carousel-caption h1 {
-	font-size: 44px;
-}
-
-.carousel-caption p {
-	font-size: 32px;
-}
-
-.form-container {
-	padding: 30px;
-}
-
-/*to hide elements on smaller screen sizes*/
-.hidden-element {
-    display: block;
-}
-
-.form-container > .forum-nav {
-/*.form-container > .forum-nav {*/
-    margin-bottom: 20px;
-}
-
-/*new thread button*/
-.my-button {
-    margin: 0 0 20px 20px;
-}
-
-}
-
-/*default bootstrap media query for md cols*/
-@media screen and (min-width:992px){}
-
-/*default bootstrap media query for lg cols*/
-@media screen and (min-width:1200px){}
