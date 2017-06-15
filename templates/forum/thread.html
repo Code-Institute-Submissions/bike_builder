@@ -13,6 +13,8 @@
             </p>
         {% endif %}
 
+        {% include "pagination.html" with page=thread_posts %}
+
         {% if thread.poll %}
                 <div class="col-md-12 default-shadow-div">
                     <h2>Poll</h2>
@@ -39,9 +41,13 @@
                     {% endfor %}
                 </div>
         {% endif %}
-        {% for post in thread.posts.all %}
+        {% for post in thread_posts %}
+{#        {% for post in thread.posts.all %}#}
             {% include "forum/post.html" %}
         {% endfor %}
+
+        {% include "pagination.html" with page=thread_posts %}
+
     </div>
 
 {% endblock %}

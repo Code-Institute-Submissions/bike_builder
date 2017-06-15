@@ -11,8 +11,10 @@
             </p>
         {% endif %}
 
+        {% include "pagination.html" with page=threads_ %}
 
-        {% for thread in subject.threads.all %}
+{#        {% for thread in subject.threads.all %}#}
+        {% for thread in threads_ %}
 {#        {% for thread in threads_ordered_by_latest_post %}#}
             <section class="row thread-div default-shadow-div">
                 <div class="col-sm-2 hidden-element">
@@ -30,6 +32,9 @@
                 </div>
             </section>
         {% endfor %}
+
+        {% include "pagination.html" with page=threads_ %}
+
     </div>
 {% endblock %}
 
