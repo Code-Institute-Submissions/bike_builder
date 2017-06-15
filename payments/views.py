@@ -42,7 +42,7 @@ def place_order(request, product_id):
             messages.error(request, "We were unable to submit the form. Please check your details and try again.")
 
     else:
-        form = PaymentForm()
+        form = PaymentForm(initial={'credit_card_number': 4242424242424242, 'cvv': 123})
 
     args = {'form': form, 'publishable': settings.STRIPE_PUBLISHABLE, 'product': product}
     args.update(csrf(request))
