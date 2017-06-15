@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages, auth
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.template.context_processors import csrf
 from threads.models import Subject, Post, Thread
 from threads.forms import ThreadForm, PostForm
@@ -17,8 +18,24 @@ def forum(request):
 
 def threads(request, subject_id):
     subject = get_object_or_404(Subject, pk=subject_id)
-    return render(request, 'forum/threads.html', {'subject': subject})
+    thread_list = subject.threads.all()
+    paginator = Paginator(thread_list, 6)  # 6 in each page
+    page = request.GET.get('page')
+    try:
+        threads_ = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page
+        threads_ = paginator.page(1)
+    except EmptyPage:
+        #  If page is out of range (e.g. 9999), deliver last page of results
+        threads_ = paginator.page(paginator.num_pages)
 
+    return render(request, 'forum/threads.html', {'subject': subject, 'page': page, 'threads_': threads_})
+
+# def threads(request, subject_id):
+#     subject = get_object_or_404(Subject, pk=subject_id)
+#     return render(request, 'forum/threads.html', {'subject': subject})
+#
 
 @login_required
 def new_thread(request, subject_id):
@@ -98,13 +115,61 @@ def new_thread(request, subject_id):
     return render(request, 'forum/thread_form.html', args)
 
 
+# attempt to keep pagination but increase views only when on page 1
+# pagination works but counter doesn't increase number of views at all
 def thread(request, thread_id):
     thread_ = get_object_or_404(Thread, pk=thread_id)
-    thread_.views += 1  # clock up the number of thread views
-    thread_.save()
-    args = {'thread': thread_}
+    post_list = thread_.posts.all()
+    paginator = Paginator(post_list, 6)  # 6 in each page
+    page = request.GET.get('page')
+    try:
+        thread_posts = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page
+        thread_posts = paginator.page(1)
+    except EmptyPage:
+        #  If page is out of range (e.g. 9999), deliver last page of results
+        thread_posts = paginator.page(paginator.num_pages)
+
+    if thread_posts == paginator.page(1):
+        thread_.views += 1  # clock up the number of thread views
+        thread_.save()
+    args = {'thread': thread_, 'page': page, 'thread_posts': thread_posts}
     args.update(csrf(request))
+
     return render(request, 'forum/thread.html', args)
+
+
+# (code with pagination but increases number of views every time you view a page of the thread)
+# def thread(request, thread_id):
+#     thread_ = get_object_or_404(Thread, pk=thread_id)
+#     thread_.views += 1  # clock up the number of thread views
+#     thread_.save()
+#     post_list = thread_.posts.all()
+#     paginator = Paginator(post_list, 6)  # 6 in each page
+#     page = request.GET.get('page')
+#     try:
+#         thread_posts = paginator.page(page)
+#     except PageNotAnInteger:
+#         # If page is not an integer, deliver first page
+#         thread_posts = paginator.page(1)
+#     except EmptyPage:
+#         #  If page is out of range (e.g. 9999), deliver last page of results
+#         thread_posts = paginator.page(paginator.num_pages)
+#     args = {'thread': thread_, 'page': page, 'thread_posts': thread_posts}
+#     args.update(csrf(request))
+#
+#     return render(request, 'forum/thread.html', args)
+
+
+# (code which increases number of views)
+# def thread(request, thread_id):
+#     thread_ = get_object_or_404(Thread, pk=thread_id)
+#     thread_.views += 1  # clock up the number of thread views
+#     thread_.save()
+#     args = {'thread': thread_}
+#     args.update(csrf(request))
+#     return render(request, 'forum/thread.html', args)
 
 
 @login_required
