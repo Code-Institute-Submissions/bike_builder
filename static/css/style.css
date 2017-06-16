@@ -12,13 +12,13 @@ body {
 	min-height: 100%;
 	position: relative;
 	background-color: #EEDC82;  /*light brown*/
+    display: flex;
 }
 
 #body-template {
-	padding-bottom: 40px;   /* Height of the footer */
-    padding-top: 60px;  /*Height of navbar. Added to orig code*/
-    /*height : 100%;  !*added to try to get home carousel to cover whole screen*!*/
-    /*min-width: 100%;  !*added to try to get home carousel to cover whole screen*!*/
+	padding-bottom: 40px;   /* Height of footer */
+    padding-top: 60px;  /* Height of navbar */
+    width: 100vw;  /*needed to avoid the issue of the 30px width home carousel*/
 }
 
 footer {
@@ -36,7 +36,7 @@ footer {
 }
 
 footer > div {
-    display: flex;
+    display: flex;  /* Required to centre the child social media icons*/
     justify-content: center;
 }
 
@@ -129,6 +129,10 @@ footer > div > a {
     margin-right: 10px;
 }
 
+.pagination {
+    margin: 5px 0;
+}
+
 /*------------------------------------App specific---------------------------------------*/
 
 
@@ -137,7 +141,6 @@ footer > div > a {
 /*text color in home carousel*/
 .carousel-caption {
 	color: white;
-    top: 0;
 }
 
 .carousel-caption h1 {
@@ -148,25 +151,20 @@ footer > div > a {
 	font-size: 16px;
 }
 
-/*home carousel set height of images*/
+/*ensure home carousel responsively fills screen*/
 .home-img {
-	/*min-height: 100%;*/
-	min-height: 1080px;
-    background-size: cover;  /*doesn't work here so added to inline styling*/
+	min-height: 100%;
 }
 
-/*added to try to make carousel full size on all screen sizes but has no effect*/
-.carousel,
-.item,
-.active {
-    height:100%;
+#myCarousel {
+    height: 100%;
+    flex: 1;
 }
 
-/*added to try to make carousel full size on all screen sizes but has no effect*/
 .carousel-inner {
     height:100%;
 }
-
+/*end of home carousel attributes required to fill screen*/
 
 /*--------------------------------------Gallery-------------------------------------------*/
 
