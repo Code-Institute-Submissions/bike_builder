@@ -96,10 +96,8 @@ footer > div > a {
 }
 
 .default-shadow-div {
-    /*padding: 10px 10px 0 10px;*/
     border: 1px solid black;
     border-radius: 3px;
-    /*margin: 0 10px 20px 0;*/
     background-color: white;
     box-shadow: 5px 5px 5px #87421F;
 }
@@ -189,6 +187,11 @@ footer > div > a {
     padding-bottom: 20px;
 }
 
+.gallery-modal-desc {
+    text-align: center;
+    margin: 0 15%;
+}
+
 
 /*--------------------------------Project Bike Selector------------------------------------*/
 
@@ -221,6 +224,11 @@ footer > div > a {
     word-wrap: break-word;
 }
 
+.thread-title-text {
+    font-size: 14px;
+    margin-top: 10px;
+}
+
 .forum-subject {
     margin: 5px 5px 20px 5px;
     border: 1px solid black;
@@ -250,6 +258,7 @@ footer > div > a {
 
 .forum-image {
     max-width: 100%;
+    margin-bottom: 15px;
 }
 
 .thread-div {
@@ -387,6 +396,10 @@ footer > div > a {
 .avatar-text {
     margin: 0;
     font-size: 12px;
+}
+
+.thread-title-text {
+    font-size: 18px;
 }
 
 .forum-subject-bottom {
