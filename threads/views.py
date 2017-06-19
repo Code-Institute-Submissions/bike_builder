@@ -17,8 +17,12 @@ def forum(request):
 
 
 def threads(request, subject_id):
+    def latest_thread_date(t):
+        return t.posts.all().order_by('-created_at')[0].created_at
+
     subject = get_object_or_404(Subject, pk=subject_id)
-    thread_list = subject.threads.all()
+    thread_list = list(subject.threads.all())
+    thread_list.sort(reverse=True, key=latest_thread_date)
     paginator = Paginator(thread_list, 6)  # 6 in each page
     page = request.GET.get('page')
     try:
@@ -115,8 +119,6 @@ def new_thread(request, subject_id):
     return render(request, 'forum/thread_form.html', args)
 
 
-# attempt to keep pagination but increase views only when on page 1
-# pagination works but counter doesn't increase number of views at all
 def thread(request, thread_id):
     thread_ = get_object_or_404(Thread, pk=thread_id)
     post_list = thread_.posts.all()
@@ -127,16 +129,17 @@ def thread(request, thread_id):
     except PageNotAnInteger:
         # If page is not an integer, deliver first page
         thread_posts = paginator.page(1)
+        thread_.views += 1  # clock up the number of thread views
+        thread_.save()
+
     except EmptyPage:
         #  If page is out of range (e.g. 9999), deliver last page of results
         thread_posts = paginator.page(paginator.num_pages)
 
-    if thread_posts == paginator.page(1):
-        thread_.views += 1  # clock up the number of thread views
-        thread_.save()
     args = {'thread': thread_, 'page': page, 'thread_posts': thread_posts}
     args.update(csrf(request))
 
+    print(thread_.views)
     return render(request, 'forum/thread.html', args)
 
 
