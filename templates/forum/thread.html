@@ -16,31 +16,35 @@
         {% include "pagination.html" with page=thread_posts %}
 
         {% if thread.poll %}
-                <div class="col-md-12 default-shadow-div">
-                    <h2>Poll</h2>
-                    <p>{{ thread.poll.question }}</p>
-                    <p>Here's how the votes are so far:</p>
+                <div class="row poll-div default-shadow-div">
+                    <div class="col-xs-12">
+                        <h2>Poll</h2>
+                        <p>{{ thread.poll.question }}</p>
+                        <p>Here's how the votes are so far:</p>
+{#                    </div>#}
 
-                    {% for subject in thread.poll.subjects.all %}
-                        <div class="col-md-7">
-                            <strong>{{ subject.name }}</strong>
-                            <span class="pull-right">{{ subject|vote_percentage }}%</span>
-                        </div>
+                        {% for subject in thread.poll.subjects.all %}
+                            <div class="col-xs-7 poll-subject">
+                                <strong>{{ subject.name }}</strong>
+                                <span class="pull-right">{{ subject|vote_percentage }}%</span>
+                            </div>
 
-                        {% autoescape off %}
-                        {% user_vote_button thread subject user %}
-                        {% endautoescape %}
+                            {% autoescape off %}
+                            {% user_vote_button thread subject user %}
+                            {% endautoescape %}
 
-                        <div class="col-md-7">
-                            <div class="progress">
-                                <div class="progress-bar progress-bar-info" role="progressbar" aria-value="{{ subject|vote_percentage }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ subject|vote_percentage }}%;">
+                            <div class="col-xs-7">
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-info" role="progressbar" aria-value="{{ subject|vote_percentage }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ subject|vote_percentage }}%;">
 
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    {% endfor %}
+                        {% endfor %}
+                    </div>
                 </div>
         {% endif %}
+
         {% for post in thread_posts %}
 {#        {% for post in thread.posts.all %}#}
             {% include "forum/post.html" %}
@@ -170,3 +174,4 @@
 {#        {% endfor %}#}
 {#    </div>#}
 
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur consectetur, culpa dicta dignissimos libero minima modi necessitatibus optio perferendis perspiciatis placeat, porro possimus ratione tempore, totam. Accusamus aut iste tenetur?

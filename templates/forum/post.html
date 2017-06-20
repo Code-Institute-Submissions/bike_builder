@@ -1,13 +1,13 @@
 {% load staticfiles %}
 {% load emoticons_tags %}
 
-    <section class="row thread-div default-shadow-div">
+    <section class="row post-div default-shadow-div">
         <div class="col-xs-3 col-sm-2">  <!--Poster details-->
             <p><img src="/media/{{ post.user.image }}" class="avatar"/></p>
             <p class="avatar-text">{{ post.user.username }}</p>
             <p class="avatar-text">Posts: {{ post.user.posts.count }}</p>
         </div>
-        <div class="col-xs-9 col-sm-10">
+        <div class="col-xs-9 col-sm-10 static-div">
             <div class="medium-text post-body">  <!--Post-->
 
                 {% autoescape off %}
@@ -19,10 +19,35 @@
                 {% endif %}
 
             </div>
-            <div class="fake-hr"></div>
-            {% include "forum/comment_details.html" %}  <!--When posted, edit and delete icons-->
+            <div class="col-xs-8 post-details">
+                {% include "forum/comment_details.html" %}  <!--When posted, edit and delete icons-->
+            </div>
         </div>
     </section>
+
+
+{#    <section class="row thread-div default-shadow-div">#}
+{#        <div class="col-xs-3 col-sm-2">  <!--Poster details-->#}
+{#            <p><img src="/media/{{ post.user.image }}" class="avatar"/></p>#}
+{#            <p class="avatar-text">{{ post.user.username }}</p>#}
+{#            <p class="avatar-text">Posts: {{ post.user.posts.count }}</p>#}
+{#        </div>#}
+{#        <div class="col-xs-9 col-sm-10">#}
+{#            <div class="medium-text post-body">  <!--Post-->#}
+{##}
+{#                {% autoescape off %}#}
+{#                    {{ post.comment|emoticons }}#}
+{#                {% endautoescape %}#}
+{##}
+{#                {% if post.image %}#}
+{#                    <img src="/media/{{ post.image }}" class="forum-image">#}
+{#                {% endif %}#}
+{##}
+{#            </div>#}
+{#            <div class="fake-hr"></div>#}
+{#            {% include "forum/comment_details.html" %}  <!--When posted, edit and delete icons-->#}
+{#        </div>#}
+{#    </section>#}
 
 
 {#    <section class="row col-md-12 default-shadow-div">#}
