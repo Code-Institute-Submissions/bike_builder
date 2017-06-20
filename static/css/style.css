@@ -280,6 +280,15 @@ footer > div > a {
     margin-right: 10px;
 }
 
+#delete-conf-modal {
+    max-width: 215px;
+}
+
+#delete-conf-content {
+    padding: 0 0 20px 20px;
+    background-color: #EEDC82;
+}
+
 /*------------------------------------Merchandise---------------------------------------------*/
 
 .merch-div {
