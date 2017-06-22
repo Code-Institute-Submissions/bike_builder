@@ -26,7 +26,8 @@ def gallery(request):
 #     return render(request, 'gallery/gallery.html', {'images': images})
 
 
-@login_required(login_url='/login/')
+@login_required(login_url='/accounts/login/')
+# @login_required(login_url='/login/')
 def upload_image(request):
     if request.method == "POST":
         form = GalleryForm(request.POST, request.FILES)

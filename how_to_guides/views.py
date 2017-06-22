@@ -27,7 +27,8 @@ def how_to_guides(request):
 #     return render(request, 'how_to_guides/how_to_guides.html', {'guides': guides})
 
 
-@login_required(login_url='/login/')
+@login_required(login_url='/accounts/login/')
+# @login_required(login_url='/login/')
 def upload_guide(request):
     if request.method == "POST":
         form = HowToForm(request.POST)

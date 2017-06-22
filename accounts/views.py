@@ -32,7 +32,8 @@ def register(request):
     return render(request, 'accounts/register.html', args)
 
 
-@login_required(login_url='/login/')
+@login_required(login_url='/accounts/login/')
+# @login_required(login_url='/login/')
 def profile(request):
     return render(request, 'accounts/profile.html')
 
@@ -65,7 +66,8 @@ def logout(request):
     return redirect(reverse('home'))
 
 
-@login_required(login_url='/login/')
+@login_required(login_url='/accounts/login/')
+# @login_required(login_url='/login/')
 def edit_profile(request):
 
     if request.method == "POST":
