@@ -1,10 +1,13 @@
 {% load staticfiles %}
 {% load emoticons_tags %}
+{% load thread_extras %}
+
 
     <section class="row post-div default-shadow-div">
         <div class="col-xs-3 col-sm-2">  <!--Poster details-->
             <p><img src="/media/{{ post.user.image }}" class="avatar"/></p>
-            <p class="avatar-text">{{ post.user.username }}</p>
+            <p class="avatar-text">{% post_display_name post %}</p>
+{#            <p class="avatar-text">{{ post.user.username }}</p>#}
             <p class="avatar-text">Posts: {{ post.user.posts.count }}</p>
         </div>
         <div class="col-xs-9 col-sm-10 static-div">

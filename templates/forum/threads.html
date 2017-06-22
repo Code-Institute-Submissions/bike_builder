@@ -17,7 +17,8 @@
         {% for thread in threads_ %}
             <section class="row thread-div default-shadow-div">
                 <div class="col-sm-1 hidden-element">
-                    <img src="/media/{{ thread.user.image }}" class="avatar" title="{{ thread.user.username }}; posts: {{ thread.user.posts.count }}"/>
+                    <img src="/media/{{ thread.user.image }}" class="avatar" title="{% thread_display_name thread %}; posts: {{ thread.user.posts.count }}"/>
+{#                    <img src="/media/{{ thread.user.image }}" class="avatar" title="{{ thread.user.username }}; posts: {{ thread.user.posts.count }}"/>#}
                 </div>
                 <div class="col-xs-10 col-sm-9 col-md-10 thread-name">
                     {% include "forum/thread_item.html" %}
