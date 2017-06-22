@@ -22,13 +22,16 @@
                         <p class="medium-text">Threads {{ subject.threads.count }} | Posts {{ subject|get_total_subject_posts }}</p>
                         <div class="hidden-element">
                             <div class="fake-hr"></div>
-                            <p class="medium-text">Title of thread with most recent post</p>
-                            <p class="small-text">Most recent post truncatechar: 100</p>
-{#                            <p>{{ last_subject_post.comment subject }}</p>#}
-                            <br>
-                            <p class="small-text">date/time of post</p>
-                            <p class="small-text">Read more - link to thread above</p>
-{#                            <p>{{ subject|last_subject_post }}</p>#}
+                            <p class="small-text">Most recent:</p>
+                            {% if subject.threads.count > 0 %}
+                                <p class="medium-text italic-text">{% subject_thread_with_last_post subject %}</p>
+                                <p class="small-text italic-text">{% latest_subject_post_comment subject %}</p>
+                                <p class="small-text float-left">Posted {% latest_subject_post_date subject %}</p>
+                                <p class="small-text float-right">thread_id: {% latest_post_thread_id subject %}</p>
+{#                                <a href="{% url 'thread' latest_post_thread_id %}" class="small-text">Read more</a>#}
+                            {% else %}
+                                <p>Subject currently has no threads</p>
+                            {% endif %}
                         </div>
                     </div>
                 </section>
