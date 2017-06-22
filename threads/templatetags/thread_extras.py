@@ -10,7 +10,6 @@ def get_total_subject_posts(subject):
     total_posts = 0
     for thread in subject.threads.all():
         total_posts += thread.posts.count()
-
     return total_posts
 
 
@@ -22,7 +21,9 @@ def started_time(created_at):
 @register.simple_tag
 def last_posted_user_name(thread):
     posts = thread.posts.all().order_by('created_at')
-    return posts[posts.count()-1].user.username
+    # return posts[posts.count()-1].user.username
+    last_poster = posts[posts.count()-1].user.username
+    return last_poster.split("@")[0]
 
 
 @register.simple_tag
@@ -32,27 +33,16 @@ def last_posted_timing(thread):
     return arrow.get(_posts).humanize()
 
 
-# @register.filter
-# def threads_ordered_by_latest_post(subject):
-#     latest_posts = []
-#     for thread in subject.threads.all():
-#         thread_posts = thread.posts.all().order_by('created_at')
-#         latest_posts.append(latest_posts[latest_posts.count() - 1])
-#     subject_list = []
-#     for post in latest_posts:
-#         subject_list
-#     return
+@register.simple_tag
+def post_display_name(post):
+    i = post.user.username
+    return i.split("@")[0]
 
 
-# @register.simple_tag
-# def forum_display_name(username):
-#     return username.split("@")[0]
-
-
-# @register.simple_tag
-# def last_subject_post(subject):
-#     posts = subject.threads.posts.all().order_by('created_at')
-#     return posts[posts.count()-1].comment
+@register.simple_tag
+def thread_display_name(thread):
+    i = thread.user.username
+    return i.split("@")[0]
 
 
 @register.simple_tag
@@ -108,17 +98,6 @@ def latest_post_thread_id(subject):
     thread_list.sort(reverse=True, key=latest_thread_date)
     print thread_list[0].id
     return thread_list[0].id
-
-
-# @register.simple_tag
-# def last_subject_post(subject):
-#     latest_posts = []
-#     for thread in subject.threads.all():
-#         post_list = thread.posts.all().order_by('created_at')
-#         latest_posts.append(post_list[post_list.count()-1])
-#     last_posts = latest_posts.order_by('created_at')
-#     last_post = last_posts[last_posts.count()-1]
-#     return last_post
 
 
 @register.simple_tag
