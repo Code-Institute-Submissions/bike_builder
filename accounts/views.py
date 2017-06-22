@@ -29,12 +29,12 @@ def register(request):
     args = {'form': form}
     args.update(csrf(request))
 
-    return render(request, 'register.html', args)
+    return render(request, 'accounts/register.html', args)
 
 
 @login_required(login_url='/login/')
 def profile(request):
-    return render(request, 'profile.html')
+    return render(request, 'accounts/profile.html')
 
 
 def login(request):
@@ -56,7 +56,7 @@ def login(request):
 
     args = {'form': form}
     args.update(csrf(request))
-    return render(request, 'login.html', args)
+    return render(request, 'accounts/login.html', args)
 
 
 def logout(request):
@@ -76,4 +76,4 @@ def edit_profile(request):
     else:
         form = UserProfileForm()
 
-    return render(request, 'profile_form.html', {'form': form})
+    return render(request, 'accounts/profile_form.html', {'form': form})
