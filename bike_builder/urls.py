@@ -28,52 +28,60 @@ from django.views.static import serve
 from .settings import MEDIA_ROOT
 
 
-
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT}),
 
     # home URL
-    url(r'^$', home_views.home_page, name='home'),
+    url(r'', include('home.urls')),
+    # url(r'^$', home_views.home_page, name='home'),
 
     # Media URL for images
     url(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT}),
 
     # Accounts URLs
-    url(r'^register/$', accounts_views.register, name='register'),
-    url(r'^profile/$', accounts_views.profile, name='profile'),
-    url(r'^login/$', accounts_views.login, name='login'),
-    url(r'^logout/$', accounts_views.logout, name='logout'),
-    url(r'^profile/edit_profile/$', accounts_views.edit_profile, name='edit_profile'),
+    url(r'^accounts/', include('accounts.urls')),
+    # url(r'^register/$', accounts_views.register, name='register'),
+    # url(r'^profile/$', accounts_views.profile, name='profile'),
+    # url(r'^login/$', accounts_views.login, name='login'),
+    # url(r'^logout/$', accounts_views.logout, name='logout'),
+    # url(r'^profile/edit_profile/$', accounts_views.edit_profile, name='edit_profile'),
 
     # Forum URLs
-    url(r'^forum/$', forum_views.forum, name='forum'),
-    url(r'^threads/(?P<subject_id>\d+)/$', forum_views.threads, name='threads'),
-    url(r'^new_thread/(?P<subject_id>\d+)/$', forum_views.new_thread, name='new_thread'),
-    url(r'^thread/(?P<thread_id>\d+)/$', forum_views.thread, name='thread'),
-    url(r'^post/new/(?P<thread_id>\d+)/$', forum_views.new_post, name='new_post'),
-    url(r'^post/edit/(?P<thread_id>\d+)/(?P<post_id>\d+)/$', forum_views.edit_post, name='edit_post'),
-    url(r'^post/delete/(?P<thread_id>\d+)/(?P<post_id>\d+)/$', forum_views.delete_post, name='delete_post'),
+    url(r'^forum/', include('threads.urls')),
+    # url(r'^forum/$', forum_views.forum, name='forum'),
+    # url(r'^threads/(?P<subject_id>\d+)/$', forum_views.threads, name='threads'),
+    # url(r'^new_thread/(?P<subject_id>\d+)/$', forum_views.new_thread, name='new_thread'),
+    # url(r'^thread/(?P<thread_id>\d+)/$', forum_views.thread, name='thread'),
+    # url(r'^post/new/(?P<thread_id>\d+)/$', forum_views.new_post, name='new_post'),
+    # url(r'^post/edit/(?P<thread_id>\d+)/(?P<post_id>\d+)/$', forum_views.edit_post, name='edit_post'),
+    # url(r'^post/delete/(?P<thread_id>\d+)/(?P<post_id>\d+)/$', forum_views.delete_post, name='delete_post'),
 
     # Poll URLs
-    url(r'^thread/vote/(?P<thread_id>\d+)/(?P<subject_id>\d+)/$', forum_views.thread_vote, name='cast_vote'),
+    url(r'^thread/', include('polls.urls')),
+    # url(r'^thread/vote/(?P<thread_id>\d+)/(?P<subject_id>\d+)/$', forum_views.thread_vote, name='cast_vote'),
 
     # Gallery URLs
-    url(r'^gallery/$', gallery_views.gallery, name='gallery'),
-    url(r'^gallery/upload_image/$', gallery_views.upload_image, name='upload_image'),
+    url(r'^gallery/', include('gallery.urls')),
+    # url(r'^gallery/$', gallery_views.gallery, name='gallery'),
+    # url(r'^gallery/upload_image/$', gallery_views.upload_image, name='upload_image'),
 
     # How to guides URLs
-    url(r'^how_to_guides/$', how_to_guides_views.how_to_guides, name='how_to_guides'),
-    url(r'^how_to_guides/upload_guide/$', how_to_guides_views.upload_guide, name='upload_guide'),
+    url(r'^how_to_guides/', include('how_to_guides.urls')),
+    # url(r'^how_to_guides/$', how_to_guides_views.how_to_guides, name='how_to_guides'),
+    # url(r'^how_to_guides/upload_guide/$', how_to_guides_views.upload_guide, name='upload_guide'),
 
     # Merchandise URLs
-    url(r'^merchandise/$', merchandise_views.all_products, name='merchandise'),
-    url(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT}),
+    url(r'^merchandise/', include('merchandise.urls')),
+    # url(r'^merchandise/$', merchandise_views.all_products, name='merchandise'),
 
     # Payments URLs
-    url(r'^place_order/(?P<product_id>\d+)/$', payments_views.place_order, name='place_order'),
+    url(r'^place_order/', include('payments.urls')),
+    # url(r'^place_order/(?P<product_id>\d+)/$', payments_views.place_order, name='place_order'),
 
     #  Bike Selector URLs
-    url(r'^bike_selector/$', bike_selector_views.bike_search, name='bike_search'),
+    url(r'^bike_selector/', include('bike_selector.urls')),
+    # url(r'^bike_selector/$', bike_selector_views.bike_search, name='bike_search'),
 
 ]
 
