@@ -14,3 +14,6 @@ class Gallery(models.Model):
 
     def __unicode__(self):
         return self.description
+
+    class Meta:
+        verbose_name_plural = "Gallery"
