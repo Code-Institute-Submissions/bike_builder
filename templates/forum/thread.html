@@ -9,7 +9,7 @@
 
         {% if user.is_authenticated %}
             <p>
-                <a href="{% url 'new_post' thread.id %}" class="btn btn-primary my-button">New post</a>
+                <a href="{% url 'new_post' thread.id %}?next={% firstof request.get_full_path '/' %}" class="btn btn-primary my-button">New post</a>
             </p>
         {% endif %}
 

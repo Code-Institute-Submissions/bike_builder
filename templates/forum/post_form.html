@@ -16,7 +16,8 @@
 {% block content %}
     <section class="form-container medium-text">
         <div class="col-xs-12">
-            <form method="post" enctype="multipart/form-data" action="{{ form_action }}">
+{#            <form method="post" enctype="multipart/form-data" action="{{ form_action }}">#}
+            <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ form|as_bootstrap }}
                 <div class="form-group">
