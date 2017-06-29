@@ -8,7 +8,7 @@ from django.shortcuts import render, redirect
 
 # Create your views here.
 def how_to_guides(request):
-    guide_list = HowTo.objects.all().order_by('uploaded_at')
+    guide_list = HowTo.objects.all().order_by('-uploaded_at')
     paginator = Paginator(guide_list, 10)  # 10 in each page
     page = request.GET.get('page')
     try:
