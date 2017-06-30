@@ -9,7 +9,7 @@ from .forms import GalleryForm
 # Create your views here.
 def gallery(request):
     image_list = Gallery.objects.all().order_by('-uploaded_at')
-    paginator = Paginator(image_list, 10)  # 10 in each page
+    paginator = Paginator(image_list, 20)  # 20 in each page
     page = request.GET.get('page')
     try:
         images = paginator.page(page)
