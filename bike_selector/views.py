@@ -15,7 +15,7 @@ def bike_search(request):
         selected_layout = request.GET.get('layout', '')
 
         if selected_manufacturer != 'All':
-            manufacturer = Manufacturer.objects.get(manufacturer=selected_manufacturer)
+            manufacturer = Manufacturer.objects.get(name=selected_manufacturer)
             cursor = cursor.filter(manufacturer=manufacturer)
             form.initial['manufacturer'] = manufacturer
 
@@ -34,6 +34,7 @@ def bike_search(request):
     args = {'form': form, 'bikes': bikes}
 
     return render(request, 'bike_selector/bike_selector.html', args)
+
 
 # from django.shortcuts import render
 # from .models import Bikes, Manufacturers, Layouts
