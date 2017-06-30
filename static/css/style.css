@@ -127,6 +127,10 @@ footer > div > a {
     text-align: center;
 }
 
+.block {
+    display: block;
+}
+
 .action-button {
     margin-right: 10px;
 }
@@ -170,15 +174,16 @@ footer > div > a {
 
 /*--------------------------------------Gallery-------------------------------------------*/
 
-/*.gallery-thumbnail {*/
-	/*height: 160px;*/
-/*}*/
-
 .gallery-thumbnail {
-	height: 100%;
-	width: 100%;
+	height: 100px;
 }
 
+/*.gallery-thumbnail {*/
+	/*height: 100%;*/
+	/*width: 100%;*/
+/*}*/
+
+/*remove this if I decide not to reinstate the description under the gallery image (not modal image!)*/
 .gallery-image-desc {
     margin: 0;
     font-size: 10px;
@@ -186,13 +191,9 @@ footer > div > a {
 
 .gallery-image-surround {
     padding: 5px;
-    margin: 5px 5px 10px 5px;
-    max-width: 130px;
-}
-
-/*line up the default first image with the others*/
-#gallery-default-pic {
-    padding-bottom: 20px;
+    margin: 5px;
+    /*margin: 5px 5px 10px 5px;*/
+    /*max-width: 130px;*/
 }
 
 .gallery-modal-image {
@@ -438,14 +439,15 @@ footer > div > a {
     margin: 0 0 20px 20px;
 }
 
-/*.gallery-thumbnail {*/
+.gallery-thumbnail {
+    height: 200px;
 	/*max-height: 150px;*/
 	/*max-width: 150px;*/
-/*}*/
-
-.gallery-image-surround {
-    max-width: 200px;
 }
+
+/*.gallery-image-surround {*/
+    /*max-width: 200px;*/
+/*}*/
 
 .avatar-text {
     margin: 0;
