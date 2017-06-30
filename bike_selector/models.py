@@ -9,6 +9,9 @@ class Manufacturer(models.Model):
     def __unicode__(self):
         return self.name
 
+    class Meta:
+        ordering = ['name']
+
 
 class Layout(models.Model):
     layout = models.CharField(max_length=60)
