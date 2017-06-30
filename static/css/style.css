@@ -67,7 +67,7 @@ footer > div > a {
 
 .fake-hr {
 	border-bottom: 1px solid lightgray;
-	margin-top: 5px;
+	margin: 5px 0;
 }
 
 .form-container {
@@ -119,6 +119,10 @@ footer > div > a {
     font-size: 20px;
 }
 
+.italic-text {
+    font-style: italic;
+}
+
 .centre-items {
     text-align: center;
 }
@@ -166,13 +170,17 @@ footer > div > a {
 
 /*--------------------------------------Gallery-------------------------------------------*/
 
+/*.gallery-thumbnail {*/
+	/*height: 160px;*/
+/*}*/
+
 .gallery-thumbnail {
-	max-height: 120px;
-	max-width: 120px;
+	height: 100%;
+	width: 100%;
 }
 
 .gallery-image-desc {
-    margin: 0px;
+    margin: 0;
     font-size: 10px;
 }
 
@@ -185,6 +193,11 @@ footer > div > a {
 /*line up the default first image with the others*/
 #gallery-default-pic {
     padding-bottom: 20px;
+}
+
+.gallery-modal-image {
+    height: 100%;
+    width: 100%;
 }
 
 .gallery-modal-desc {
@@ -232,14 +245,15 @@ footer > div > a {
 .forum-subject {
     margin: 5px 5px 20px 5px;
     border: 1px solid black;
-    border-radius: 5px;
+    border-radius: 3px;
     padding: 0;
     box-shadow: 5px 5px 5px #87421F;
 }
 
 .forum-subject-top {
+    /*background: #aaaaaa;*/
     background: #811B33;
-    border-radius: 5px 5px 0 0;
+    border-radius: 3px 3px 0 0;
     padding: 5px;
     text-align: center;
 }
@@ -253,7 +267,7 @@ footer > div > a {
 .forum-subject-bottom {
     padding: 5px;
     background-color: white;
-    border-radius: 0 0 5px 5px;
+    border-radius: 0 0 3px 3px;
 }
 
 .forum-image {
@@ -424,14 +438,13 @@ footer > div > a {
     margin: 0 0 20px 20px;
 }
 
-.gallery-thumbnail {
-	max-height: 150px;
-	max-width: 150px;
-}
+/*.gallery-thumbnail {*/
+	/*max-height: 150px;*/
+	/*max-width: 150px;*/
+/*}*/
 
 .gallery-image-surround {
-    padding: 10px;
-    max-width: 170px;
+    max-width: 200px;
 }
 
 .avatar-text {
