@@ -47,7 +47,7 @@
                     <div id="myGallery" class="carousel slide" data-interval="false">
                         <div class="carousel-inner">
                             {% for image in images %}
-                                    <div class="item {% if forloop.counter0 == 0 %}active{% endif %}"><img src="/media/{{ image.image }}" alt="Oops! A picture should be here :("><div class="gallery-modal-desc">{{ image.description }}</div></div>
+                                    <div class="item {% if forloop.counter0 == 0 %}active{% endif %}"><img src="/media/{{ image.image }}" class="gallery-modal-image" alt="Oops! A picture should be here :("><div class="gallery-modal-desc">{{ image.description }}</div></div>
                             {% endfor %}
                         </div><!--end carousel-inner-->
 
