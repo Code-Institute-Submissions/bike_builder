@@ -4,16 +4,16 @@ from .models import Bike
 
 
 #  set in global scope so can be used by all list functions
-bike_list = Bike.objects.all()
+bike_list = Bike.objects.all().order_by('manufacturer')
 
 
 #  create a list of tuples of unique manufacturers for the drop-down menu
 def manufacturer_list():
 
     a = set(bike.manufacturer for bike in bike_list)
-    b = ['All'] + list(a)
+    b = ['All'] + sorted(list(a))
     c = [(x, x) for x in b]
-    return c
+    return sorted(c)
 
 
 #  create a list of tuples of unique number of cylinders for the drop-down menu
