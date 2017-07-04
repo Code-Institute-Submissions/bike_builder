@@ -3,12 +3,29 @@
 {% block content %}
     <div class="form-container medium-text">
         <p class="copy-form-legend">Profile</p>
-        <p>You are logged in as <strong>{{ user.email }}</strong></p>
-        <p>Your public name, used to identify you on the site, is <strong>{{ user.public_name }}</strong></p>
-        <p>You have been a member since <strong>{{ user.date_joined }}</strong> and created <strong>{{ user.posts.count }}</strong> posts</p>
+        <p>You are logged in as <strong>{{ user.email }}</strong>. Use your email address to login to the site.</p>
+        <p>Your public name, used to identify you on the site, is <strong>{{ user.public_name }}</strong>.</p>
+        <p>You have been a member since <strong>{{ user.date_joined }}</strong> and written <strong>{{ user.posts.count }}</strong> forum posts.</p>
         <br>
         <p>Profile Image:</p>
-        <img src="/media/{{ user.image }}" id="register-avatar"/>
-        <a href="{% url 'edit_profile' %}" class="btn btn-primary"><i class="fa fa-photo"></i> Change Profile Image</a>
+        {% if user.image %}
+            <img src="/media/{{ user.image }}" id="register-avatar"/>
+        {% else %}
+            <p>You have not uploaded a profile image. Click on the button below to add one.</p>
+        {% endif %}
+
+        <a href="{% url 'edit_profile' %}" class="btn btn-primary"><i class="fa fa-photo"></i> {% if user.image %}Change Profile Image{% else %}Upload Profile Image{% endif %}</a>
     </div>
 {% endblock %}
+{#{% block content %}#}
+{#    <div class="form-container medium-text">#}
+{#        <p class="copy-form-legend">Profile</p>#}
+{#        <p>You are logged in as <strong>{{ user.email }}</strong></p>#}
+{#        <p>Your public name, used to identify you on the site, is <strong>{{ user.public_name }}</strong></p>#}
+{#        <p>You have been a member since <strong>{{ user.date_joined }}</strong> and written <strong>{{ user.posts.count }}</strong> forum posts</p>#}
+{#        <br>#}
+{#        <p>Profile Image:</p>#}
+{#        <img src="/media/{{ user.image }}" id="register-avatar"/>#}
+{#        <a href="{% url 'edit_profile' %}" class="btn btn-primary"><i class="fa fa-photo"></i> Change Profile Image</a>#}
+{#    </div>#}
+{#{% endblock %}#}
