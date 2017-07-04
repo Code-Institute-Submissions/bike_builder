@@ -21,9 +21,9 @@ def started_time(created_at):
 @register.simple_tag
 def last_posted_user_name(thread):
     posts = thread.posts.all().order_by('created_at')
-    # return posts[posts.count()-1].user.username
-    last_poster = posts[posts.count()-1].user.username
-    return last_poster.split("@")[0]
+    return posts[posts.count()-1].user.public_name
+    # last_poster = posts[posts.count()-1].user.username
+    # return last_poster.split("@")[0]
 
 
 @register.simple_tag
@@ -33,18 +33,18 @@ def last_posted_timing(thread):
     return arrow.get(_posts).humanize()
 
 
-@register.simple_tag
-def post_display_name(post):
-    i = post.user.username
-    return i.split("@")[0]
-
-
-@register.simple_tag
-def thread_display_name(thread):
-    i = thread.user.username
-    return i.split("@")[0]
-
-
+# @register.simple_tag
+# def post_display_name(post):
+#     i = post.user.username
+#     return i.split("@")[0]
+#
+#
+# @register.simple_tag
+# def thread_display_name(thread):
+#     i = thread.user.username
+#     return i.split("@")[0]
+#
+#
 @register.simple_tag
 def subject_thread_with_last_post(subject):
 
