@@ -17,6 +17,7 @@ def register(request):
                                      password=request.POST.get('password1'))
 
             if user:
+                auth.login(request, user)
                 messages.success(request, "You have successfully registered")
                 return redirect(reverse('profile'))
 
@@ -74,6 +75,7 @@ def edit_profile(request):
         form = UserProfileForm(request.POST, request.FILES, instance=request.user)
         if form.is_valid():
             form.save()
+            messages.success(request, 'You have successfully uploaded a new profile image')
             return redirect(profile)
     else:
         form = UserProfileForm()
