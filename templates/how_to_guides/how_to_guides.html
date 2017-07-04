@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load how_to_guides_extras %}
+{#{% load how_to_guides_extras %}#}
 
 
 {% block content %}
@@ -21,8 +21,9 @@
                 <div class="col-xs-12 guide-div default-shadow-div">
                     <p class="medium-text"><a href="{{ guide.url }}" target="_blank">{{ guide.description }}</a></p>
                     <div class="fake-hr"></div>
-                    <p class="small-text">Posted by {% poster_display_name guide %} on {{ guide.uploaded_at }}</p>
+{#                    <p class="small-text">Posted by {% poster_display_name guide %} on {{ guide.uploaded_at }}</p>#}
 {#                    <p class="small-text">Posted by {{ guide.uploader }} on {{ guide.uploaded_at }}</p>#}
+                    <p class="small-text">Posted by {{ guide.uploader.public_name }} on {{ guide.uploaded_at }}</p>
                 </div>
             </div>
         {% endfor %}
