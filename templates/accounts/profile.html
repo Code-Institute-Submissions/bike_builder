@@ -4,6 +4,7 @@
     <div class="form-container medium-text">
         <p class="copy-form-legend">Profile</p>
         <p>You are logged in as <strong>{{ user.email }}</strong></p>
+        <p>Your public name, used to identify you on the site, is <strong>{{ user.public_name }}</strong></p>
         <p>You have been a member since <strong>{{ user.date_joined }}</strong> and created <strong>{{ user.posts.count }}</strong> posts</p>
         <br>
         <p>Profile Image:</p>

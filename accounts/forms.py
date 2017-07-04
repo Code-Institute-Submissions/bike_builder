@@ -5,6 +5,11 @@ from django.core.exceptions import ValidationError
 
 
 class UserRegistrationForm(UserCreationForm):
+
+    public_name = forms.CharField(
+        help_text='The username displayed when you post in the forum',
+    )
+
     password1 = forms.CharField(
         label='Password',
         widget=forms.PasswordInput
@@ -17,7 +22,7 @@ class UserRegistrationForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ['email', 'password1', 'password2']
+        fields = ['email', 'public_name', 'password1', 'password2']
         exclude = ['username']
 
     def clean_password2(self):
