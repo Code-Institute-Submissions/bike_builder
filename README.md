@@ -1,6 +1,6 @@
-#Bike Builder
+# Bike Builder
 
-The website is deployed [here](http:www.heroku.com).
+The website is deployed [here](https://www.heroku.com).
 
 It is a Stream 3 project for the Code Institute Full Stack Diploma in Software Development.
 
