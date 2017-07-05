@@ -14,27 +14,29 @@ The site uses a Django framework with each page created in a separate app.
 
 A Bootstrap theme (Sandstone from bootswatch.com) has been used to change the appearance of certain elements.
 
-A Bootstrap navigation bar is used with a custom collapse point and the current tab being highlighted.
+A Bootstrap navigation bar is used with a custom collapse point and the current tab is highlighted. A sticky footer is displayed at the foot of the page.
 
 Images: images used as part of the site are either copyright-free, downloaded from [Pixabay.com](https://www.pixabay.com), or the source is referenced below the images. It is recognised that images uploaded by users may be subject to copyright. If this is the case, images will be removed at the request of the copyright-holder.
 
 #### Home
 
-Uses a Bootstrap carousel with background images, scrolling through text introducing each section of the website in turn.
+Uses a Bootstrap carousel with background images, scrolling through overlaid text introducing each section of the website in turn.
 
 #### Registration
 
-Guest users can access all parts of the website, but full functionality can only be accessed by registering and logging in.
+Guest users can access all parts of the website, but full functionality can only be accessed by registering or logging in.
 
-The app is based on LMS code but has been enhanced with users choosing a public name which is used to identify them in the forum and how-to guides sections, and the option to upload a profile image which is displayed when making posts in the forum. Additional user information is displayed on the Profile page.
+The app is based on LMS code but changes have been made. Code associated with taking payments at registration has been removed. Added functionality includes an enhanced Profile page with additional information being displayed regarding the user, plus the ability to upload a profile image which is displayed in certain parts of the site. A public name is also taken at registration to identify a user on the site. It was felt that this was more appropriate, in terms of user privacy and security, than displaying a user's full email address.
 
 #### Gallery
 
-This page displays motorcycle images and is intended as inspiration for users. Guests can view the images but only registered users can upload them. If an image is clicked, a modal window opens showing the full-size image. The modal incorporates a carousel so that users can scroll through the full-size images which also displays a description. A significant number of images will increase page loading time so pagination has been incorporated here.
+This page displays motorcycle images and is intended as inspiration to users. Guests can view the images but only registered users can upload them. If an image is clicked, a modal window opens showing the full-size image. The modal incorporates a carousel so that users can scroll through the full-size images with a description included beneath each image. A significant number of images will increase page loading time so pagination has been incorporated here.
 
 #### Project bike selector
 
-This is intended to identify motorcycles which may provide the basis of a project for a user. It allows users to select criteria from drop-down menus and then retrieves a list of bikes from the database which match the given criteria. The criteria are currently limited to manufacturer, engine layout and number of cylinders although this could be updated in the future. I feel that the current criteria are very relevant and, with a database currently holding details of over 200 motorcycles, this should be a useful tool without any further development.
+This is intended to identify motorcycles which may provide the basis of a project for a user. It allows users to select criteria from drop-down menus and then retrieves a list of bikes from the database which match the given criteria.
+
+The criteria are currently limited to manufacturer, engine layout and number of cylinders although this could be updated in the future. For instance, adding in a dates of manufacture field might assist someone who wants to restore a bike from a certain decade, perhaps one they remember when they were growing up and aspired to own. However, I feel that the current criteria are very relevant and, with a database currently holding details of over 200 motorcycles, this should be a useful tool without any further development. Regarding the database entries, I have only included pre-1950 motorcycles if I felt it was appropriate, and I have also omitted models made in very limited numbers.
 
 ####How-to guides
 
@@ -44,7 +46,7 @@ This section lists links to how-to articles from other websites. They can be pos
 
 The forum contains a number of subjects with threads and posts and has the functionality to conduct polls. All users can view the forum but only registered users are able to contribute.
 
-The LMS code was used as a basis for the app but has been enhanced in a number of ways, including but not limited to the following: the layout and appearance has been updated to be in keeping with the rest of the site; more information is provided, such as the latest post for each subject, and the number of posts and views for each thread; users have avatars and their total number of posts is displayed; forms for creating and editing posts have Cancel buttons which return the user to the page they were previously viewing, and even the correct pagination page, if applicable; navigation has been improved with a forum navigation bar.
+The LMS code was used as a basis for the app but has been enhanced in a number of ways, including, but not limited to, the following: the layout and appearance has been updated to be in keeping with the rest of the site; more information is provided, such as the latest post for each subject, and the number of posts and views for each thread; users have avatars and their total number of posts is displayed; forms for creating and editing posts have Cancel buttons which return the user to the page they were previously viewing, and even the correct pagination page, if applicable; navigation has been improved with a forum navigation bar.
 
 #### Merchandise
 
