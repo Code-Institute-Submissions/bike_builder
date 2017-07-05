@@ -16,10 +16,13 @@ A Bootstrap theme (Sandstone from bootswatch.com) has been used to change the ap
 
 A Bootstrap navigation bar is used with a custom collapse point and the current tab being highlighted.
 
+Images: images used as part of the site are either copyright-free, downloaded from [Pixabay.com](https://www.pixabay.com), or the source is referenced below the images. It is recognised that images uploaded by users may be subject to copyright. If this is the case, images will be removed at the request of the copyright-holder.
+
 #### Home
 
-Uses a Bootstrap carousel with background images, scrolling through text introducing each section of the website in turn. The copyright-free images have been downloaded from pixabay.com.
-Registration.
+Uses a Bootstrap carousel with background images, scrolling through text introducing each section of the website in turn.
+
+#### Registration
 
 Guest users can access all parts of the website, but full functionality can only be accessed by registering and logging in.
 
@@ -27,11 +30,11 @@ The app is based on LMS code but has been enhanced with users choosing a public 
 
 #### Gallery
 
-This page displays motorcycle images and is intended as inspiration for users. Guests can view the images but only registered users can upload them. If an image is clicked on, a modal window appears showing the full-size image. The modal incorporates a carousel so that users can scroll through the full-size images which also displays a description. A significant number of images will increase page loading time so pagination has been incorporated here. Since the page displays images uploaded by users, some images may be copyrighted. If a request is received from the copyright holder, images will be removed by admin.
+This page displays motorcycle images and is intended as inspiration for users. Guests can view the images but only registered users can upload them. If an image is clicked, a modal window opens showing the full-size image. The modal incorporates a carousel so that users can scroll through the full-size images which also displays a description. A significant number of images will increase page loading time so pagination has been incorporated here.
 
 #### Project bike selector
 
-This is intended to identify motorcycles which may provide the basis of a project for a user. It allows them to specify certain criteria from drop-down menus and then retrieves a list of bikes from the database which match them. The criteria are currently limited to manufacturer, engine layout and number of cylinders although this could be updated in the future. I feel that the current criteria are very relevant and, with a database currently holding details of over 200 motorcycles, this is a useful tool without any further work.
+This is intended to identify motorcycles which may provide the basis of a project for a user. It allows users to select criteria from drop-down menus and then retrieves a list of bikes from the database which match the given criteria. The criteria are currently limited to manufacturer, engine layout and number of cylinders although this could be updated in the future. I feel that the current criteria are very relevant and, with a database currently holding details of over 200 motorcycles, this should be a useful tool without any further development.
 
 ####How-to guides
 
@@ -41,7 +44,7 @@ This section lists links to how-to articles from other websites. They can be pos
 
 The forum contains a number of subjects with threads and posts and has the functionality to conduct polls. All users can view the forum but only registered users are able to contribute.
 
-The LMS code was used as a basis for the app but has been enhanced in a number of ways, including but not limited to the following: the layout and appearance has been updated to be in keeping with the rest of the site; more information is provided, such as the latest post for each subject, and the number of posts and views for each thread; users have avatars and their total number of posts is displayed; forms for creating and editing posts have Cancel buttons which return the user to the page they were previously viewing, and even the correct pagination page, if applicable; and navigation has been improved with a forum navigation bar.
+The LMS code was used as a basis for the app but has been enhanced in a number of ways, including but not limited to the following: the layout and appearance has been updated to be in keeping with the rest of the site; more information is provided, such as the latest post for each subject, and the number of posts and views for each thread; users have avatars and their total number of posts is displayed; forms for creating and editing posts have Cancel buttons which return the user to the page they were previously viewing, and even the correct pagination page, if applicable; navigation has been improved with a forum navigation bar.
 
 #### Merchandise
 
@@ -53,13 +56,13 @@ This section satisfies the requirement for some kind of e-commerce functionality
 
 ## Technologies used
 
-Django: front- and back-end framework
+Django: full-stack framework
 
 HTML5 and CSS3: website content and appearance
 
 Python: backend coding
 
-Javascript: payment validation and displaying active navbar tab
+Javascript (jQuery): payment validation and displaying active navbar tab
 
 SQLite: database
 
@@ -73,5 +76,5 @@ Font Awesome: for a variety of icons.
 
 The site has been deployed to the hosting platform Heroku (link at the top of the page).
 
-A suite of tests has been written to test certain functionality of the site and extensive manual testing has also been conducted in a number of browsers. The site is fully responsive and is designed to operate well on screens as small as 320px wide and below.
+A suite of tests has been written to test certain functionality of the site and extensive manual testing has also been conducted in a number of browsers. The site is fully responsive through use of Bootstrap and media queries and is designed to operate well on screen widths of 320px and below.
 
