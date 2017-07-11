@@ -16,7 +16,7 @@ A Bootstrap theme (Sandstone from bootswatch.com) has been used to change the ap
 
 A Bootstrap navigation bar is used with a custom collapse point and the current tab is highlighted. A sticky footer is displayed at the foot of the page.
 
-Images: images used as part of the site are either copyright-free, downloaded from [Pixabay.com](https://www.pixabay.com), or the source is referenced below the images. It is recognised that images uploaded by users may be subject to copyright. If this is the case, images will be removed at the request of the copyright-holder.
+Images: images used as part of the site are either copyright-free, downloaded from Pixabay.com, or the source is referenced below the images. It is recognised that images uploaded by users may be subject to copyright. If this is the case, images will be removed at the request of the copyright-holder.
 
 #### Home
 
@@ -36,9 +36,9 @@ This page displays motorcycle images and is intended as inspiration to users. Gu
 
 This is intended to identify motorcycles which may provide the basis of a project for a user. It allows users to select criteria from drop-down menus and then retrieves a list of bikes from the database which match the given criteria.
 
-The criteria are currently limited to manufacturer, engine layout and number of cylinders although this could be updated in the future. For instance, adding in a dates of manufacture field might assist someone who wants to restore a bike from a certain decade, perhaps one they remember when they were growing up and aspired to own. However, I feel that the current criteria are very relevant and, with a database currently holding details of over 200 motorcycles, this should be a useful tool without any further development. Regarding the database entries, I have only included pre-1950 motorcycles if I felt it was appropriate, and I have also omitted models made in very limited numbers.
+The criteria are currently limited to manufacturer, engine layout and number of cylinders although this could be updated in the future. For instance, adding in a dates of manufacture field might assist someone who wants to restore a bike from a certain decade, perhaps one they remember from when they were growing up and aspired to own. However, I feel that the current criteria are very relevant and, with a database currently holding details of over 200 motorcycles, this should be a useful tool without any further development. Regarding the database entries, I have only included pre-1950 motorcycles if I felt it was appropriate, and I have also omitted models made in very limited numbers.
 
-####How-to guides
+#### How-to guides
 
 This section lists links to how-to articles from other websites. They can be posted by registered users of the site with recognition being given to the poster. How-to guides are invaluable to people working on motorcycles and it was felt that this means of access would allow them to be listed succinctly and provide credit to the original source without any plagiarism or copyright infringement.
 
@@ -78,5 +78,7 @@ Font Awesome: for a variety of icons.
 
 The site has been deployed to the hosting platform Heroku (link at the top of the page).
 
-A suite of tests has been written to test certain functionality of the site and extensive manual testing has also been conducted in a number of browsers. The site is fully responsive through use of Bootstrap and media queries and is designed to operate well on screen widths of 320px and below.
+A suite of tests has been written to test certain functionality of the site. Coverage is not 100% but extensive manual testing has been exhaustively conducted in a number of browsers.
+
+The site is fully responsive through use of Bootstrap and media queries and is designed to operate well on screen widths of 320px and smaller.
 
