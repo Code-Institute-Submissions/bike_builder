@@ -8,8 +8,8 @@ class MerchandisePageTest(TestCase):
 
     # URL test
     def test_merchandise_page_resolves(self):
-        get_merchandise_page = resolve('/merchandise/')
-        self.assertEqual(get_merchandise_page.func, all_products)
+        merchandise_page = resolve('/merchandise/')
+        self.assertEqual(merchandise_page.func, all_products)
 
     # Status code test
     def test_merchandise_page_status_code_is_okay(self):
@@ -17,7 +17,7 @@ class MerchandisePageTest(TestCase):
         self.assertEqual(merchandise_page.status_code, 200)
 
     # Content test
-    def test_gallery_page_check_content_is_correct(self):
+    def test_check_gallery_page_content_is_correct(self):
         merchandise_page = self.client.get('/merchandise/')
         self.assertTemplateUsed(merchandise_page, "merchandise/merchandise.html")
         merchandise_page_template_output = render_to_response("merchandise/merchandise.html").content
