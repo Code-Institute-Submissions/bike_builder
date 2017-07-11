@@ -14,6 +14,15 @@ class Subject(models.Model):
     def __unicode__(self):
         return self.name
 
+    def latest_post_thread_id(self):
+
+        def latest_thread_date(t):
+            return t.posts.all().order_by('-created_at')[0].created_at
+
+        thread_list = list(self.threads.all())
+        thread_list.sort(reverse=True, key=latest_thread_date)
+        return thread_list[0].id
+
 
 class Thread(models.Model):
 
