@@ -3,42 +3,75 @@
 {% load bootstrap_tags %}
 
 {% block content %}
-    <div class="form-container">
+    <div class="form-container flex-container">
         {% for subject in subjects %}
-            <div class="col-xs-12 col-sm-6 col-md-4">  <!--invisible div allows gap between sections without using margins which make the sections wrap below-->
-                <section class="forum-subject">
-                    <div class="forum-subject-top">
-                        <a href="{% url 'threads' subject.id %}">
-                                <i class="{{ subject.icon }} fa-4x hidden-element"></i>
-                            <p class="large-text">{{ subject.name }}</p>
-                            <p class="medium-text">
-                                    {% autoescape off %}
-                                        {{ subject.description }}
-                                    {% endautoescape %}
-                            </p>
-                        </a>
+            <section class="forum-subject">
+                <div class="forum-subject-top">
+                    <a href="{% url 'threads' subject.id %}">
+                            <i class="{{ subject.icon }} fa-4x hidden-element"></i>
+                        <p class="large-text">{{ subject.name }}</p>
+                        <p class="medium-text">
+                                {% autoescape off %}
+                                    {{ subject.description }}
+                                {% endautoescape %}
+                        </p>
+                    </a>
+                </div>
+                <div class="forum-subject-bottom">
+                    <p class="medium-text">Threads {{ subject.threads.count }} | Posts {{ subject|get_total_subject_posts }}</p>
+                    <div class="hidden-element">
+                        <div class="fake-hr"></div>
+                        <p class="small-text">Most recent:</p>
+                        {% if subject.threads.count > 0 %}
+                            <p class="medium-text italic-text">{% subject_thread_with_last_post subject %}</p>
+                            <p class="small-text italic-text">{% latest_subject_post_comment subject %}</p>
+                            <p class="small-text float-left" style="margin: 0;">Posted {% latest_subject_post_date subject %}</p>
+                            <a href="{% url 'thread' subject.latest_post_thread_id %}" class="small-text float-right">Read more</a>
+                        {% else %}
+                            <p>Subject currently has no threads</p>
+                        {% endif %}
                     </div>
-                    <div class="forum-subject-bottom">
-                        <p class="medium-text">Threads {{ subject.threads.count }} | Posts {{ subject|get_total_subject_posts }}</p>
-                        <div class="hidden-element">
-                            <div class="fake-hr"></div>
-                            <p class="small-text">Most recent:</p>
-                            {% if subject.threads.count > 0 %}
-                                <p class="medium-text italic-text">{% subject_thread_with_last_post subject %}</p>
-                                <p class="small-text italic-text">{% latest_subject_post_comment subject %}</p>
-                                <p class="small-text float-left">Posted {% latest_subject_post_date subject %}</p>
-                                <p class="small-text float-right">thread_id: {% latest_post_thread_id subject %}</p>
-{#                                <a href="{% url 'thread' latest_post_thread_id %}" class="small-text">Read more</a>#}
-                            {% else %}
-                                <p>Subject currently has no threads</p>
-                            {% endif %}
-                        </div>
-                    </div>
-                </section>
-            </div>
+                </div>
+            </section>
         {% endfor %}
     </div>
 {% endblock %}
+{#{% block content %}#}
+{#    <div class="form-container">#}
+{#        {% for subject in subjects %}#}
+{#            <div class="col-xs-12 col-sm-6 col-md-4">  <!--invisible div allows gap between sections without using margins which make the sections wrap below-->#}
+{#                <section class="forum-subject">#}
+{#                    <div class="forum-subject-top">#}
+{#                        <a href="{% url 'threads' subject.id %}">#}
+{#                                <i class="{{ subject.icon }} fa-4x hidden-element"></i>#}
+{#                            <p class="large-text">{{ subject.name }}</p>#}
+{#                            <p class="medium-text">#}
+{#                                    {% autoescape off %}#}
+{#                                        {{ subject.description }}#}
+{#                                    {% endautoescape %}#}
+{#                            </p>#}
+{#                        </a>#}
+{#                    </div>#}
+{#                    <div class="forum-subject-bottom">#}
+{#                        <p class="medium-text">Threads {{ subject.threads.count }} | Posts {{ subject|get_total_subject_posts }}</p>#}
+{#                        <div class="hidden-element">#}
+{#                            <div class="fake-hr"></div>#}
+{#                            <p class="small-text">Most recent:</p>#}
+{#                            {% if subject.threads.count > 0 %}#}
+{#                                <p class="medium-text italic-text">{% subject_thread_with_last_post subject %}</p>#}
+{#                                <p class="small-text italic-text">{% latest_subject_post_comment subject %}</p>#}
+{#                                <p class="small-text float-left">Posted {% latest_subject_post_date subject %}</p>#}
+{#                                <a href="{% url 'thread' subject.latest_post_thread_id %}" class="small-text float-right">Read more</a>#}
+{#                            {% else %}#}
+{#                                <p>Subject currently has no threads</p>#}
+{#                            {% endif %}#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </section>#}
+{#            </div>#}
+{#        {% endfor %}#}
+{#    </div>#}
+{#{% endblock %}#}
 
 
 {#{% block content %}#}
