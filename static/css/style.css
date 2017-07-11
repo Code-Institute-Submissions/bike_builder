@@ -12,7 +12,7 @@ body {
 	min-height: 100%;
 	position: relative;
 	background-color: #EEDC82;  /*light brown*/
-    display: flex;
+    display: flex;  /*for the home page so the carousel fills the screen*/
 }
 
 #body-template {
@@ -139,6 +139,15 @@ footer > div > a {
     margin: 5px 0;
 }
 
+.flex-container {
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: space-around;
+    align-items: flex-start;
+}
+
 /*------------------------------------App specific---------------------------------------*/
 
 
@@ -249,7 +258,17 @@ footer > div > a {
     border-radius: 3px;
     padding: 0;
     box-shadow: 5px 5px 5px #87421F;
+    width: 280px;
+    display: inline-block;
 }
+
+/*.forum-subject {*/
+    /*margin: 5px 5px 20px 5px;*/
+    /*border: 1px solid black;*/
+    /*border-radius: 3px;*/
+    /*padding: 0;*/
+    /*box-shadow: 5px 5px 5px #87421F;*/
+/*}*/
 
 .forum-subject-top {
     /*background: #aaaaaa;*/
