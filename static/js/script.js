@@ -1,6 +1,7 @@
 //waits until page is loaded first
 $(document).ready(function() {
 
+    /*Highlight the active page in the navbar*/
     /*code taken from https://stackoverflow.com/questions/11533542/
     twitter-bootstrap-add-active-class-to-li/12950620#12950620*/
     $(function () {
@@ -22,6 +23,13 @@ $(document).ready(function() {
             }
         });
     });
-    /*end stackoverflow code*/
+    /*end active page in the navbar*/
+
+
+    /*Hide message div when user clicks on close button*/
+    document.getElementById('closeButton').addEventListener('click', function(e) {
+    e.preventDefault();
+    this.parentNode.style.display = 'none';
+    }, false);
 
 });
