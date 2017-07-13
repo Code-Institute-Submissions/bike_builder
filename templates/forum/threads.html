@@ -13,12 +13,9 @@
 
         {% include "pagination.html" with page=threads_ %}
 
-{#        {% for thread in subject.threads.all %}#}
         {% for thread in threads_ %}
             <section class="row thread-div default-shadow-div">
                 <div class="col-sm-1 hidden-element">
-{#                    <img src="/media/{{ thread.user.image }}" class="avatar" title="{% thread_display_name thread %}; posts: {{ thread.user.posts.count }}"/>#}
-{#                    <img src="/media/{{ thread.user.image }}" class="avatar" title="{{ thread.user.username }}; posts: {{ thread.user.posts.count }}"/>#}
                     <img src="/media/{{ thread.user.image }}" class="avatar" title="{{ thread.user.public_name }}; posts: {{ thread.user.posts.count }}"/>
                 </div>
                 <div class="col-xs-10 col-sm-9 col-md-10 thread-name">
@@ -38,103 +35,3 @@
 
     </div>
 {% endblock %}
-
-
-{#pre making avatar tooltip show username#}
-{#{% extends "base.html" %}#}
-{#{% load thread_extras %}#}
-{##}
-{#{% block content %}#}
-{##}
-{#    <div class="form-container">#}
-{#        <h4 class="forum-nav"><a href="/forum/">Forum</a> / {{ subject.name }}</h4>#}
-{#        {% if user.is_authenticated %}#}
-{#            <p>#}
-{#                <a href="{% url 'new_thread' subject.id %}" class="btn btn-primary my-button">New Thread</a>#}
-{#            </p>#}
-{#        {% endif %}#}
-{##}
-{#        {% include "pagination.html" with page=threads_ %}#}
-{##}
-{#        {% for thread in subject.threads.all %}#}
-{#        {% for thread in threads_ %}#}
-{#        {% for thread in threads_ordered_by_latest_post %}#}
-{#            <section class="row thread-div default-shadow-div" style="position: relative;">#}
-{#                <div class="col-sm-2 hidden-element">#}
-{#                    <img src="/media/{{ thread.user.image }}" class="avatar"/>#}
-{#                    <p class="avatar-text">{{ thread.user.username }}</p>#}
-{#                    <p class="avatar-text">Posts: {{ thread.user.posts.count }}</p>#}
-{#                </div>#}
-{#                <div class="col-xs-10 col-sm-8" style="position: static; padding-bottom: 30px;">#}
-{#                    {% include "forum/thread_item.html" %}#}
-{#                <div class="col-xs-8" style="display: block; position: absolute; bottom: 0; border-top: 1px solid gray;">#}
-{#                    <p class="avatar-text float-right">Last post by {% last_posted_user_name thread %} {% last_posted_timing thread %}</p>#}
-{#                </div>#}
-{#                </div>#}
-{#                <div class="col-xs-2">#}
-{#                    <p class="small-text float-right">Posts {{ thread.posts.count }} | Views {{ thread.views }}</p>#}
-{#                </div>#}
-{#            </section>#}
-{#        {% endfor %}#}
-{##}
-{#        {% include "pagination.html" with page=threads_ %}#}
-{##}
-{#    </div>#}
-{#{% endblock %}#}
-
-
-{#pre making comment stick to bottom of div#}
-{#    <div class="form-container">#}
-{#        <h4 class="forum-nav"><a href="/forum/">Forum</a> / {{ subject.name }}</h4>#}
-{#        {% if user.is_authenticated %}#}
-{#            <p>#}
-{#                <a href="{% url 'new_thread' subject.id %}" class="btn btn-primary my-button">New Thread</a>#}
-{#            </p>#}
-{#        {% endif %}#}
-{##}
-{#        {% include "pagination.html" with page=threads_ %}#}
-{##}
-{#        {% for thread in subject.threads.all %}#}
-{#        {% for thread in threads_ %}#}
-{#        {% for thread in threads_ordered_by_latest_post %}#}
-{#            <section class="row thread-div default-shadow-div">#}
-{#                <div class="col-sm-2 hidden-element">#}
-{#                    <img src="/media/{{ thread.user.image }}" class="avatar"/>#}
-{#                    <p class="avatar-text">{{ thread.user.username }}</p>#}
-{#                    <p class="avatar-text">Posts: {{ thread.user.posts.count }}</p>#}
-{#                </div>#}
-{#                <div class="col-xs-10 col-sm-8">#}
-{#                    {% include "forum/thread_item.html" %}#}
-{#                    <div class="fake-hr"></div>#}
-{#                    <p class="small-text float-right">Last post by {% last_posted_user_name thread %} {% last_posted_timing thread %}</p>#}
-{#                </div>#}
-{#                <div class="col-xs-2">#}
-{#                    <p class="small-text float-right">Posts {{ thread.posts.count }} | Views {{ thread.views }}</p>#}
-{#                </div>#}
-{#            </section>#}
-{#        {% endfor %}#}
-{##}
-{#        {% include "pagination.html" with page=threads_ %}#}
-{##}
-{#    </div>#}
-{#{% endblock %}#}
-
-
-{#{% block content %}#}
-{##}
-{#        <h1>{{ subject.name }}</h1>#}
-{#        <div class="col-md-12">#}
-{#            {% if user.is_authenticated %}#}
-{#                <p>#}
-{#                    <a href="{% url 'new_thread' subject.id %}" class="btn btn-primary">New Thread</a>#}
-{#                </p>#}
-{#            {% endif %}#}
-{#            {% for thread in subject.threads.all %}#}
-{#                {% include "forum/thread_item.html" %}#}
-{#                <span>Posts:</span>#}
-{#                <span>Views:</span>#}
-{#                <hr>#}
-{#            {% endfor %}#}
-{#        </div>#}
-{##}
-{#{% endblock %}#}

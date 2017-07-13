@@ -8,7 +8,9 @@
                 <div class="col-sm-2 centre-items"><strong>{{ product.name }}</strong></div>
                 <div class="col-sm-4 centre-items">{{ product.description }}</div>
                 <div class="col-sm-2 centre-items">£ {{ product.price }}</div>
-                <div class="col-sm-2 centre-items"><a href="{% url 'place_order' product.id %}" class="btn btn-primary"><i class="fa fa-credit-card"></i> Buy</a></div>
+                <div class="col-sm-2 centre-items">
+                    <a href="{% url 'place_order' product.id %}" class="btn btn-primary"><i class="fa fa-credit-card"></i> Buy</a>
+                </div>
             </section>
         {% endfor %}
         <div class="merch-div small-text">
@@ -17,30 +19,3 @@
         </div>
     </div>
 {% endblock %}
-
-{#{% block content %}#}
-{#    <div class="form-container table-responsive">#}
-{#        <table class="table">#}
-{#            <thead>#}
-{#                <tr>#}
-{#                    <th></th>#}
-{#                    <th>Item</th>#}
-{#                    <th>Description</th>#}
-{#                    <th>Price</th>#}
-{#                    <th></th>#}
-{#                </tr>#}
-{#            </thead>#}
-{#            <tbody>#}
-{#                {% for product in products %}#}
-{#                    <tr>#}
-{#                        <td><img class="merch_image" src="/media/{{ product.image }}"></td>#}
-{#                        <td>{{ product.name }}</td>#}
-{#                        <td class="merch-desc">{{ product.description }}</td>#}
-{#                        <td>£ {{ product.price }}</td>#}
-{#                        <td><a href="{% url 'place_order' product.id %}" class="btn btn-primary"><i class="fa fa-credit-card"></i> Buy</a></td>#}
-{#                    </tr>#}
-{#                {% endfor %}#}
-{#            </tbody>#}
-{#        </table>#}
-{#    </div>#}
-{#{% endblock %}#}

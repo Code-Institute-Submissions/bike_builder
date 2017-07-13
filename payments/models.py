@@ -1,10 +1,8 @@
 from __future__ import unicode_literals
 from django.db import models
-# from django.conf import settings
 from merchandise.models import Merchandise
 
 
-# Create your models here.
 class Purchase(models.Model):
 
     item = models.ForeignKey(Merchandise)

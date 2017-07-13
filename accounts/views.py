@@ -34,7 +34,6 @@ def register(request):
 
 
 @login_required(login_url='/accounts/login/')
-# @login_required(login_url='/login/')
 def profile(request):
     return render(request, 'accounts/profile.html')
 
@@ -68,7 +67,6 @@ def logout(request):
 
 
 @login_required(login_url='/accounts/login/')
-# @login_required(login_url='/login/')
 def edit_profile(request):
 
     if request.method == "POST":

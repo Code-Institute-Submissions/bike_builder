@@ -6,17 +6,14 @@ from django.shortcuts import render_to_response
 
 class HomePageTest(TestCase):
 
-    # URL test
     def test_home_page_resolves(self):
         get_home_page = resolve('/')
         self.assertEqual(get_home_page.func, home_page)
 
-    # Status code test
     def test_home_page_status_code_is_okay(self):
         get_home_page = self.client.get('/')
         self.assertEqual(get_home_page.status_code, 200)
 
-    # Content test
     def test_check_home_page_content_is_correct(self):
         get_home_page = self.client.get('/')
         self.assertTemplateUsed(get_home_page, "home/home.html")

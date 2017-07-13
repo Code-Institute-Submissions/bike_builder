@@ -1,6 +1,6 @@
-/* ----------------------------------------General----------------------------------*/
+/* ---------------------------------General CSS, not app-specific-------------------------*/
 
-/*to enable sticky footer*/
+/*start sticky footer*/
 html,
 body {
 	margin: 0;
@@ -8,6 +8,7 @@ body {
 	height: 100%;
 }
 
+/*body containing navbar, content and footer*/
 #main-container {
 	min-height: 100%;
 	position: relative;
@@ -15,9 +16,10 @@ body {
     display: flex;  /*for the home page so the carousel fills the screen*/
 }
 
+/*Child template*/
 #body-template {
-	padding-bottom: 40px;   /* Height of footer */
     padding-top: 60px;  /* Height of navbar */
+	padding-bottom: 40px;   /* Height of footer */
     width: 100vw;  /*needed to avoid the issue of the 30px width home carousel*/
 }
 
@@ -31,12 +33,13 @@ footer {
 }
 /*end sticky footer*/
 
-.navbar-right {
-	margin-right: 10px !important;
+/*add gap between navbar account links and edge of page*/
+#account-links {
+	margin-right: 10px;
 }
 
 footer > div {
-    display: flex;  /* Required to centre the child social media icons*/
+    display: flex;
     justify-content: center;
 }
 
@@ -44,8 +47,7 @@ footer > div > a {
     margin: 5px 10px;
 }
 
-
-/* alert messages*/
+/* start alert messages*/
 .alert {
 	border-radius: 0;
 }
@@ -87,6 +89,13 @@ footer > div > a {
     border-bottom: 1px solid transparent;
 }
 
+.default-shadow-div {
+    border: 1px solid black;
+    border-radius: 3px;
+    background-color: white;
+    box-shadow: 5px 5px 5px #87421F;
+}
+
 .float-left {
     float: left;
 }
@@ -95,14 +104,8 @@ footer > div > a {
     float: right;
 }
 
-.default-shadow-div {
-    border: 1px solid black;
-    border-radius: 3px;
-    background-color: white;
-    box-shadow: 5px 5px 5px #87421F;
-}
-
-/*to hide elements on smaller screen sizes*/
+/*To hide elements on smaller screen sizes
+Class is shown at 768px*/
 .hidden-element {
     display: none;
 }
@@ -131,6 +134,10 @@ footer > div > a {
     display: block;
 }
 
+.no-margin {
+    margin: 0;
+}
+
 .action-button {
     margin-right: 10px;
 }
@@ -151,9 +158,9 @@ footer > div > a {
 /*------------------------------------App specific---------------------------------------*/
 
 
-/*-----------------------------------------Home---------------------------------------------*/
+/*-----------------------------------------Home------------------------------------------*/
 
-/*text color in home carousel*/
+/*text color in carousel*/
 .carousel-caption {
 	color: white;
 }
@@ -166,7 +173,7 @@ footer > div > a {
 	font-size: 16px;
 }
 
-/*ensure home carousel responsively fills screen*/
+/*start home carousel responsively fills screen*/
 .home-img {
 	min-height: 100%;
 }
@@ -179,7 +186,7 @@ footer > div > a {
 .carousel-inner {
     height:100%;
 }
-/*end of home carousel attributes required to fill screen*/
+/*end home carousel responsively fills screen*/
 
 /*--------------------------------------Gallery-------------------------------------------*/
 
@@ -187,22 +194,9 @@ footer > div > a {
 	height: 100px;
 }
 
-/*.gallery-thumbnail {*/
-	/*height: 100%;*/
-	/*width: 100%;*/
-/*}*/
-
-/*remove this if I decide not to reinstate the description under the gallery image (not modal image!)*/
-.gallery-image-desc {
-    margin: 0;
-    font-size: 10px;
-}
-
 .gallery-image-surround {
     padding: 5px;
     margin: 5px;
-    /*margin: 5px 5px 10px 5px;*/
-    /*max-width: 130px;*/
 }
 
 .gallery-modal-image {
@@ -215,14 +209,11 @@ footer > div > a {
     margin: 0 15%;
 }
 
-
 /*--------------------------------Project Bike Selector------------------------------------*/
 
 .pbs-table {
     background-color: white;
 }
-
-
 
 /*-----------------------------------How-To Guides------------------------------------------*/
 
@@ -230,8 +221,6 @@ footer > div > a {
     padding-top: 5px;
     margin: 10px;
 }
-
-
 
 /*---------------------------------------Forum-----------------------------------------------*/
 
@@ -262,16 +251,7 @@ footer > div > a {
     display: inline-block;
 }
 
-/*.forum-subject {*/
-    /*margin: 5px 5px 20px 5px;*/
-    /*border: 1px solid black;*/
-    /*border-radius: 3px;*/
-    /*padding: 0;*/
-    /*box-shadow: 5px 5px 5px #87421F;*/
-/*}*/
-
 .forum-subject-top {
-    /*background: #aaaaaa;*/
     background: #811B33;
     border-radius: 3px 3px 0 0;
     padding: 5px;
@@ -363,17 +343,16 @@ footer > div > a {
     margin: 10px;
 }
 
-
 .merch_image {
     max-height: 100px;
     max-width: 100px;
 }
 
-
 /*---------------------------------------Payments----------------------------------------------*/
 
-
-
+#payment-form > #credit-card-errors {
+    display: none;
+}
 
 /*---------------------------------------Accounts (Register)------------------------------------*/
 
@@ -384,16 +363,12 @@ footer > div > a {
     margin-bottom: 20px;
 }
 
+/*-------------------------------------End app specific----------------------------------------*/
 
 
-
-
-
-
-
+/*--------------------------------------Media queries------------------------------------------*/
 
 @media screen and (min-width:450px){
-
 
 .carousel-caption h1 {
 	font-size: 33px;
@@ -420,9 +395,8 @@ footer > div > a {
     font-size: 30px;
 }
 
-
-
 }
+
 
 /*default bootstrap media query for sm cols*/
 @media screen and (min-width:768px){
@@ -443,13 +417,12 @@ footer > div > a {
 	padding: 30px;
 }
 
-/*to hide elements on smaller screen sizes*/
+/*replaces 'display: none' used on smaller screen sizes*/
 .hidden-element {
     display: block;
 }
 
 .form-container > .forum-nav {
-/*.form-container > .forum-nav {*/
     margin-bottom: 20px;
 }
 
@@ -460,13 +433,7 @@ footer > div > a {
 
 .gallery-thumbnail {
     height: 200px;
-	/*max-height: 150px;*/
-	/*max-width: 150px;*/
 }
-
-/*.gallery-image-surround {*/
-    /*max-width: 200px;*/
-/*}*/
 
 .avatar-text {
     margin: 0;
@@ -483,12 +450,9 @@ footer > div > a {
 
 }
 
+
 /*default bootstrap media query for md cols*/
-@media screen and (min-width:992px){
-
-
-}
-
+@media screen and (min-width:992px){}
 
 
 /*default bootstrap media query for lg cols*/

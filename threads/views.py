@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.contrib import messages, auth
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -12,19 +12,24 @@ from polls.models import PollSubject
 
 
 def forum(request):
+    """
+    List all subjects
+    """
     return render(request, 'forum/forum.html',
                   {'subjects': Subject.objects.all()})
 
 
 def threads(request, subject_id):
-
+    """
+    List the subject threads, subject to pagination
+    """
     def latest_thread_date(t):
         return t.posts.all().order_by('-created_at')[0].created_at
 
     subject = get_object_or_404(Subject, pk=subject_id)
     thread_list = list(subject.threads.all())
     thread_list.sort(reverse=True, key=latest_thread_date)
-    paginator = Paginator(thread_list, 6)  # 6 in each page
+    paginator = Paginator(thread_list, 10)  # 10 in each page
     page = request.GET.get('page')
     try:
         threads_ = paginator.page(page)
@@ -40,7 +45,9 @@ def threads(request, subject_id):
 
 @login_required
 def new_thread(request, subject_id):
-
+    """
+    Create new thread with accompanying post
+    """
     subject = get_object_or_404(Subject, pk=subject_id)
 
     poll_subject_formset = formset_factory(PollSubjectForm, extra=3)
@@ -53,7 +60,7 @@ def new_thread(request, subject_id):
 
         if request.POST.get('is_a_poll', None):
 
-            # save the poll information
+            # save the thread with a poll
             if thread_form.is_valid() and post_form.is_valid()\
                     and poll_form.is_valid() \
                     and poll_subject_formset.is_valid():
@@ -117,9 +124,13 @@ def new_thread(request, subject_id):
 
 
 def thread(request, thread_id):
+    """
+    Show thread message plus all associated posts,
+    subject to pagination
+    """
     thread_ = get_object_or_404(Thread, pk=thread_id)
     post_list = thread_.posts.all()
-    paginator = Paginator(post_list, 6)  # 6 in each page
+    paginator = Paginator(post_list, 10)  # 10 in each page
     page = request.GET.get('page')
     try:
         thread_posts = paginator.page(page)
@@ -141,6 +152,9 @@ def thread(request, thread_id):
 
 @login_required
 def new_post(request, thread_id):
+    """
+    Create new post then return to previous (paginated) page
+    """
     thread = get_object_or_404(Thread, pk=thread_id)
     redirect_to = request.GET.get('next', '')
 
@@ -155,7 +169,6 @@ def new_post(request, thread_id):
             messages.success(request,
                              "Your post has been added to the thread!")
 
-            # return redirect(reverse('thread', args={thread.pk}))
             return redirect(redirect_to)
 
     else:
@@ -163,7 +176,6 @@ def new_post(request, thread_id):
 
     args = {
         'form': form,
-        # 'form_action': reverse('new_post', args={thread.id}),
         'button_text': 'Save Post'
     }
 
@@ -172,39 +184,12 @@ def new_post(request, thread_id):
     return render(request, 'forum/post_form.html', args)
 
 
-# @login_required
-# def new_post(request, thread_id):
-#     thread = get_object_or_404(Thread, pk=thread_id)
-#
-#     if request.method == "POST":
-#         form = PostForm(request.POST, request.FILES)
-#         if form.is_valid():
-#             post = form.save(False)
-#             post.thread = thread
-#             post.user = request.user
-#             post.save()
-#
-#             messages.success(request,
-#                              "Your post has been added to the thread!")
-#
-#             return redirect(reverse('thread', args={thread.pk}))
-#
-#     else:
-#         form = PostForm()
-#
-#     args = {
-#         'form': form,
-#         'form_action': reverse('new_post', args={thread.id}),
-#         'button_text': 'Save Post'
-#     }
-#
-#     args.update(csrf(request))
-#
-#     return render(request, 'forum/post_form.html', args)
-
-
 @login_required
 def edit_post(request, thread_id, post_id):
+    """
+    Edit post if created by user, then return to previous
+    (paginated) page
+    """
     thread = get_object_or_404(Thread, pk=thread_id)
     post = get_object_or_404(Post, pk=post_id)
     redirect_to = request.GET.get('next', '')
@@ -215,14 +200,12 @@ def edit_post(request, thread_id, post_id):
             form.save()
             messages.success(request, "You have updated your post!")
 
-            # return redirect(reverse('thread', args={thread.id}))
             return redirect(redirect_to)
     else:
         form = PostForm(instance=post)
 
     args = {
         'form': form,
-        # 'form_action': reverse('edit_post', kwargs={"thread_id": thread.id, "post_id": post.id}),
         'button_text': 'Update Post'
     }
 
@@ -233,6 +216,10 @@ def edit_post(request, thread_id, post_id):
 
 @login_required
 def delete_post(request, thread_id, post_id):
+    """
+    Delete post if created by user, then return to previous
+    (paginated) page
+    """
     post = get_object_or_404(Post, pk=post_id)
     thread_id = post.thread.id
     post.delete()
@@ -243,13 +230,16 @@ def delete_post(request, thread_id, post_id):
     print request.META.get('HTTP_REFERER', '/')
     print request.META.get('HTTP_REFERER')
 
-    # return to current paginator page. If user has disabled referrer info, it will redirect to home page
+    # return to current paginator page. If user has disabled referrer info,
+    # it will redirect to home page
     return redirect(request.META.get('HTTP_REFERER', '/'))
-    # return redirect(reverse('thread', args={thread_id}))
 
 
 @login_required
 def thread_vote(request, thread_id, subject_id):
+    """
+    Take user vote if not yet voted
+    """
     thread = Thread.objects.get(id=thread_id)
     subject = thread.poll.votes.filter(user=request.user)
 

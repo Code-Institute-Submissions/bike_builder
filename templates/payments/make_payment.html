@@ -16,7 +16,7 @@
     <div class="form-container medium-text">
         <div class="col-md-6">
             <form role="form" method="post" id="payment-form" action="{% url 'place_order' product.id %}">
-                <div id="credit-card-errors" style="display:none">
+                <div id="credit-card-errors">
                     <div class="alert-message block-message error" id="stripe-error-message"></div>
                 </div>
 

@@ -12,6 +12,9 @@ stripe.api_key = settings.STRIPE_SECRET
 
 
 def place_order(request, product_id):
+    """
+    Take/submit payment details for purchase of merchandise
+    """
     product = get_object_or_404(Merchandise, pk=product_id)
     if request.method == 'POST':
         form = PaymentForm(request.POST)

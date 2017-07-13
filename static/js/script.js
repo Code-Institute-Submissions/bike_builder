@@ -1,7 +1,8 @@
 //waits until page is loaded first
 $(document).ready(function() {
 
-    /*code taken from https://stackoverflow.com/questions/11533542/twitter-bootstrap-add-active-class-to-li/12950620#12950620*/
+    /*code taken from https://stackoverflow.com/questions/11533542/
+    twitter-bootstrap-add-active-class-to-li/12950620#12950620*/
     $(function () {
         function removeEndSlash(str) {
             if (str.substr(-1) == '/') {

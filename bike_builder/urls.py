@@ -16,14 +16,6 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls import include, url
 from django.contrib import admin
-from home import views as home_views
-from accounts import views as accounts_views
-from threads import views as forum_views
-from gallery import views as gallery_views
-from how_to_guides import views as how_to_guides_views
-from merchandise import views as merchandise_views
-from payments import views as payments_views
-from bike_selector import views as bike_selector_views
 from django.views.static import serve
 from .settings import MEDIA_ROOT
 
@@ -32,56 +24,35 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT}),
 
-    # home URL
+    # Home
     url(r'', include('home.urls')),
-    # url(r'^$', home_views.home_page, name='home'),
 
     # Media URL for images
     url(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT}),
 
-    # Accounts URLs
+    # Accounts
     url(r'^accounts/', include('accounts.urls')),
-    # url(r'^register/$', accounts_views.register, name='register'),
-    # url(r'^profile/$', accounts_views.profile, name='profile'),
-    # url(r'^login/$', accounts_views.login, name='login'),
-    # url(r'^logout/$', accounts_views.logout, name='logout'),
-    # url(r'^profile/edit_profile/$', accounts_views.edit_profile, name='edit_profile'),
 
-    # Forum URLs
+    # Forum
     url(r'^forum/', include('threads.urls')),
-    # url(r'^forum/$', forum_views.forum, name='forum'),
-    # url(r'^threads/(?P<subject_id>\d+)/$', forum_views.threads, name='threads'),
-    # url(r'^new_thread/(?P<subject_id>\d+)/$', forum_views.new_thread, name='new_thread'),
-    # url(r'^thread/(?P<thread_id>\d+)/$', forum_views.thread, name='thread'),
-    # url(r'^post/new/(?P<thread_id>\d+)/$', forum_views.new_post, name='new_post'),
-    # url(r'^post/edit/(?P<thread_id>\d+)/(?P<post_id>\d+)/$', forum_views.edit_post, name='edit_post'),
-    # url(r'^post/delete/(?P<thread_id>\d+)/(?P<post_id>\d+)/$', forum_views.delete_post, name='delete_post'),
 
-    # Poll URLs
+    # Poll
     url(r'^thread/', include('polls.urls')),
-    # url(r'^thread/vote/(?P<thread_id>\d+)/(?P<subject_id>\d+)/$', forum_views.thread_vote, name='cast_vote'),
 
-    # Gallery URLs
+    # Gallery
     url(r'^gallery/', include('gallery.urls')),
-    # url(r'^gallery/$', gallery_views.gallery, name='gallery'),
-    # url(r'^gallery/upload_image/$', gallery_views.upload_image, name='upload_image'),
 
-    # How to guides URLs
+    # How to guides
     url(r'^how_to_guides/', include('how_to_guides.urls')),
-    # url(r'^how_to_guides/$', how_to_guides_views.how_to_guides, name='how_to_guides'),
-    # url(r'^how_to_guides/upload_guide/$', how_to_guides_views.upload_guide, name='upload_guide'),
 
-    # Merchandise URLs
+    # Merchandise
     url(r'^merchandise/', include('merchandise.urls')),
-    # url(r'^merchandise/$', merchandise_views.all_products, name='merchandise'),
 
-    # Payments URLs
+    # Payments
     url(r'^place_order/', include('payments.urls')),
-    # url(r'^place_order/(?P<product_id>\d+)/$', payments_views.place_order, name='place_order'),
 
-    #  Bike Selector URLs
+    #  Bike Selector
     url(r'^bike_selector/', include('bike_selector.urls')),
-    # url(r'^bike_selector/$', bike_selector_views.bike_search, name='bike_search'),
 
 ]
 

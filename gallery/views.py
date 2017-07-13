@@ -6,8 +6,10 @@ from .models import Gallery
 from .forms import GalleryForm
 
 
-# Create your views here.
 def gallery(request):
+    """
+    Render all gallery images, subject to pagination
+    """
     image_list = Gallery.objects.all().order_by('-uploaded_at')
     paginator = Paginator(image_list, 20)  # 20 in each page
     page = request.GET.get('page')
@@ -21,14 +23,12 @@ def gallery(request):
         images = paginator.page(paginator.num_pages)
     return render(request, 'gallery/gallery.html', {'page': page, 'images': images})
 
-# def gallery(request):
-#     images = Gallery.objects.all().order_by('-uploaded_at')
-#     return render(request, 'gallery/gallery.html', {'images': images})
-
 
 @login_required(login_url='/accounts/login/')
-# @login_required(login_url='/login/')
 def upload_image(request):
+    """
+    Allow authorised users to upload images
+    """
     if request.method == "POST":
         form = GalleryForm(request.POST, request.FILES)
 

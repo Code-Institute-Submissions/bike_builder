@@ -1,10 +1,6 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 
-{% block head_js %}
-    <script type="text/javascript" src="{% static "js/jquery_file.js" %}"></script>
-{% endblock %}
-
 {% block content %}
 
     <div class="form-container">
@@ -26,7 +22,6 @@
         <ul class="list-inline">
             {% for image in images %}
                 <li data-toggle="modal" data-target="#myModal"><div class="default-shadow-div gallery-image-surround"><a href="#myGallery" data-slide-to="{{ forloop.counter0 }}"><img class="gallery-thumbnail" src="/media/{{ image.image }}"></a></div></li>
-{#                <li data-toggle="modal" data-target="#myModal"><div class="default-shadow-div gallery-image-surround"><a href="#myGallery" data-slide-to="{{ forloop.counter0 }}"><img class="gallery-thumbnail" src="/media/{{ image.image }}"></a><p class="gallery-image-desc">{{ image.description }}</p></div></li>#}
             {% endfor %}
         </ul>
 
@@ -56,165 +51,9 @@
                         <a class="left carousel-control" href="#myGallery" role="button" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
                         <a class="right carousel-control" href="#myGallery" role="button" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
                     </div><!--end carousel-->
-
                 </div><!--end modal-body-->
-
-{#                <div class="modal-footer">#}
-{#                    <button type="button" class="btn-sm close" data-dismiss="modal">Close</button>#}
-{#                </div><!--end modal-footer-->#}
-
             </div><!--End modal-content-->
         </div><!--End modal-dialog-->
     </div><!--End Modal-->
 
 {% endblock %}
-
-
-
-
-
-
-
-
-
-{#{% extends "base.html" %}#}
-{#{% load staticfiles %}#}
-{##}
-{#{% block head_js %}#}
-{#    <script type="text/javascript" src="{% static "js/jquery_file.js" %}"></script>#}
-{#{% endblock %}#}
-{##}
-{#{% block content %}#}
-{##}
-{#    <div class="form-container">#}
-{##}
-{#        <!--Display image upload button if user is logged in. If not logged in, display message-->#}
-{#        {% if user.is_authenticated %}#}
-{#            <p>#}
-{#                <a href="{% url 'upload_image' %}" class="btn btn-primary"><i class="fa fa-camera"></i> Upload Image</a>#}
-{#            </p>#}
-{#        {% else %}#}
-{#            <p class="medium-text">You can view all images as a guest, but to upload images you need to login/register.</p>#}
-{#        {% endif %}#}
-{##}
-{#        <p class="medium-text">Click or tap thumbnails below. Use Prev & Next arrows to cycle through the images.</p>#}
-{##}
-{#        {% include "pagination.html" with page=images %}#}
-{##}
-{#        <!--Display gallery images-->#}
-{#        <ul class="list-inline">#}
-{#            <li data-toggle="modal" data-target="#myModal"><div class="default-shadow-div gallery-image-surround"><a href="#myGallery" data-slide-to="0"><img class="gallery-thumbnail" src="/media/gallery/first_image/motorcycle-1777645_1280.jpg"></a><p class="gallery-image-desc">My bike!</p></div></li>#}
-{#            {% for image in images %}#}
-{#                <li data-toggle="modal" data-target="#myModal"><div class="default-shadow-div gallery-image-surround"><a href="#myGallery" data-slide-to="{{ forloop.counter }}"><img class="gallery-thumbnail" src="/media/{{ image.image }}"></a><p class="gallery-image-desc">{{ image.description }}</p></div></li>#}
-{#            {% endfor %}#}
-{#        </ul>#}
-{#    </div>#}
-{##}
-{#    <!--Modal (which contains carousel in its body)-->#}
-{#    <div id="myModal" class="modal fade" role="dialog">#}
-{#        <div class="modal-dialog">#}
-{#            <div class="modal-content">#}
-{#                <div class="modal-header">#}
-{#                    <div class="pull-left">Bike Builder Gallery</div>#}
-{#                    <button type="button" class="close" data-dismiss="modal" title="Close"><span class="glyphicon glyphicon-remove"></span></button>#}
-{#                </div>#}
-{#                <div class="modal-body">#}
-{##}
-{#                    <!--Carousel-->#}
-{#                    <div id="myGallery" class="carousel slide" data-interval="false">#}
-{#                        <div class="carousel-inner">#}
-{#                            <div class="item active"><img src="/media/gallery/first_image/motorcycle-1777645_1280.jpg" alt="Oops! A picture should be here :("><div class="gallery-modal-desc">My bike!</div></div>#}
-{#                            {% for image in images %}#}
-{#                                    <div class="item"><img src="/media/{{ image.image }}" alt="Oops! A picture should be here :("><div class="gallery-modal-desc">{{ image.description }}</div></div>#}
-{##}
-{#                            {% endfor %}#}
-{#                        </div><!--end carousel-inner-->#}
-{##}
-{#                        <!--Begin Previous and Next buttons-->#}
-{#                        <a class="left carousel-control" href="#myGallery" role="button" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>#}
-{#                        <a class="right carousel-control" href="#myGallery" role="button" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>#}
-{#                    </div><!--end carousel-->#}
-{##}
-{#                </div><!--end modal-body-->#}
-{##}
-{#            </div><!--End modal-content-->#}
-{#        </div><!--End modal-dialog-->#}
-{#    </div><!--End Modal-->#}
-{##}
-{#    {% include "pagination.html" with page=images %}#}
-{##}
-{#{% endblock %}#}
-
-
-
-
-
-
-
-
-
-{#{% block content %}#}
-{##}
-{#    <div class="form-container">#}
-{##}
-{#        <!--Image upload button if user is logged in. If not logged in, display message-->#}
-{#        {% if user.is_authenticated %}#}
-{#            <p>#}
-{#                <a href="{% url 'upload_image' %}" class="btn btn-primary"><i class="fa fa-camera"></i> Upload Image</a>#}
-{#            </p>#}
-{#        {% else %}#}
-{#                <p>You can view all images as a guest, but to upload images you need to login/register.</p>#}
-{#        {% endif %}#}
-{##}
-{#        <p>Click or tap thumbnails below. Use Prev & Next arrows to cycle through the images.</p>#}
-{##}
-{#        {% include "pagination.html" with page=images %}#}
-{##}
-{#        <!--Display gallery images-->#}
-{#        <ul class="list-inline">#}
-{#            <li data-toggle="modal" data-target="#myModal"><a href="#myGallery" data-slide-to="0"><img class="gallery-thumbnail" src="/media/gallery/first_image/motorcycle-1777645_1280.jpg"></a><p>My bike!</p></li>#}
-{#            {% for image in images %}#}
-{#                <li data-toggle="modal" data-target="#myModal"><a href="#myGallery" data-slide-to="{{ forloop.counter }}"><img class="gallery-thumbnail" src="/media/{{ image.image }}"></a><p class="car_img_desc">{{ image.description }}</p></li>#}
-{#            {% endfor %}#}
-{#        </ul>#}
-{#    </div>#}
-{##}
-{#    <!--Modal (which contains carousel in its body)-->#}
-{#    <div id="myModal" class="modal fade" role="dialog">#}
-{#        <div class="modal-dialog">#}
-{#            <div class="modal-content">#}
-{#                <div class="modal-header">#}
-{#                    <div class="pull-left">Bike Builder Gallery</div>#}
-{#                    <button type="button" class="close" data-dismiss="modal" title="Close"><span class="glyphicon glyphicon-remove"></span></button>#}
-{#                </div>#}
-{#                <div class="modal-body">#}
-{##}
-{#                    <!--Carousel-->#}
-{#                    <div id="myGallery" class="carousel slide" data-interval="false">#}
-{#                        <div class="carousel-inner">#}
-{#                            <div class="item active"><img src="/media/gallery/first_image/motorcycle-1777645_1280.jpg" alt="Oops! A picture should be here :("></div>#}
-{#                            {% for image in images %}#}
-{#                                    <div class="item"><img src="/media/{{ image.image }}" alt="Oops! A picture should be here :("></div>#}
-{#                            {% endfor %}#}
-{#                        </div><!--end carousel-inner-->#}
-{##}
-{#                        <!--Begin Previous and Next buttons-->#}
-{#                        <a class="left carousel-control" href="#myGallery" role="button" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>#}
-{#                        <a class="right carousel-control" href="#myGallery" role="button" data-slide="next"> <span class="glyphicon glyphicon-chevron-right"></span></a>#}
-{#                    </div><!--end carousel-->#}
-{##}
-{#                </div><!--end modal-body-->#}
-{##}
-{#                <div class="modal-footer">#}
-{#                    <button type="button" class="btn-sm close" data-dismiss="modal">Close</button>#}
-{#                </div><!--end modal-footer-->#}
-{##}
-{#            </div><!--End modal-content-->#}
-{#        </div><!--End modal-dialog-->#}
-{#    </div><!--End Modal-->#}
-{##}
-{#    {% include "pagination.html" with page=images %}#}
-{##}
-{#{% endblock %}#}
-{##}
-{##}

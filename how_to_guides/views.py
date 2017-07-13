@@ -6,8 +6,10 @@ from .forms import HowToForm
 from django.shortcuts import render, redirect
 
 
-# Create your views here.
 def how_to_guides(request):
+    """
+    Render list of how-to guides, subject to pagination
+    """
     guide_list = HowTo.objects.all().order_by('-uploaded_at')
     paginator = Paginator(guide_list, 10)  # 10 in each page
     page = request.GET.get('page')
@@ -22,14 +24,11 @@ def how_to_guides(request):
     return render(request, 'how_to_guides/how_to_guides.html', {'page': page, 'guides': guides})
 
 
-# def how_to_guides(request):
-#     guides = HowTo.objects.all().order_by('uploaded_at')
-#     return render(request, 'how_to_guides/how_to_guides.html', {'guides': guides})
-
-
 @login_required(login_url='/accounts/login/')
-# @login_required(login_url='/login/')
 def upload_guide(request):
+    """
+    Allow authorised users to post guides
+    """
     if request.method == "POST":
         form = HowToForm(request.POST)
 

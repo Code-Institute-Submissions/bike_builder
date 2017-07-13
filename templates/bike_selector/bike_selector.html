@@ -4,7 +4,11 @@
 
 {% block content %}
     <div class="form-container table-responsive medium-text">
-        <p>Use the project bike selector to help you pick your next project bike. If you want to see all the bikes in the database, just click Search. Or, say, if you want to build a café racer and its simply got have a v-twin engine, select ‘2’ from the Cylinders menu and ‘V’ from the Layout menu, before clicking Search.</p>
+        <p>Use the project bike selector to help you pick your next project bike.
+            If you want to see all the bikes in the database, just click Search.
+            Or, say, if you want to build a café racer and its simply got have a v-twin engine,
+            select ‘2’ from the Cylinders menu and ‘V’ from the Layout menu, before clicking Search.
+        </p>
         <div class="col-sm-6">
             <form role="form" method="get" id="bike-search-form" action="{% url 'bike_search' %}">
                 {{ form|as_bootstrap }}

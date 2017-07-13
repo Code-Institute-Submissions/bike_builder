@@ -11,7 +11,6 @@ class PaymentForm(forms.ModelForm):
     MONTH_CHOICES = list(enumerate(MONTH_ABBREVIATIONS, 1))
     YEAR_CHOICES = [(i, i) for i in xrange(2017, 2038)]
 
-    # item = forms.IntegerField(label='Item')
     credit_card_number = forms.CharField(label='Credit card number')
     cvv = forms.CharField(label='Security code (CVV)')
     expiry_month = forms.ChoiceField(label='Month', choices=MONTH_CHOICES)
@@ -20,7 +19,6 @@ class PaymentForm(forms.ModelForm):
 
     class Meta:
         model = Purchase
-        # fields = ('item',
         fields = ('first_name',
                   'last_name',
                   'address_line_1',

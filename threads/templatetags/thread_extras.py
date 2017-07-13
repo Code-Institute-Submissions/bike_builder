@@ -7,6 +7,9 @@ register = template.Library()
 
 @register.filter
 def get_total_subject_posts(subject):
+    """
+    Calculate total number of posts for subject
+    """
     total_posts = 0
     for thread in subject.threads.all():
         total_posts += thread.posts.count()
@@ -15,39 +18,38 @@ def get_total_subject_posts(subject):
 
 @register.filter
 def started_time(created_at):
+    """
+    Convert created_at field to human-readable format
+    eg 'two weeks ago'
+    """
     return arrow.get(created_at).humanize()
 
 
 @register.simple_tag
 def last_posted_user_name(thread):
+    """
+    Who was the last poster in a thread?
+    """
     posts = thread.posts.all().order_by('created_at')
     return posts[posts.count()-1].user.public_name
-    # last_poster = posts[posts.count()-1].user.username
-    # return last_poster.split("@")[0]
 
 
 @register.simple_tag
 def last_posted_timing(thread):
+    """
+    When was the last postmade in a thread?
+    """
     posts = thread.posts.all().order_by('created_at')
     _posts = posts[posts.count()-1].created_at
     return arrow.get(_posts).humanize()
 
 
-# @register.simple_tag
-# def post_display_name(post):
-#     i = post.user.username
-#     return i.split("@")[0]
-#
-#
-# @register.simple_tag
-# def thread_display_name(thread):
-#     i = thread.user.username
-#     return i.split("@")[0]
-#
-#
 @register.simple_tag
 def subject_thread_with_last_post(subject):
-
+    """
+    For a subject, return name of thread
+    which has most recent post
+    """
     def latest_thread_date(t):
         return t.posts.all().order_by('-created_at')[0].created_at
 
@@ -62,7 +64,10 @@ def subject_thread_with_last_post(subject):
 
 @register.simple_tag
 def latest_subject_post_comment(subject):
-
+    """
+    For a subject, return abbreviated comment
+    of most recent post
+    """
     def latest_thread_date(t):
         return t.posts.all().order_by('-created_at')[0].created_at
 
@@ -78,7 +83,9 @@ def latest_subject_post_comment(subject):
 
 @register.simple_tag
 def latest_subject_post_date(subject):
-
+    """
+    For a subject, return date of most recent post
+    """
     def latest_thread_date(t):
         return t.posts.all().order_by('-created_at')[0].created_at
 
@@ -89,19 +96,10 @@ def latest_subject_post_date(subject):
 
 
 @register.simple_tag
-def latest_post_thread_id(subject):
-
-    def latest_thread_date(t):
-        return t.posts.all().order_by('-created_at')[0].created_at
-
-    thread_list = list(subject.threads.all())
-    thread_list.sort(reverse=True, key=latest_thread_date)
-    print thread_list[0].id
-    return thread_list[0].id
-
-
-@register.simple_tag
 def user_vote_button(thread, subject, user):
+    """
+    Take user's vote if not yet voted
+    """
     vote = thread.poll.votes.filter(user_id=user.id).first()
 
     if not vote:
@@ -123,6 +121,9 @@ def user_vote_button(thread, subject, user):
 
 @register.filter
 def vote_percentage(subject):
+    """
+    Calculate vote percentage
+    """
     count = subject.votes.count()
     if count == 0:
         return 0

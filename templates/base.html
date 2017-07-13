@@ -5,7 +5,6 @@
 <head>
     <meta charset="utf-8">
     <title>Bike Builder</title>
-{#    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">#}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/sandstone/bootstrap.min.css">
     <link rel="stylesheet" href="{% static 'css/font-awesome-4.5.0/css/font-awesome.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
@@ -16,7 +15,6 @@
     {% block head_js %}{% endblock %}
 </head>
 <body>
-{#<body onload="hideloader()">#}
     <div class="container" id="main-container">
         <nav class="navbar navbar-inverse navbar-fixed-top container">
             <div class="container">
@@ -37,7 +35,7 @@
                         <li><a href="/forum/">Forum</a></li>
                         <li><a href="/merchandise/">Merchandise</a></li>
                     </ul>
-                    <ul class="nav navbar-nav navbar-right">
+                    <ul id="account-links" class="nav navbar-nav navbar-right">
                         {% if user.is_authenticated %}
                             <li><a href="{% url 'profile' %}"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
                             <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
@@ -67,21 +65,23 @@
         </div>
 
         <footer class="row">  <!--row class makes the content line up with navbar and child template-->
-{#            <p class="float-left">Copyright (c) 2017</p>#}
-{#            <p class="float-right">Website and design: Jon Hill</p>#}
             <div>
-                <a href="https://github.com/RandyMarsh288/bike_builder" target="_blank"><i class="fa fa-github fa-2x" title="Github"></i></a>
-                <a href="https://en-gb.facebook.com/" target="_blank"><i class="fa fa-facebook fa-2x" title="Facebook"></i></a>
-                <a href="https://twitter.com/" target="_blank"><i class="fa fa-twitter fa-2x" title="Twitter"></i></a>
-                <a href="https://www.instagram.com/" target="_blank"><i class="fa fa-instagram fa-2x" title="Instagram"></i></a>
+                <a href="https://github.com/RandyMarsh288/bike_builder" target="_blank">
+                    <i class="fa fa-github fa-2x" title="Github"></i>
+                </a>
+                <a href="https://en-gb.facebook.com/" target="_blank">
+                    <i class="fa fa-facebook fa-2x" title="Facebook"></i>
+                </a>
+                <a href="https://twitter.com/" target="_blank">
+                    <i class="fa fa-twitter fa-2x" title="Twitter"></i>
+                </a>
+                <a href="https://www.instagram.com/" target="_blank">
+                    <i class="fa fa-instagram fa-2x" title="Instagram"></i>
+                </a>
             </div>
         </footer>
 
     </div>
-{#<!--Link to script highlighting current navbar link-->#}
-{#<script type="text/javascript" src="{% static "js/script.js" %}"></script>#}
-{#<!--Link to script for window close on message divs-->#}
-{#<script type="text/javascript" src="{% static "js/jquery_file.js" %}"></script>#}
 </body>
 
 </html>
