@@ -11,10 +11,12 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="{% static "js/script.js" %}"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% block head_js %}{% endblock %}
 </head>
 <body>
+{#<body onload="hideloader()">#}
     <div class="container" id="main-container">
         <nav class="navbar navbar-inverse navbar-fixed-top container">
             <div class="container">
@@ -76,8 +78,8 @@
         </footer>
 
     </div>
-<!--Link to script highlighting current navbar link-->
-<script type="text/javascript" src="{% static "js/nav_active.js" %}"></script>
+{#<!--Link to script highlighting current navbar link-->#}
+{#<script type="text/javascript" src="{% static "js/script.js" %}"></script>#}
 {#<!--Link to script for window close on message divs-->#}
 {#<script type="text/javascript" src="{% static "js/jquery_file.js" %}"></script>#}
 </body>
