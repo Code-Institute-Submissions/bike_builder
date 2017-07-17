@@ -46,7 +46,9 @@ This section lists links to how-to articles from other websites. They can be pos
 
 The forum contains a number of subjects with threads and posts and has the functionality to conduct polls. All users can view the forum but only registered users are able to contribute.
 
-The LMS code was used as a basis for the app but has been enhanced in a number of ways, including, but not limited to, the following: the layout and appearance has been updated to be in keeping with the rest of the site; more information is provided, such as the latest post for each subject, and the number of posts and views for each thread; users have avatars and their total number of posts is displayed; forms for creating and editing posts have Cancel buttons which return the user to the page they were previously viewing, and even the correct pagination page, if applicable; navigation has been improved with a forum navigation bar.
+The LMS code was used as a basis for the app but has been enhanced in a number of ways, including, but not limited to, the following: the layout and appearance has been updated to be in keeping with the rest of the site; more information is provided, such as the latest post for each subject, and the number of posts and views for each thread; users have avatars and their total number of posts is displayed; forms for creating and editing posts have Cancel buttons which return the user to the page they were previously viewing, and even the correct pagination page, if applicable; threads are displayed in order of latest posts; navigation has been improved with a forum navigation bar.
+
+Thanks to [hipsum](https://hipsum.co/) for the hipster-style lorem ipsum text.
 
 #### Merchandise
 
@@ -58,27 +60,32 @@ This section satisfies the requirement for some kind of e-commerce functionality
 
 ## Technologies used
 
-Django: full-stack framework
+* Django: full-stack framework
 
-HTML5 and CSS3: website content and appearance
+* HTML5 and CSS3: website content and appearance
 
-Python: backend coding
+* Python: backend coding
 
-Javascript (jQuery): payment validation and displaying active navbar tab
+* Javascript (jQuery): payment validation and displaying active navbar tab
 
-SQLite: database
+* SQLite: database
 
-Python libraries: including pillow (allowing use of images), arrow (to display readable, human-friendly dates and times), and tinymce (a Javascript HTML WYSIWYG editor used for writing posts in the forum). A complete list of Python libraries can be found in the requirements.txt file.
+* Python libraries: including pillow (allowing use of images), arrow (to display readable, human-friendly dates and times), and tinymce (a Javascript HTML WYSIWYG editor used for writing posts in the forum). A complete list of Python libraries can be found in the requirements.txt file.
 
-Bootstrap: navbar, modal, carousel, forms, responsiveness.
+* Bootstrap: navbar, modal, carousel, forms, responsiveness.
 
-Font Awesome: for a variety of icons.
+* Font Awesome: for a variety of icons.
 
-## Deployment and testing
+## Testing
 
-The site has been deployed to the hosting platform Heroku (link at the top of the page).
+Extensive manual testing has taken place throughout the development of the site. Every time some new functionality was added or existing functionality amended, testing took place. A number of browsers have been used for the testing, including Google Chrome, Microsoft Edge and Mozilla Firefox.
 
-A suite of tests has been written to test certain functionality of the site. Coverage is not 100% but extensive manual testing has been exhaustively conducted in a number of browsers.
+There is also a suite of tests which was written to test certain functionality of the site, but coverage is not 100%. I would have liked to spend more time writing test scripts but ran out of time at the end of the project. Testing is certainly an area I would like to develop in the future and I intend to return to this project and extend the test coverage to as close to 100% as I can.
 
 The site is fully responsive through use of Bootstrap and media queries and is designed to operate well on screen widths of 320px and smaller.
 
+## Deployment
+
+The site has been deployed to the hosting platform Heroku (link at the top of the page).
+
+Steps required by a developer to set up this project locally, including setting up the heroku configuration, choosing the right settings file, uploading data to the database in heroku, creating migrations, etc.
