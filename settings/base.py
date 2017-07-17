@@ -10,7 +10,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '9v8m&nerxuct76v&(uu3=3297)(y@2w4pl!p*@d@^fhi11*y0q'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['bike-builder.herokuapp.com', 'localhost', '127.0.0.1']
 
 # Application definition
 

@@ -18,3 +18,4 @@ six==1.10.0
 sqlparse==0.2.3
 stripe==1.53.0
 wheel==0.29.0
+gunicorn==19.4
