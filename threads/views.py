@@ -226,10 +226,6 @@ def delete_post(request, thread_id, post_id):
 
     messages.success(request, "Your post was deleted!")
 
-    print request.get_full_path()
-    print request.META.get('HTTP_REFERER', '/')
-    print request.META.get('HTTP_REFERER')
-
     # return to current paginator page. If user has disabled referrer info,
     # it will redirect to home page
     return redirect(request.META.get('HTTP_REFERER', '/'))
