@@ -33,5 +33,5 @@ class User(AbstractUser):
     such as adding things like payment details
     """
     objects = AccountUserManager()
-    public_name = models.CharField(max_length=20, unique=True)
+    public_name = models.CharField(max_length=20, unique=True, blank=False)
     image = models.ImageField(upload_to='avatars', blank=True, null=True)
