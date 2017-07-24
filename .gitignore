@@ -35,7 +35,7 @@ fabric.properties
 __pycache__/
 local_settings.py
 
-
+staticfiles/
 
 ### OSX ###
 .DS_Store
