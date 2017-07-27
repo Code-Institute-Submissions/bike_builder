@@ -10,7 +10,8 @@
         {% else %}
             <p class="medium-text">You can view all links as a guest, but to post a link you need to login/register.</p>
         {% endif %}
-        <div class="block">
+
+        <div class="col-xs-12">
             {% include "pagination.html" with page=guides %}
         </div>
 
@@ -24,7 +25,10 @@
             </div>
         {% endfor %}
 
-        {% include "pagination.html" with page=guides %}
+        <div class="col-xs-12">
+            {% include "pagination.html" with page=guides %}
+        </div>
+
     </div>
 
 {% endblock %}
