@@ -50,4 +50,4 @@ def place_order(request, product_id):
     args = {'form': form, 'publishable': settings.STRIPE_PUBLISHABLE, 'product': product}
     args.update(csrf(request))
 
-    return render(request, 'payments\make_payment.html', args)
+    return render(request, 'payments/make_payment.html', args)
