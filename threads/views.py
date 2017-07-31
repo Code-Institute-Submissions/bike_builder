@@ -222,13 +222,16 @@ def delete_post(request, thread_id, post_id):
     """
     post = get_object_or_404(Post, pk=post_id)
     thread_id = post.thread.id
-    post.delete()
+    if request.method == "POST":
+        post.delete()
+        messages.success(request, "Your post has been deleted!")
+        return redirect(reverse('thread', args={thread_id}))
 
-    messages.success(request, "Your post was deleted!")
-
-    # return to current paginator page. If user has disabled referrer info,
-    # it will redirect to home page
-    return redirect(request.META.get('HTTP_REFERER', '/'))
+    args = {
+        'thread_id': thread_id,
+        'post_id': post_id,
+    }
+    return render(request, 'forum/confirm_delete.html', args)
 
 
 @login_required
