@@ -46,7 +46,7 @@ This section lists links to how-to articles from other websites. They can be pos
 
 The forum contains a number of subjects with threads and posts and has the functionality to conduct polls. All users can view the forum but only registered users are able to contribute.
 
-The LMS code was used as a basis for the app but has been enhanced in a number of ways, including, but not limited to, the following: the layout and appearance has been updated to be in keeping with the rest of the site; more information is provided, such as the latest post for each subject, and the number of posts and views for each thread; users have avatars and their total number of posts is displayed; forms for creating and editing posts have Cancel buttons which return the user to the page they were previously viewing, and even the correct pagination page, if applicable; threads are displayed in order of latest posts; navigation has been improved with a forum navigation bar.
+The LMS code was used as a basis for the app but has been enhanced in a number of ways, including, but not limited to, the following: the layout and appearance has been updated to be in keeping with the rest of the site; more information is provided, such as the latest post for each subject, and the number of posts and views for each thread; users have avatars and their total number of posts is displayed; forms for creating, editing and deleting posts have Cancel buttons; users who edit posts are returned to the page they were previously on, and even the correct pagination page, if applicable; threads are displayed in order of latest posts; navigation has been improved with a forum navigation bar.
 
 Thanks to [hipsum](https://hipsum.co/) for the hipster-style lorem ipsum text.
 
@@ -82,10 +82,18 @@ Extensive manual testing has taken place throughout the development of the site.
 
 There is also a suite of tests which was written to test certain functionality of the site, but coverage is not 100%. I would have liked to spend more time writing test scripts but ran out of time at the end of the project. Testing is certainly an area I would like to develop in the future and I intend to return to this project and extend the test coverage to as close to 100% as I can.
 
-The site is fully responsive through use of Bootstrap and media queries and is designed to operate well on screen widths of 320px and smaller.
+The site is fully responsive through use of Bootstrap and media queries and is designed to operate well on screen widths down to 320px.
 
 ## Deployment
 
-The site has been deployed to the hosting platform Heroku (link at the top of the page).
+The site has been deployed to the hosting platform Heroku (link at the top of the page) and ClearDB.
 
-Steps required by a developer to set up this project locally, including setting up the heroku configuration, choosing the right settings file, uploading data to the database in heroku, creating migrations, etc.
+Separate environments were created with different settings and requirements files. Base files contain settings and requirements shared across all environments. Development files allow for debugging and continue to use the SQLite database used during development, whereas staging files use a MySQL database for the deployed site.
+
+To run the project locally, the settings file must be specified:
+
+`python manage.py runserver --settings=settings.dev` or `python manage.py runserver --settings=settings.staging`
+
+A new Heroku app was created and configured. A migration was run to setup the database tables and a fixture file was used to populate the MySQL database with the data from the SQLite database.
+
+Image files are served by Heroku. Testing showed that this limits the functionality of the deployed site as users cannot upload images. The database can be updated, so new users can be created and new posts written, but their profile images won’t be saved and neither will any images uploaded to the Gallery. Functionality could be improved by using an online storage service such as Amazon S3 but this was outside the scope of this project and is something which may be added in the future.
