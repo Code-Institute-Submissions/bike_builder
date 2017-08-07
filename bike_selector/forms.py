@@ -12,9 +12,9 @@ def manufacturer_list():
     for the drop-down menu
     """
     a = set(bike.manufacturer for bike in bike_list)
-    b = ['All'] + sorted(list(a))
-    c = [(x, x) for x in b]
-    return sorted(c)
+    b = ['All'] + (list(a))
+    c = sorted([(x, x) for x in b])
+    return c
 
 
 def cylinders_list():
@@ -50,3 +50,4 @@ class BikeSearchForm(forms.Form):
 
     class Meta:
         fields = ("name", 'cylinders', 'layout')
+
