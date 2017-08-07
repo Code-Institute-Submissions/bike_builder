@@ -84,6 +84,14 @@ There is also a suite of tests which was written to test certain functionality o
 
 The site is fully responsive through use of Bootstrap and media queries and is designed to operate well on screen widths down to 320px.
 
+## Issues/shortcomings
+
+Gallery: I’m not completely happy with the appearance of this page, with the rows of images only being left-justified. I would prefer left-and right-justification and managed to achieve this using flexbox. However, it created large gaps between images and left the page looking worse, especially on smaller screen sizes. In the end I felt that the left-justification, though not perfect, was the best way to go.
+
+Project bike selector: The options in the Manufacturer dropdown menu are supposed to be alphabetically ordered. In the main, they are, but there are always one or two random manufacturers out of sequence. I have used the sort() method and sorted() function in various different ways but can’t achieve perfect alphabetisation.
+
+Image files: Image files are served by Heroku. Testing showed that this limits the functionality of the deployed site as users cannot upload images. The database can be updated, so new users can be created and new posts written, but their profile images won’t be saved and neither will any images uploaded to the Gallery or Forum. Functionality could be improved by using an online storage service such as Amazon S3 but this was outside the scope of this project and is something which may be added in the future.
+
 ## Deployment
 
 The site has been deployed to the hosting platform Heroku (link at the top of the page) and ClearDB.
@@ -95,5 +103,3 @@ To run the project locally, the settings file must be specified:
 `python manage.py runserver --settings=settings.dev` or `python manage.py runserver --settings=settings.staging`
 
 A new Heroku app was created and configured. A migration was run to setup the database tables and a fixture file was used to populate the MySQL database with the data from the SQLite database.
-
-Image files are served by Heroku. Testing showed that this limits the functionality of the deployed site as users cannot upload images. The database can be updated, so new users can be created and new posts written, but their profile images won’t be saved and neither will any images uploaded to the Gallery. Functionality could be improved by using an online storage service such as Amazon S3 but this was outside the scope of this project and is something which may be added in the future.
